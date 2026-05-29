@@ -1,5 +1,5 @@
-import logo from "../../assets/logo.png";
-import { FadeInUp } from "../../utils/animations";
+import logo from "../assets/logo.png";
+import { FadeInUp } from "../utils/animations";
 
 import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram, ArrowRight, Youtube } from "lucide-react";
 
@@ -37,12 +37,12 @@ export default function Footer() {
             
             {/* Brand Column */}
             <div className="lg:col-span-4">
-              <a href="https://tat.tekkzy.com" className="flex items-center gap-3.5 group cursor-pointer text-decoration-none mb-10">
-                <img src={logo} alt="TAT Logo" className="w-[64px] h-[64px] md:w-[64px] md:h-[64px] object-contain flex-shrink-0 drop-shadow-sm" />
-                <div className="hidden sm:flex flex-col justify-center">
-                  <div className="serif text-[28px] font-bold leading-none tracking-[0.04em] uppercase transition-colors duration-500 text-white">Trident</div>
-                  <div className="w-full h-[1px] my-[3px] transition-all duration-500 bg-gradient-to-r from-white/50 to-transparent"></div>
-                  <div className="text-[10px] font-medium tracking-[0.22em] uppercase leading-none transition-colors duration-500 text-white/80">Academy of Technology</div>
+              <a href="/" className="flex items-center gap-5 mb-10 text-decoration-none">
+                <img src={logo} alt="TAT Logo" className="w-[64px] h-[64px] object-contain" />
+                <div className="h-12 w-[1px] bg-white/10 mx-2"></div>
+                <div className="flex flex-col justify-center">
+                  <div className="font-serif text-[28px] text-white leading-none font-bold uppercase">Trident</div>
+                  <div className="text-[10px] font-medium text-[#8B6E66] tracking-[.3em] uppercase mt-2">Academy of Technology</div>
                 </div>
               </a>
               
@@ -100,7 +100,7 @@ export default function Footer() {
                 <div key={col.h}>
                   <div className="relative mb-10">
                     <div className="absolute -left-4 top-0 w-8 h-8 bg-[#8B6E66]/10 -skew-x-12"></div>
-                    <h5 className="serif text-white font-bold text-[15px] uppercase tracking-widest relative z-10 whitespace-nowrap">{col.h}</h5>
+                    <h5 className="font-serif text-white font-bold text-[15px] uppercase tracking-widest relative z-10 whitespace-nowrap">{col.h}</h5>
                   </div>
                   <ul className="space-y-5">
                     {col.ls.map((link) => (

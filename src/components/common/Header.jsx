@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Users, Menu, X, FileText, ChevronDown, Award, CheckCircle, ShieldCheck, FileSpreadsheet, ShieldAlert, BookOpen } from "lucide-react";
-import { NAV_LINKS } from "../../data/constants";
-import logo from "../../assets/logo.png";
+import { NAV_LINKS } from "../data/constants";
+import logo from "../assets/logo.png";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -26,7 +26,7 @@ export default function Header() {
   ];
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 font-sans">
+    <div className="fixed top-0 left-0 w-full z-50">
       {/* Slim Utility Bar */}
       <div className={"hidden lg:block border-b border-white/5 transition-all duration-500 " + (scrolled ? "max-h-0 overflow-hidden py-0 border-b-0" : "max-h-20 py-1.5")} style={{ background: 'linear-gradient(135deg, #1a2660 0%, #2C3A8C 60%, #3a4aad 100%)' }}>
         <div className="max-w-[1400px] mx-auto px-6 xl:px-12 flex items-center justify-between">
@@ -101,8 +101,8 @@ export default function Header() {
             <img src={logo} alt="TAT Logo" className="w-12 h-12 md:w-[52px] md:h-[52px] object-contain flex-shrink-0 drop-shadow-sm" />
             <div className="hidden sm:flex flex-col justify-center">
               <div className={"serif text-[22px] md:text-[24px] font-bold leading-none tracking-[0.04em] uppercase transition-colors duration-500 " + (navActive ? "text-[#3E3A36]" : "text-white")}>Trident</div>
-              <div className={"w-full h-[1px] my-[3px] transition-all duration-500 " + (navActive ? "bg-gradient-to-r from-[#2C3A8C] to-transparent" : "bg-gradient-to-r from-white/50 to-transparent")}></div>
-              <div className={"text-[9px] md:text-[10px] font-medium tracking-[0.22em] uppercase leading-none transition-colors duration-500 " + (navActive ? "text-[#2C3A8C]" : "text-white/80")}>Academy of Technology</div>
+              <div className={"w-full h-[1px] my-[3px] transition-all duration-500 " + (navActive ? "bg-gradient-to-r from-[#1B4D8E] to-transparent" : "bg-gradient-to-r from-white/50 to-transparent")}></div>
+              <div className={"text-[9px] md:text-[10px] font-medium tracking-[0.22em] uppercase leading-none transition-colors duration-500 " + (navActive ? "text-[#1B4D8E]" : "text-white/80")}>Academy of Technology</div>
             </div>
           </a>
 
@@ -110,16 +110,12 @@ export default function Header() {
           <nav className="hidden lg:block">
             <ul className="flex items-center gap-6 list-none m-0 p-0">
               {NAV_LINKS.map(item => {
-                const isCampusLife = item.label === "Campus Life";
+                const isActive = item.label === "Campus Life";
                 return (
                   <li key={item.label} className="relative group">
-                    <a href={item.href} className={`nav-link text-[14px] uppercase tracking-[0.14em] cursor-pointer whitespace-nowrap font-extrabold transition-colors duration-500 text-decoration-none ${navActive ? "text-[#3E3A36] hover:text-[#2C3A8C]" : "text-white/90 hover:text-white"}`}>
+                    <a href={item.href} className={`nav-link text-[14px] uppercase tracking-[0.14em] cursor-pointer whitespace-nowrap font-extrabold transition-colors duration-500 text-decoration-none ${navActive ? "text-[#3E3A36] hover:text-[#1B4D8E]" : "text-white/90 hover:text-white"} ${isActive ? "underline underline-offset-8 decoration-2" : ""}`}>
                       {item.label}
                     </a>
-                    {/* Active Underline for Campus Life */}
-                    {isCampusLife && (
-                      <div className="absolute -bottom-1.5 left-0 w-full h-[2px] bg-[#E8BD63] rounded-full" />
-                    )}
                   </li>
                 );
               })}
@@ -133,7 +129,7 @@ export default function Header() {
 
           {/* Mobile Toggle */}
           <button 
-            className={"lg:hidden p-2 rounded-lg transition-colors active:scale-95 z-50 relative " + (navActive ? "text-[#2C3A8C] bg-[#F5EEEC] hover:bg-[#2C3A8C]/10" : "text-white bg-white/10 hover:bg-white/20")}
+            className={"lg:hidden p-2 rounded-lg transition-colors active:scale-95 z-50 relative " + (navActive ? "text-primary bg-soft hover:bg-primary/10" : "text-white bg-white/10 hover:bg-white/20")}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle Menu"
           >
@@ -152,7 +148,7 @@ export default function Header() {
                 key={item.label} 
                 href={item.href} 
                 onClick={() => setMobileOpen(false)}
-                className={`block py-3.5 text-[15px] font-extrabold text-[#3E3A36] uppercase tracking-[0.14em] hover:text-[#2C3A8C] hover:bg-[#F5EEEC]/50 rounded-lg px-3 transition-all duration-500 transform text-decoration-none ${
+                className={`block py-3.5 text-[15px] font-extrabold text-[#3E3A36] uppercase tracking-[0.14em] hover:text-primary hover:bg-soft/50 rounded-lg px-3 transition-all duration-500 transform text-decoration-none ${
                   mobileOpen ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
                 }`}
                 style={{ 
