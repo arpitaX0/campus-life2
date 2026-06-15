@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Users, Menu, X, FileText, ChevronDown, Award, CheckCircle, ShieldCheck, FileSpreadsheet, ShieldAlert, BookOpen } from "lucide-react";
-import { NAV_LINKS } from "../data/constants";
-import logo from "../assets/logo.png";
+import { NAV_LINKS } from "../../data/constants";
+import logo from "../../assets/logo.png";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -99,10 +99,10 @@ export default function Header() {
           {/* Logo Lockup */}
           <a href="https://tat.tekkzy.com" className="flex items-center gap-3.5 group cursor-pointer text-decoration-none">
             <img src={logo} alt="TAT Logo" className="w-12 h-12 md:w-[52px] md:h-[52px] object-contain flex-shrink-0 drop-shadow-sm" />
-            <div className="hidden sm:flex flex-col justify-center">
-              <div className={"serif text-[22px] md:text-[24px] font-bold leading-none tracking-[0.04em] uppercase transition-colors duration-500 " + (navActive ? "text-[#3E3A36]" : "text-white")}>Trident</div>
-              <div className={"w-full h-[1px] my-[3px] transition-all duration-500 " + (navActive ? "bg-gradient-to-r from-[#1B4D8E] to-transparent" : "bg-gradient-to-r from-white/50 to-transparent")}></div>
-              <div className={"text-[9px] md:text-[10px] font-medium tracking-[0.22em] uppercase leading-none transition-colors duration-500 " + (navActive ? "text-[#1B4D8E]" : "text-white/80")}>Academy of Technology</div>
+            <div className="hidden sm:flex flex-col justify-center items-start">
+              <div className={"font-serif text-[24px] md:text-[28px] font-black leading-none uppercase transition-colors duration-500 " + (navActive ? "text-[#3E3A36]" : "text-white")} style={{ fontFamily: "'Playfair Display', 'Source Serif 4', serif", letterSpacing: "0.02em" }}>TRIDENT</div>
+              <div className={"w-full h-[1px] my-[4px] transition-all duration-500 " + (navActive ? "bg-[#3E3A36]/30" : "bg-white/40")}></div>
+              <div className={"font-sans text-[9px] md:text-[10.5px] font-bold tracking-[0.25em] uppercase leading-none transition-colors duration-500 " + (navActive ? "text-[#3E3A36]/80" : "text-white/90")}>ACADEMY OF TECHNOLOGY</div>
             </div>
           </a>
 
@@ -110,12 +110,15 @@ export default function Header() {
           <nav className="hidden lg:block">
             <ul className="flex items-center gap-6 list-none m-0 p-0">
               {NAV_LINKS.map(item => {
-                const isActive = item.label === "Campus Life";
+                const isCampus = item.label === "Campus Life";
                 return (
-                  <li key={item.label} className="relative group">
-                    <a href={item.href} className={`nav-link text-[14px] uppercase tracking-[0.14em] cursor-pointer whitespace-nowrap font-extrabold transition-colors duration-500 text-decoration-none ${navActive ? "text-[#3E3A36] hover:text-[#1B4D8E]" : "text-white/90 hover:text-white"} ${isActive ? "underline underline-offset-8 decoration-2" : ""}`}>
+                  <li key={item.label} className="relative py-1">
+                    <a href={item.href} className={"nav-link text-[14px] uppercase tracking-[0.14em] cursor-pointer whitespace-nowrap font-extrabold transition-colors duration-500 text-decoration-none " + (navActive ? (isCampus ? "text-[#1B4D8E]" : "text-[#3E3A36] hover:text-[#1B4D8E]") : "text-white/90 hover:text-white")}>
                       {item.label}
                     </a>
+                    {isCampus && (
+                      <div className="absolute -bottom-1 left-0 w-full h-[3px] bg-[#1B4D8E] rounded-full" />
+                    )}
                   </li>
                 );
               })}
@@ -124,7 +127,7 @@ export default function Header() {
 
           {/* CTA Elements */}
           <div className="hidden lg:flex items-center gap-5">
-            <a href="https://apply-now.tekkzy.com" className="text-[12px] font-medium px-7 py-3 rounded uppercase whitespace-nowrap text-decoration-none transition-all duration-500 hover:opacity-90" style={{ backgroundColor: '#D3494B', color: '#ffffff' }}>Apply Now</a>
+            <a href="https://apply-now.tekkzy.com" className="text-[13px] font-bold px-6 py-2.5 rounded uppercase tracking-wider whitespace-nowrap text-decoration-none transition-all duration-500 hover:opacity-90 shadow-sm" style={{ backgroundColor: '#C35350', color: '#ffffff' }}>APPLY NOW</a>
           </div>
 
           {/* Mobile Toggle */}
@@ -148,7 +151,7 @@ export default function Header() {
                 key={item.label} 
                 href={item.href} 
                 onClick={() => setMobileOpen(false)}
-                className={`block py-3.5 text-[15px] font-extrabold text-[#3E3A36] uppercase tracking-[0.14em] hover:text-primary hover:bg-soft/50 rounded-lg px-3 transition-all duration-500 transform text-decoration-none ${
+                className={`block py-3.5 text-[15px] font-extrabold text-[#3E3A36] uppercase tracking-[0.14em] hover:text-[#1B4D8E] hover:bg-soft/50 rounded-lg px-3 transition-all duration-500 transform text-decoration-none ${
                   mobileOpen ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
                 }`}
                 style={{ 

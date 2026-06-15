@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Microscope, Beaker, Globe, Cpu, Home, Utensils, HeartPulse, Wifi, Building, Bus, ArrowRight, Quote as QuoteIcon } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Microscope, Beaker, Globe, Cpu, Home, Utensils, HeartPulse, Wifi, Building, Bus, Quote as QuoteIcon } from 'lucide-react'
 
 import researchImg from '../../assets/real_research.jpg'
 import facility1 from '../../assets/facilities_campus_green.jpg'
@@ -11,213 +11,51 @@ import facility5 from '../../assets/athletics_facility.png'
 import facility6 from '../../assets/news_campus_life.jpg'
 
 // ==========================================
-// RESEARCH — "Split Screen Parallax" Design
-// Dark emerald with floating stats and offset image
+// RESEARCH — Card Grid Design
 // ==========================================
 export function Research() {
-  const stats = [
-    { num: '₹5Cr+', label: 'Research Funding' },
-    { num: '120+', label: 'Published Papers' },
-    { num: '15+', label: 'Active Patents' },
+  const researchAreas = [
+    { icon: Microscope, label: 'Applied Sciences', desc: 'Advancing foundational science through robust experimentation and theoretical modeling.' },
+    { icon: Cpu, label: 'AI & ML Research', desc: 'Developing intelligent systems and machine learning algorithms for real-world problems.' },
+    { icon: Beaker, label: 'Material Engineering', desc: 'Innovating new materials for sustainable infrastructure and technology.' },
+    { icon: Globe, label: 'Sustainable Systems', desc: 'Creating ecological solutions for clean energy, water, and environment.' },
   ]
 
   return (
-    <section className="relative py-28 md:py-36 overflow-hidden" id="research" style={{ backgroundColor: '#1A2E22' }}>
-
-      {/* Background Style: Topographic Lines (Static, Multi-color) */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-20 flex items-center justify-center"
-        style={{ 
-          maskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)'
-        }}
-      >
-        {[...Array(6)].map((_, i) => (
-          <div 
-            key={i} 
-            className="absolute border rounded-[40%_60%_70%_30%/40%_50%_60%_50%]" 
-            style={{ 
-              borderColor: i % 2 === 0 ? '#E8BD63' : '#34785A',
-              width: `${(i+1)*300}px`, 
-              height: `${(i+1)*250}px` 
-            }} 
-          />
-        ))}
-      </div>
-
-      <div className="max-w-[1400px] mx-auto px-6 xl:px-14 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-
-          {/* Left — Text Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#E8BD63]">— Research & Innovation</span>
-            <h2 className="serif text-4xl md:text-5xl lg:text-[56px] text-white leading-[1.05] tracking-tight mt-4 mb-8">
-              Pushing the boundaries<br />of <span className="italic font-light text-[#E8BD63]">knowledge.</span>
-            </h2>
-
-            <p className="text-white/60 text-lg leading-relaxed mb-12 max-w-lg">
-              A DSIR-SIRO recognized institution with active research programmes in AI, IoT, renewable energy, and advanced materials.
-            </p>
-
-            {/* Research Areas — Horizontal Pill Tags */}
-            <div className="flex flex-wrap gap-3 mb-12">
-              {[
-                { icon: Microscope, label: 'Applied Sciences' },
-                { icon: Cpu, label: 'AI & ML Research' },
-                { icon: Beaker, label: 'Material Engineering' },
-                { icon: Globe, label: 'Sustainable Systems' },
-              ].map((area) => (
-                <div key={area.label} className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors cursor-default">
-                  <area.icon size={14} className="text-[#E8BD63]" />
-                  <span className="text-white/70 text-sm font-medium">{area.label}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Stats Row */}
-            <div className="flex gap-10">
-              {stats.map((s, idx) => (
-                <motion.div
-                  key={s.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.15 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="serif text-3xl md:text-4xl font-bold text-[#E8BD63]">{s.num}</div>
-                  <div className="text-white/40 text-xs font-medium uppercase tracking-widest mt-1">{s.label}</div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Right — Offset Image Stack */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            {/* Background accent block */}
-            <div className="absolute -top-8 -right-8 w-full h-full rounded-[24px] bg-[#E8BD63]/10" />
-            <div className="relative h-[450px] lg:h-[550px] rounded-[24px] overflow-hidden shadow-2xl">
-              <img src={researchImg} alt="Research Laboratory" className="w-full h-full object-cover" />
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// ==========================================
-// FACILITIES — "Interactive Tabs with Floating Preview" Design
-// Warm cream with clickable tabs that reveal full-bleed images
-// ==========================================
-export function Facilities() {
-  const facilities = [
-    { title: 'Premium Hostels', desc: 'In-campus safe residence with modern amenities, 24/7 security, and a home-like atmosphere for students from across the country.', img: facility1, icon: Home, color: '#34785A' },
-    { title: 'Food Centers', desc: 'Multi-cuisine dining halls offering wholesome meals in spacious, naturally-lit settings designed to encourage community.', img: facility2, icon: Utensils, color: '#E56D24' },
-    { title: 'Healthcare', desc: 'Dedicated health center with qualified medical professionals and emergency care facilities available round-the-clock.', img: facility3, icon: HeartPulse, color: '#D3494B' },
-    { title: 'Modern Infrastructure', desc: 'AICTE-standard smart classrooms, advanced computing labs, and state-of-the-art seminar halls for immersive learning.', img: facility4, icon: Building, color: '#2C3A8C' },
-    { title: 'Campus WiFi', desc: 'High-speed internet connectivity across the entire campus, enabling seamless digital learning and research.', img: facility5, icon: Wifi, color: '#E8BD63' },
-    { title: 'Safe Transport', desc: 'Extensive bus fleet covering all major routes across Bhubaneswar and surrounding areas for safe daily commute.', img: facility6, icon: Bus, color: '#A59381' },
-  ]
-
-  const [activeIndex, setActiveIndex] = useState(0)
-
-  return (
-    <section className="relative py-28 md:py-36 overflow-hidden" id="facilities" style={{ backgroundColor: '#F9F7F5' }}>
-
-      {/* Background Style: Diagonal Pattern (Multi-color) */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.04]"
-        style={{
-          backgroundImage: 'repeating-linear-gradient(45deg, #3E3A36 0, #3E3A36 2px, transparent 2px, transparent 15px, #E56D24 15px, #E56D24 17px, transparent 17px, transparent 30px)'
-        }}
-      />
-
-      <div className="max-w-[1400px] mx-auto px-6 xl:px-14 relative z-10">
-
-        {/* Header — Right-aligned */}
+    <section className="relative py-24 md:py-32 bg-[#F9F7F5]" id="research">
+      <div className="max-w-[1400px] mx-auto px-6 xl:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-right mb-16"
+          className="text-center mb-16"
         >
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#34785A]">Facilities —</span>
-          <h2 className="serif text-4xl md:text-5xl lg:text-[56px] text-[#3E3A36] leading-[1.05] tracking-tight mt-3">
-            Everything you<br /><span className="italic font-light text-[#E56D24]">need.</span>
+          <span className="text-[12px] font-bold uppercase tracking-[0.3em] text-[#34785A]">Research & Innovation</span>
+          <h2 className="serif text-4xl md:text-5xl lg:text-[52px] text-[#3E3A36] leading-[1.1] tracking-tight mt-4">
+            Pushing the boundaries <span className="italic font-light text-[#E56D24]">of knowledge.</span>
           </h2>
+          <p className="text-[#3E3A36]/70 text-lg mt-6 max-w-2xl mx-auto">
+            A DSIR-SIRO recognized institution with active research programmes in AI, IoT, renewable energy, and advanced materials.
+          </p>
         </motion.div>
 
-        {/* Tabs + Image Grid */}
-        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 items-start">
-
-          {/* Tabs Column */}
-          <div className="space-y-3">
-            {facilities.map((fac, idx) => {
-              const Icon = fac.icon
-              const isActive = idx === activeIndex
-              return (
-                <motion.button
-                  key={fac.title}
-                  onClick={() => setActiveIndex(idx)}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.08 }}
-                  viewport={{ once: true }}
-                  className={`w-full flex items-center gap-5 p-5 rounded-[16px] text-left transition-all duration-500 ${isActive ? 'bg-white shadow-[0_15px_40px_-15px_rgba(62,58,54,0.15)]' : 'hover:bg-white/40'}`}
-                >
-                  <div
-                    className="w-12 h-12 rounded-[12px] flex items-center justify-center flex-shrink-0 transition-colors duration-500"
-                    style={{ backgroundColor: isActive ? fac.color + '15' : '#3E3A36' + '08' }}
-                  >
-                    <Icon size={20} style={{ color: isActive ? fac.color : '#3E3A36' + '40' }} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="serif text-lg font-bold text-[#3E3A36] mb-0.5">{fac.title}</h4>
-                    {isActive && (
-                      <motion.p
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        className="text-[#3E3A36]/50 text-sm leading-relaxed"
-                      >
-                        {fac.desc}
-                      </motion.p>
-                    )}
-                  </div>
-                </motion.button>
-              )
-            })}
-          </div>
-
-          {/* Image Preview */}
-          <div className="relative h-[450px] lg:h-[600px] rounded-[28px] overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={activeIndex}
-                src={facilities[activeIndex].img}
-                alt={facilities[activeIndex].title}
-                initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.6 }}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </AnimatePresence>
-            <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${facilities[activeIndex].color}30 0%, transparent 60%)` }} />
-            <div className="absolute top-8 left-8 px-5 py-2 rounded-full bg-white/90 backdrop-blur-sm">
-              <span className="serif text-sm font-bold text-[#3E3A36]">{facilities[activeIndex].title}</span>
-            </div>
-          </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {researchAreas.map((area, idx) => (
+            <motion.div
+              key={area.label}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-[24px] p-8 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.08)] border border-[#EFE7DF] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition-all duration-500 group flex flex-col h-full"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-[#34785A]/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#34785A] transition-all duration-500">
+                <area.icon size={24} className="text-[#34785A] group-hover:text-white transition-colors" />
+              </div>
+              <h3 className="serif text-xl font-bold text-[#3E3A36] mb-3">{area.label}</h3>
+              <p className="text-[#3E3A36]/70 text-sm leading-relaxed flex-grow">{area.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -225,8 +63,67 @@ export function Facilities() {
 }
 
 // ==========================================
-// IMPACT — "Counter Dashboard" Design
-// Rich gold with large animated numbers, geometric shapes
+// FACILITIES — Card Grid Design
+// ==========================================
+export function Facilities() {
+  const facilities = [
+    { title: 'Premium Hostels', desc: 'In-campus safe residence with modern amenities, 24/7 security, and a home-like atmosphere.', img: facility1, icon: Home },
+    { title: 'Food Centers', desc: 'Multi-cuisine dining halls offering wholesome meals in spacious, naturally-lit settings.', img: facility2, icon: Utensils },
+    { title: 'Healthcare', desc: 'Dedicated health center with qualified medical professionals and emergency care facilities.', img: facility3, icon: HeartPulse },
+    { title: 'Modern Labs', desc: 'AICTE-standard smart classrooms and advanced computing labs for immersive learning.', img: facility4, icon: Building },
+    { title: 'Campus WiFi', desc: 'High-speed internet connectivity across the entire campus, enabling seamless digital learning.', img: facility5, icon: Wifi },
+    { title: 'Safe Transport', desc: 'Extensive bus fleet covering all major routes across Bhubaneswar for safe daily commute.', img: facility6, icon: Bus },
+  ]
+
+  return (
+    <section className="relative py-24 md:py-32 bg-[#EFE7DF]" id="facilities">
+      <div className="max-w-[1400px] mx-auto px-6 xl:px-12 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="text-[12px] font-bold uppercase tracking-[0.3em] text-[#2C3A8C]">Campus Facilities</span>
+          <h2 className="serif text-4xl md:text-5xl lg:text-[52px] text-[#3E3A36] leading-[1.1] tracking-tight mt-4">
+            Everything you <span className="italic font-light text-[#2C3A8C]">need.</span>
+          </h2>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {facilities.map((fac, idx) => {
+            const Icon = fac.icon
+            return (
+              <motion.div
+                key={fac.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-[24px] overflow-hidden shadow-[0_15px_35px_-15px_rgba(0,0,0,0.08)] hover:shadow-[0_25px_50px_-15px_rgba(0,0,0,0.15)] hover:-translate-y-2 transition-all duration-500 group flex flex-col"
+              >
+                <div className="h-[200px] overflow-hidden relative">
+                  <img src={fac.img} alt={fac.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+                </div>
+                <div className="p-8 flex flex-col flex-grow relative">
+                  <div className="absolute -top-8 right-8 w-14 h-14 bg-white rounded-2xl shadow-lg flex items-center justify-center text-[#2C3A8C]">
+                    <Icon size={24} />
+                  </div>
+                  <h4 className="serif text-2xl font-bold text-[#3E3A36] mb-3">{fac.title}</h4>
+                  <p className="text-[#3E3A36]/70 text-[15px] leading-relaxed flex-grow">{fac.desc}</p>
+                </div>
+              </motion.div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ==========================================
+// IMPACT — Stat Card Design
 // ==========================================
 export function Impact() {
   const impactData = [
@@ -237,38 +134,21 @@ export function Impact() {
   ]
 
   return (
-    <section className="relative py-28 md:py-36 overflow-hidden" style={{ backgroundColor: '#1A1817' }}>
-
-      {/* Background Style: Glow Orbs (Static, Multi-color) */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-60">
-        <div 
-          className="absolute top-[-10%] left-[-10%] w-96 h-96 rounded-full bg-[#E8BD63]/20 blur-[100px]" 
-        />
-        <div 
-          className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-[#D3494B]/15 blur-[120px]" 
-        />
-        <div 
-          className="absolute top-[20%] left-[30%] w-[400px] h-[400px] rounded-full bg-[#34785A]/15 blur-[100px]" 
-        />
-      </div>
-
-      <div className="max-w-[1400px] mx-auto px-6 xl:px-14 relative z-10">
-
-        {/* Header — Center */}
+    <section id="impact" className="relative py-24 md:py-32 bg-[#F9F7F5]">
+      <div className="max-w-[1400px] mx-auto px-6 xl:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#E8BD63]">— Our Impact</span>
-          <h2 className="serif text-4xl md:text-5xl lg:text-[56px] text-white leading-[1.05] tracking-tight mt-3">
-            Numbers that<br /><span className="italic font-light text-[#E8BD63]">speak.</span>
+          <span className="text-[12px] font-bold uppercase tracking-[0.3em] text-[#D3494B]">Our Impact</span>
+          <h2 className="serif text-4xl md:text-5xl lg:text-[52px] text-[#3E3A36] leading-[1.1] tracking-tight mt-4">
+            Numbers that <span className="italic font-light text-[#D3494B]">speak.</span>
           </h2>
         </motion.div>
 
-        {/* Stats Grid — 2x2 */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {impactData.map((item, idx) => (
             <motion.div
               key={item.label}
@@ -276,19 +156,13 @@ export function Impact() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               viewport={{ once: true }}
-              className="relative p-10 md:p-12 rounded-[24px] border border-white/5 bg-white/[0.03] backdrop-blur-sm hover:border-[#E8BD63]/20 transition-all duration-500 group"
+              className="bg-white rounded-[24px] p-10 border border-[#EFE7DF] shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-15px_rgba(211,73,75,0.2)] hover:border-[#D3494B]/30 hover:-translate-y-2 transition-all duration-500 text-center"
             >
-              {/* Number */}
-              <div className="serif text-5xl md:text-6xl lg:text-7xl font-bold text-[#E8BD63] mb-4 group-hover:scale-105 transition-transform duration-500 origin-left">
+              <div className="serif text-5xl md:text-6xl font-black text-[#D3494B] mb-4">
                 {item.number}
               </div>
-              <h3 className="text-white text-lg font-bold uppercase tracking-widest mb-2">{item.label}</h3>
-              <p className="text-white/40 text-sm">{item.desc}</p>
-
-              {/* Subtle accent corner */}
-              <div className="absolute top-0 right-0 w-20 h-20 overflow-hidden rounded-tr-[24px]">
-                <div className="absolute top-3 right-3 w-4 h-4 rounded-full border border-[#E8BD63]/20" />
-              </div>
+              <h3 className="text-[#3E3A36] text-[15px] font-bold uppercase tracking-widest mb-3">{item.label}</h3>
+              <p className="text-[#3E3A36]/60 text-sm leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -298,61 +172,31 @@ export function Impact() {
 }
 
 // ==========================================
-// QUOTE — "Full-Screen Cinematic" Design
-// Deep blue immersive with giant quote marks and convocation image
+// QUOTE — Highlight Card Design
 // ==========================================
 export function Quote() {
   return (
-    <section className="relative py-36 md:py-44 overflow-hidden" style={{ backgroundColor: '#2C3A8C' }}>
-
-      {/* Background Image — Semi-transparent */}
-      <div className="absolute inset-0 opacity-10">
-        <img src="/section_convocation_1780036911511.png" alt="" className="w-full h-full object-cover" />
-      </div>
-      <div className="absolute inset-0 bg-[#2C3A8C]/90" />
-
-      {/* Background Style: Cosmic Space (Static, Multi-color) */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[...Array(60)].map((_, i) => {
-          const size = Math.random() * 3 + 1;
-          const colors = ['#ffffff', '#E8BD63', '#E56D24'];
-          const color = colors[Math.floor(Math.random() * colors.length)];
-          return (
-            <div
-              key={i}
-              className="absolute rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)]"
-              style={{
-                backgroundColor: color,
-                width: size + 'px',
-                height: size + 'px',
-                top: Math.random() * 100 + '%',
-                left: Math.random() * 100 + '%',
-                opacity: Math.random() * 0.5 + 0.3,
-              }}
-            />
-          );
-        })}
-      </div>
-
-      {/* Giant Quote Mark */}
-      <div className="absolute top-10 left-10 md:left-20 text-[200px] md:text-[300px] leading-none serif text-white/5 pointer-events-none select-none">
-        "
-      </div>
-
-      <div className="max-w-4xl mx-auto px-6 xl:px-14 relative z-10 text-center">
+    <section className="relative py-24 md:py-32 bg-[#EFE7DF]">
+      <div className="max-w-5xl mx-auto px-6 xl:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
+          className="bg-white rounded-[32px] p-12 md:p-20 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-[#3E3A36]/5 text-center relative overflow-hidden group"
         >
-          <QuoteIcon size={40} className="text-[#E8BD63] mx-auto mb-8" />
-          <blockquote className="serif text-2xl md:text-3xl lg:text-4xl text-white/90 leading-relaxed font-light italic mb-10">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#E8BD63]/10 rounded-bl-[100px] transition-transform duration-700 group-hover:scale-150" />
+          <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#2C3A8C]/10 rounded-tr-[100px] transition-transform duration-700 group-hover:scale-150" />
+          
+          <QuoteIcon size={50} className="text-[#E8BD63] mx-auto mb-10 relative z-10" />
+          
+          <blockquote className="serif text-2xl md:text-3xl lg:text-[40px] text-[#3E3A36] leading-[1.4] font-light italic mb-12 relative z-10">
             "Education is not the filling of a pail, but the lighting of a fire. At Trident, we ignite curiosity, foster innovation, and build leaders who shape the future."
           </blockquote>
-          <div className="w-12 h-[2px] bg-[#E8BD63] mx-auto mb-6" />
-          <p className="text-white/70 text-sm font-bold uppercase tracking-[0.2em]">Dr. Biswa Bijayi Panigrahi </p>
-          <p className="text-white/40 text-xs uppercase tracking-widest mt-1">Founder & Chairman, Trident Group</p>
+          
+          <div className="w-16 h-[3px] bg-[#2C3A8C] mx-auto mb-8 relative z-10" />
+          <p className="text-[#3E3A36] text-[13px] font-bold uppercase tracking-[0.25em] relative z-10">Dr. Biswa Bijayi Panigrahi</p>
+          <p className="text-[#3E3A36]/50 text-xs uppercase tracking-widest mt-2 relative z-10">Founder & Chairman, Trident Group</p>
         </motion.div>
       </div>
     </section>

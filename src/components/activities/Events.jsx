@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 
 import event1 from '../../assets/news_hackathon.png';
-import event2 from '../../assets/news_trifest.png';
+import event2 from '../../assets/Fest.jpeg';
 import event3 from '../../assets/Freshers party.jpeg';
 
 const events = [

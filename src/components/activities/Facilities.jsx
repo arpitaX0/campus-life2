@@ -1,11 +1,12 @@
 import { useEffect, useRef } from 'react'
 
 const facilities = [
-  { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', icon: 'ph ph-barbell', title: 'Gymnasium & Fitness Center', desc: 'Fully equipped gym with modern fitness equipment for students and staff.', wide: true },
+  { img: '/gym.jpeg', icon: 'ph ph-barbell', title: 'Gymnasium & Fitness Center', desc: 'Fully equipped gym with modern fitness equipment for students and staff.', wide: true },
   { img: 'https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', icon: 'ph ph-volleyball', title: 'Volleyball Court', desc: '5 consecutive inter-college championships.', wide: false },
   { img: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', icon: 'ph ph-racquet', title: 'Badminton Arena', desc: 'Indoor singles/doubles facility.', wide: false },
   { img: 'https://images.unsplash.com/photo-1611251135345-18c56206b863?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', icon: 'ph ph-table', title: 'Table Tennis', desc: 'Indoor facility for boys and girls.', wide: false },
-  { img: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', icon: 'ph ph-baseball', title: 'Cricket & Football Ground', desc: 'Annual athletic meets, inter-college cricket and football tournaments held at dedicated grounds.', wide: true },
+  { img: '/playground image.jpeg', icon: 'ph ph-baseball', title: 'Cricket & Football Ground', desc: 'Annual athletic meets, inter-college cricket and football tournaments held at dedicated grounds.', wide: true },
+  { img: '/canteen.jpeg', icon: 'ph ph-coffee', title: 'Campus Canteen', desc: 'Hygienic food and beverages for students and staff.', wide: false },
 ]
 
 export default function Facilities() {

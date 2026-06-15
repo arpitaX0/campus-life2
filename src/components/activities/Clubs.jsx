@@ -7,7 +7,7 @@ import club2 from '../../assets/cta_convocation.jpg';
 import club3 from '../../assets/Dance 1.jpeg';
 import club4 from '../../assets/about_students_studying.jpg';
 import club5 from '../../assets/dance 2.jpg';
-import club6 from '../../assets/cta_research_scholars.jpg';
+import club6 from '../../assets/coding club.jpeg';
 
 const clubs = [
   { img: club1, name: 'Music Club', desc: 'Acoustic performances, band practice, and annual music festivals.', accent: '#E8BD63' },
@@ -84,7 +84,7 @@ export default function Clubs() {
         </div>
 
         {/* Content Wrapper */}
-        <div className="h-full flex flex-col justify-center relative z-10">
+        <div className="h-[calc(100vh-130px)] mt-[130px] flex flex-col justify-center relative z-10 pb-8">
 
           {/* Header Row */}
           <div className="max-w-[1400px] w-full mx-auto px-6 xl:px-14 mb-12">
@@ -118,7 +118,7 @@ export default function Clubs() {
             {clubs.map((club, idx) => (
               <div
                 key={club.name}
-                className="min-w-[320px] md:min-w-[400px] lg:min-w-[450px] h-[400px] md:h-[480px] rounded-[24px] overflow-hidden relative group flex-shrink-0 cursor-pointer"
+                className="min-w-[280px] md:min-w-[360px] lg:min-w-[420px] h-[45vh] max-h-[460px] min-h-[280px] rounded-[24px] overflow-hidden relative group flex-shrink-0 cursor-pointer"
               >
                 <img
                   src={club.img}

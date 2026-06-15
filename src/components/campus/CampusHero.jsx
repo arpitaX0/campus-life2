@@ -3,25 +3,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const SLIDES = [
   {
-    image: "/hero_campus_fest_1780036785374.png",
+    image: "/slide 1.jpeg",
     heading: "Campus Life",
     sub: "Where memories are made",
     accent: "#E8BD63",
   },
   {
-    image: "/hero_campus_aerial_1780036803636.png",
+    image: "/slide 2.jpeg",
     heading: "Our Campus",
     sub: "Built for brilliance",
     accent: "#34785A",
   },
   {
-    image: "/hero_students_group_1780036822222.png",
+    image: "/slide 3.jpeg",
     heading: "Friendships",
     sub: "Bonds that last forever",
     accent: "#E56D24",
   },
   {
-    image: "/hero_sports_action_1780036845055.png",
+    image: "/4th slide.jpeg",
     heading: "Play Hard",
     sub: "Champions are forged here",
     accent: "#D3494B",
@@ -50,7 +50,7 @@ export default function CampusHero() {
   const slide = SLIDES[current];
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-[#1A1817]">
+    <section id="hero" className="relative h-screen w-full overflow-hidden bg-[#1A1817]">
 
       {/* Background Image with Ken Burns */}
       <AnimatePresence mode="wait">
@@ -71,8 +71,7 @@ export default function CampusHero() {
       </AnimatePresence>
 
       {/* Cinematic Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1A1817] via-[#1A1817]/60 to-transparent z-0" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1A1817]/80 via-[#1A1817]/20 to-transparent z-0" />
+      <div className="absolute inset-0 z-0" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%)' }} />
 
 
 

@@ -26,7 +26,7 @@ export default function Activities() {
   const [activeIdx, setActiveIdx] = useState(0);
 
   return (
-    <section className="relative py-28 md:py-36 overflow-hidden" style={{ background: 'linear-gradient(180deg, #EFE7DF 0%, #F5EEEC 100%)' }}>
+    <section id="activities" className="relative py-28 md:py-36 overflow-hidden" style={{ background: 'linear-gradient(180deg, #EFE7DF 0%, #F5EEEC 100%)' }}>
 
       {/* Background Style: Mesh Gradient (Static, Multi-color) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 opacity-50 mix-blend-multiply">

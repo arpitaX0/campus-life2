@@ -1,5 +1,5 @@
-import logo from "../assets/logo.png";
-import { FadeInUp } from "../utils/animations";
+import logo from "../../assets/logo.png";
+import { FadeInUp } from "../../utils/animations";
 
 import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram, ArrowRight, Youtube } from "lucide-react";
 
@@ -37,7 +37,7 @@ export default function Footer() {
             
             {/* Brand Column */}
             <div className="lg:col-span-4">
-              <a href="/" className="flex items-center gap-5 mb-10 text-decoration-none">
+              <a href="https://tat.tekkzy.com" className="flex items-center gap-5 mb-10 text-decoration-none">
                 <img src={logo} alt="TAT Logo" className="w-[64px] h-[64px] object-contain" />
                 <div className="h-12 w-[1px] bg-white/10 mx-2"></div>
                 <div className="flex flex-col justify-center">
