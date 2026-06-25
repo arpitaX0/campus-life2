@@ -72,30 +72,31 @@ export default function Footer() {
             <div className="lg:col-span-8 grid grid-cols-2 lg:grid-cols-3 gap-12">
               {[
                 { h:"Academics & Student Life", ls:[
-                  { t:"Library", h:"/libraries" },
-                  { t:"IQAC", h:"#" },
-                  { t:"Testimonials", h:"#" },
-                  { t:"Student Clubs", h:"/extra-curricular" },
-                  { t:"CISCO thingQbator", h:"/innovation-lab" },
-                  { t:"E-Governance Portal", h:"https://ais.tat.ac.in/ais/" },
-                  { t:"Grievance", h:"#" },
-                  { t:"ICC", h:"#" },
+                  { t:"Library", h:"/library" },
+                  { t:"IQAC", h:"/iqac" },
+                  { t:"Placement", h:"https://placement-tat.tekkzy.com", ext: true },
+                  { t:"Testimonials", h:"/testimonials" },
+                  { t:"Student Clubs", h:"/student-clubs" },
+                  { t:"CISCO thingQbator", h:"/cisco-thingqbator" },
+                  { t:"E-Governance Portal", h:"https://ais.tat.ac.in/ais/", ext: true },
+                  { t:"Grievance", h:"/grievance" },
+                  { t:"ICC", h:"/icc" },
                 ] },
                 { h:"About the Institution", ls:[
                   { t:"About Us", h:"/about" },
-                  { t:"NAAC", h:"#" },
-                  { t:"NBA", h:"#" },
-                  { t:"NIRF", h:"#" },
-                  { t:"SIRO (DSIR)", h:"#" },
-                  { t:"AICTE Mandatory Disclosure", h:"#" },
-                  { t:"Career", h:"#" },
-                  { t:"Information Brochure", h:"#" },
+                  { t:"NAAC", h:"/naac" },
+                  { t:"NBA", h:"/nba" },
+                  { t:"NIRF", h:"/nirf" },
+                  { t:"SIRO (DSIR)", h:"/siro" },
+                  { t:"AICTE Mandatory Disclosure", h:"/aicte-disclosure" },
+                  { t:"Career", h:"/career" },
+                  { t:"Information Brochure", h:"/information-brochure" },
                 ] },
                 { h:"Trident Group Websites", ls:[
-                  { t:"Trident Academy of Creative Technology (TACT)", h:"https://tact.ac.in/" },
-                  { t:"Trident Academy of Professional Studies (TAPS)", h:"https://taps.ac.in/" },
-                  { t:"Trident School of Biotech Sciences (TSBS)", h:"https://tsbs.ac.in/" },
-                  { t:"The DF Group", h:"https://dfgroup.in/" },
+                  { t:"Trident Academy of Creative Technology (TACT)", h:"https://tact.ac.in/", ext: true },
+                  { t:"Trident Academy of Professional Studies (TAPS)", h:"https://taps.ac.in/", ext: true },
+                  { t:"Trident School of Biotech Sciences (TSBS)", h:"https://tsbs.ac.in/", ext: true },
+                  { t:"The DF Group", h:"https://dfgroup.in/", ext: true },
                 ] },
               ].map((col) => (
                 <div key={col.h}>
@@ -106,16 +107,16 @@ export default function Footer() {
                   <ul className="space-y-5">
                     {col.ls.map((link) => (
                       <li key={link.t}>
-                        {link.h.startsWith('/') ? (
-                          <Link to={link.h} className="text-[14px] font-medium text-gray-500 hover:text-[#E5AA3E] transition-all flex items-center gap-3 group text-decoration-none">
-                            <span className="w-0 h-[1px] bg-[#E5AA3E] group-hover:w-4 transition-all duration-300" />
-                            {link.t}
-                          </Link>
-                        ) : (
-                          <a href={link.h} className="text-[14px] font-medium text-gray-500 hover:text-[#E5AA3E] transition-all flex items-center gap-3 group text-decoration-none" target={link.h.startsWith('http') ? '_blank' : '_self'} rel={link.h.startsWith('http') ? 'noopener noreferrer' : ''}>
+                        {link.ext ? (
+                          <a href={link.h} target="_blank" rel="noopener noreferrer" className="text-[14px] font-medium text-gray-500 hover:text-[#E5AA3E] transition-all flex items-center gap-3 group">
                             <span className="w-0 h-[1px] bg-[#E5AA3E] group-hover:w-4 transition-all duration-300" />
                             {link.t}
                           </a>
+                        ) : (
+                          <Link to={link.h} className="text-[14px] font-medium text-gray-500 hover:text-[#E5AA3E] transition-all flex items-center gap-3 group">
+                            <span className="w-0 h-[1px] bg-[#E5AA3E] group-hover:w-4 transition-all duration-300" />
+                            {link.t}
+                          </Link>
                         )}
                       </li>
                     ))}
@@ -133,8 +134,8 @@ export default function Footer() {
               © 2026 Trident Academy of Technology. All rights reserved.
             </span>
             <div className="flex gap-4 text-[11px] font-medium text-gray-600">
-               {["Privacy Policy", "Disclaimer", "Terms of Use"].map(l=>(
-                 <a key={l} href="https://tat.tekkzy.com/" className="hover:text-[#E5AA3E] transition-colors uppercase tracking-wider">{l}</a>
+               {[{t:"Privacy Policy",h:"/privacy-policy"}, {t:"Disclaimer",h:"/disclaimer"}, {t:"Terms of Use",h:"/terms-of-use"}].map(l=>(
+                 <Link key={l.t} to={l.h} className="hover:text-[#E5AA3E] transition-colors uppercase tracking-wider">{l.t}</Link>
                ))}
             </div>
           </div>
