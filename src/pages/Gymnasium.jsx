@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, Home, Dumbbell, Award, Flame, Users, Calendar, Clock, ArrowRight, ChevronDown, CheckCircle2, ShieldAlert } from 'lucide-react';
@@ -41,7 +42,7 @@ const timings = [
 
 export default function Gymnasium() {
   const [formData, setFormData] = useState({ name: '', email: '', roll: '', batch: 'Evening Batch (Boys)', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  
 
   useEffect(() => {
     document.title = 'Gymnasium & Fitness Center | Trident Academy of Technology';
@@ -74,9 +75,9 @@ export default function Gymnasium() {
           <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
             {/* Breadcrumb */}
             <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-500 mb-8">
-              <a href="/" className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</a>
+              <Link to="/"  className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
               <ChevronRight size={10} />
-              <a href="/extra-curricular" className="hover:text-slate-800 transition-colors">Extra Curricular</a>
+              <Link to="/extra-curricular"  className="hover:text-slate-800 transition-colors">Extra Curricular</Link>
               <ChevronRight size={10} />
               <span className="text-red-655">Gymnasium</span>
             </div>
@@ -95,9 +96,7 @@ export default function Gymnasium() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#join" className="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-white bg-red-600 hover:bg-red-700 transition-all hover:scale-105 shadow-md shadow-red-600/10">
-                Register Membership
-              </a>
+              
               <a href="#about" className="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-red-700 border border-red-300 hover:bg-red-50 transition-all">
                 View Equipment
               </a>
@@ -222,67 +221,7 @@ export default function Gymnasium() {
           </div>
         </section>
 
-        {/* ── MEMBERSHIP SIGNUP ── */}
-        <section id="join" className="py-24 bg-white border-t border-slate-100">
-          <div className="max-w-3xl mx-auto px-6">
-            <FadeInUp className="text-center mb-12">
-              <span className="text-xs text-red-655 font-bold uppercase tracking-[0.2em]">sign up</span>
-              <h2 className="font-serif text-4xl md:text-5xl font-black text-slate-900 mt-3 uppercase">Initialize Enrollment</h2>
-              <p className="text-slate-500 mt-4 text-xs font-semibold">Join Trident fitness center today. Free for all students and staff.</p>
-            </FadeInUp>
-
-            {submitted ? (
-              <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }}
-                className="bg-red-50/50 border border-red-200 rounded-2xl p-10 text-center shadow-xl">
-                <CheckCircle2 className="w-16 h-16 text-red-600 mx-auto mb-4" />
-                <h3 className="font-serif text-xl font-bold text-slate-800 mb-2 uppercase">Enrollment Submitted!</h3>
-                <p className="text-slate-500 text-sm">Please visit the physical gym facility with your ID card to collect your member pass.</p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="bg-slate-50 border border-slate-200 rounded-2xl p-8 md:p-10 shadow-lg space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Full Name *</label>
-                    <input required value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-250 bg-white text-sm text-slate-800 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-colors"
-                      placeholder="Your name" />
-                  </div>
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Email Address *</label>
-                    <input required type="email" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-250 bg-white text-sm text-slate-800 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-colors"
-                      placeholder="your@email.com" />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Roll / ID Number *</label>
-                    <input required value={formData.roll} onChange={e => setFormData(p => ({ ...p, roll: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-250 bg-white text-sm text-slate-800 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-colors"
-                      placeholder="e.g. 2023CSE204" />
-                  </div>
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Preferred Batch Slot</label>
-                    <select value={formData.batch} onChange={e => setFormData(p => ({ ...p, batch: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-250 bg-white text-sm text-slate-800 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-colors bg-white">
-                      {timings.map(t => <option key={t.batch}>{t.batch}</option>)}
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Any medical conditions or fitness goals?</label>
-                  <textarea value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
-                    rows={3} placeholder="Describe any relevant health goals or restrictions..."
-                    className="w-full px-4 py-3 rounded-xl border border-slate-250 bg-white text-sm text-slate-800 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-colors resize-none" />
-                </div>
-                <button type="submit"
-                  className="w-full py-4 rounded-xl text-white font-bold uppercase tracking-wider text-xs bg-red-600 hover:bg-red-700 transition-all hover:scale-[1.01] shadow-lg shadow-red-650/10">
-                  Submit Enrollment Request
-                </button>
-              </form>
-            )}
-          </div>
-        </section>
+        
       </div>
     </SmoothScrollProvider>
   );

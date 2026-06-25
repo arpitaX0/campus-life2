@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Users, Menu, X, FileText, ChevronDown, Award, CheckCircle, ShieldCheck, FileSpreadsheet, ShieldAlert, BookOpen } from "lucide-react";
 import { NAV_LINKS } from "../../data/constants";
 import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -97,14 +98,14 @@ export default function Header() {
         <div className="mx-auto px-6 xl:px-12 flex items-center justify-between">
             
           {/* Logo Lockup */}
-          <a href="https://tat.tekkzy.com" className="flex items-center gap-3.5 group cursor-pointer text-decoration-none">
+          <Link to="/" className="flex items-center gap-3.5 group cursor-pointer text-decoration-none">
             <img src={logo} alt="TAT Logo" className="w-12 h-12 md:w-[52px] md:h-[52px] object-contain flex-shrink-0 drop-shadow-sm" />
             <div className="hidden sm:flex flex-col justify-center items-start">
               <div className={"font-serif text-[24px] md:text-[28px] font-black leading-none uppercase transition-colors duration-500 " + (navActive ? "text-[#3E3A36]" : "text-white")} style={{ fontFamily: "'Playfair Display', 'Source Serif 4', serif", letterSpacing: "0.02em" }}>TRIDENT</div>
               <div className={"w-full h-[1px] my-[4px] transition-all duration-500 " + (navActive ? "bg-[#3E3A36]/30" : "bg-white/40")}></div>
               <div className={"font-sans text-[9px] md:text-[10.5px] font-bold tracking-[0.25em] uppercase leading-none transition-colors duration-500 " + (navActive ? "text-[#3E3A36]/80" : "text-white/90")}>ACADEMY OF TECHNOLOGY</div>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:block">

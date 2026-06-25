@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, Home, MessageSquare, Mic, Users, Award, Briefcase, BookOpen, Star, ArrowRight, ChevronDown, CheckCircle2, Volume2 } from 'lucide-react';
@@ -71,8 +72,8 @@ export default function CommunicationClub() {
   const [topicIdx, setTopicIdx] = useState(0);
   const [typedText, setTypedText] = useState('');
   const [activeStory, setActiveStory] = useState(0);
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', focusArea: 'Public Speaking', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  
+  
 
   useEffect(() => {
     document.title = 'Communication Club | Trident Academy of Technology';
@@ -144,9 +145,9 @@ export default function CommunicationClub() {
           <div className="lg:col-span-7 flex flex-col justify-center relative z-10">
             {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-indigo-600/70 mb-8">
-              <a href="/" className="hover:text-indigo-600 flex items-center gap-1"><Home size={12} />Home</a>
+              <Link to="/"  className="hover:text-indigo-600 flex items-center gap-1"><Home size={12} />Home</Link>
               <ChevronRight size={10} />
-              <a href="/extra-curricular" className="hover:text-indigo-600">Extra Curricular</a>
+              <Link to="/extra-curricular"  className="hover:text-indigo-600">Extra Curricular</Link>
               <ChevronRight size={10} />
               <span className="text-indigo-600">Communication Club</span>
             </div>
@@ -177,9 +178,7 @@ export default function CommunicationClub() {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <a href="#join" className="px-8 py-3.5 rounded-full font-bold text-sm uppercase tracking-wider text-white bg-indigo-600 hover:bg-indigo-700 transition-all hover:scale-105 shadow-lg shadow-indigo-600/20">
-                Join Club
-              </a>
+              
               <a href="#about" className="px-8 py-3.5 rounded-full font-bold text-sm uppercase tracking-wider text-indigo-600 border border-indigo-200 hover:bg-indigo-50 transition-all">
                 Learn Modules
               </a>
@@ -353,67 +352,7 @@ export default function CommunicationClub() {
           </div>
         </section>
 
-        {/* ── REGISTRATION FORM ── */}
-        <section id="join" className="py-24 bg-white border-t border-indigo-50">
-          <div className="max-w-3xl mx-auto px-6">
-            <FadeInUp className="text-center mb-12">
-              <span className="text-xs text-indigo-600 font-bold uppercase tracking-[0.2em]">enrollment open</span>
-              <h2 className="font-serif text-4xl md:text-5xl font-black text-[#2C3A8C] mt-3">Join the Club</h2>
-              <p className="text-slate-500 mt-4 text-xs font-semibold">Ready to raise your voice? Fill out the details below.</p>
-            </FadeInUp>
-
-            {submitted ? (
-              <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }}
-                className="bg-[#F8FAFF] rounded-3xl p-12 text-center border border-indigo-50 shadow-xl">
-                <CheckCircle2 className="w-16 h-16 text-indigo-500 mx-auto mb-4" />
-                <h3 className="font-serif text-2xl font-black text-indigo-950 mb-2">Registration Received!</h3>
-                <p className="text-slate-500 text-sm">Our session coordinator will contact you shortly with the meeting schedule.</p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-xl space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Full Name *</label>
-                    <input required value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-indigo-400 transition-colors"
-                      placeholder="Your name" />
-                  </div>
-                  <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Email Address *</label>
-                    <input required type="email" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-indigo-400 transition-colors"
-                      placeholder="your@email.com" />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Phone Number</label>
-                    <input value={formData.phone} onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-indigo-400 transition-colors"
-                      placeholder="+91 XXXXX XXXXX" />
-                  </div>
-                  <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Primary Focus Area</label>
-                    <select value={formData.focusArea} onChange={e => setFormData(p => ({ ...p, focusArea: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-indigo-400 transition-colors bg-white">
-                      {['Public Speaking', 'Debating & MUNs', 'Group Discussions', 'Personality Development'].map(fa => <option key={fa}>{fa}</option>)}
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Why do you want to join TAT Communicators?</label>
-                  <textarea value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
-                    rows={3} placeholder="Share your motivation..."
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-indigo-400 transition-colors resize-none" />
-                </div>
-                <button type="submit"
-                  className="w-full py-4 rounded-xl text-white font-bold uppercase tracking-widest text-xs transition-all hover:scale-[1.01] hover:shadow-lg bg-gradient-to-r from-indigo-600 to-indigo-800">
-                  Register as Member
-                </button>
-              </form>
-            )}
-          </div>
-        </section>
+        
       </div>
     </SmoothScrollProvider>
   );

@@ -8,7 +8,7 @@ import { SmoothScrollProvider } from '../lib/smooth-scroll';
 
 export default function TechFest() {
   const [selectedPass, setSelectedPass] = useState('general');
-  const [isReceiptOpen, setIsReceiptOpen] = useState(false);
+  
   const [activeDay, setActiveDay] = useState('day1');
 
   // Live countdown timer (simulate techfest date)
@@ -63,13 +63,8 @@ export default function TechFest() {
             </span>
             <div className="flex items-center gap-6 text-xs uppercase tracking-widest font-bold">
               <a href="#schedule" className="hover:text-fuchsia-400 transition-colors">Schedule</a>
-              <a href="#tickets" className="hover:text-fuchsia-400 transition-colors">Tickets</a>
-              <button 
-                onClick={() => setIsReceiptOpen(true)}
-                className="px-4 py-2 bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-white rounded-full transition-all"
-              >
-                Register Pass
-              </button>
+              
+              
             </div>
           </div>
         </div>
@@ -110,9 +105,7 @@ export default function TechFest() {
               Eastern India's mega technology carnival is back. Featuring automated robotics combat, 36-hour developer hackathons, global tech panels, and esports arenas.
             </p>
 
-            <a href="#tickets" className="px-8 py-4 bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-white font-bold text-xs uppercase tracking-widest transition-all rounded-xl shadow-[0_0_15px_rgba(236,72,153,0.3)]">
-              Claim Your Entry Pass
-            </a>
+            
           </div>
         </section>
 
@@ -173,61 +166,7 @@ export default function TechFest() {
         </section>
 
 
-        {/* ── PASS SELECTOR (TICKETS SECTOR) ── */}
-        <section id="tickets" className="py-32 bg-purple-950/10 border-y border-purple-500/15">
-          <div className="max-w-[1200px] mx-auto px-6">
-            <div className="text-center mb-20">
-              <span className="text-xs font-bold text-fuchsia-400 uppercase tracking-widest">Entry Gates</span>
-              <h2 className="font-serif text-3xl md:text-5xl font-bold mt-2">Claim Entry Passes</h2>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {Object.keys(passes).map((key) => {
-                const pass = passes[key];
-                return (
-                  <div 
-                    key={key} 
-                    className={`bg-[#050212] border p-8 rounded-3xl relative flex flex-col justify-between transition-all ${
-                      selectedPass === key 
-                        ? 'border-fuchsia-500 shadow-xl shadow-fuchsia-500/10 scale-105' 
-                        : 'border-purple-500/25 hover:border-purple-500/50'
-                    }`}
-                  >
-                    <div>
-                      <div className="flex justify-between items-center mb-6">
-                        <span className="text-[9px] uppercase tracking-wider text-slate-400 bg-purple-950/40 px-3 py-1 rounded">Register Type</span>
-                        <Ticket size={20} className={selectedPass === key ? 'text-fuchsia-400' : 'text-slate-600'} />
-                      </div>
-                      
-                      <h3 className="font-serif text-xl font-bold text-slate-200 mb-2">{pass.name}</h3>
-                      <div className="text-3xl font-mono font-black text-fuchsia-400 mb-6">₹{pass.price}</div>
-
-                      <div className="space-y-3 pb-8 border-b border-purple-500/10">
-                        {pass.access.map((acc, idx) => (
-                          <div key={idx} className="flex gap-2 items-center text-xs text-slate-400 font-sans">
-                            <CheckCircle2 size={12} className="text-fuchsia-400 flex-shrink-0" />
-                            <span>{acc}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <button 
-                      onClick={() => { setSelectedPass(key); setIsReceiptOpen(true); }}
-                      className={`w-full mt-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-widest transition-all ${
-                        selectedPass === key 
-                          ? 'bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white' 
-                          : 'bg-purple-950/20 text-slate-300 hover:bg-purple-950/40'
-                      }`}
-                    >
-                      {selectedPass === key ? 'Confirming Ticket' : 'Choose Pass'}
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+        
 
 
         {/* ── REGISTRATION RECEIPT OVERLAY (MOCK TERMINAL) ── */}
@@ -249,9 +188,7 @@ export default function TechFest() {
 
                 <div className="flex justify-between items-center pb-4 border-b border-purple-950 mb-6">
                   <span className="text-xs text-fuchsia-400 font-bold uppercase tracking-widest flex items-center gap-2"><Terminal size={14} /> Receipt Module</span>
-                  <button onClick={() => setIsReceiptOpen(false)} className="text-slate-500 hover:text-slate-100 transition-colors">
-                    <X size={18} />
-                  </button>
+                  
                 </div>
 
                 <div className="space-y-4 text-xs text-slate-300">
@@ -276,12 +213,7 @@ export default function TechFest() {
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-purple-950/40">
-                  <button 
-                    onClick={() => setIsReceiptOpen(false)}
-                    className="w-full py-4 bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white rounded-xl font-bold text-xs uppercase tracking-widest shadow-[0_0_10px_rgba(236,72,153,0.3)]"
-                  >
-                    Confirm Registration Receipt
-                  </button>
+                  
                 </div>
               </motion.div>
             </motion.div>

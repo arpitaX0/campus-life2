@@ -190,18 +190,7 @@ export default function CulturalEvening() {
         </section>
 
 
-        {/* ── VIP TICKET REGISTRATION (CTA) ── */}
-        <section className="py-24 max-w-[1200px] mx-auto px-6 text-center">
-          <div className="max-w-3xl mx-auto bg-[#2A0B2E] border border-[#D4AF37]/30 rounded-3xl p-12 shadow-2xl">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#FAF3EB] mb-6">Request VIP Delegate Pass</h2>
-            <p className="text-stone-300 max-w-xl mx-auto mb-10 text-sm leading-relaxed font-sans">
-              Access premium VIP lounge seating and backstage entry for celebrity concerts during the Trifest Cultural gala. Only limited slots remain.
-            </p>
-            <a href="#" className="inline-flex items-center gap-2 px-8 py-4 bg-[#D4AF37] hover:bg-amber-500 text-slate-950 rounded-full font-bold text-xs uppercase tracking-widest transition-all">
-              Claim VIP Entry <ArrowRight size={14} />
-            </a>
-          </div>
-        </section>
+        
 
       </div>
     </SmoothScrollProvider>

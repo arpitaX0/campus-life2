@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { 
   ChevronRight, 
   Book, 
@@ -72,9 +73,9 @@ const DepartmentLibraries = ({ onNavigate }) => {
             animate={{ opacity: 0.5, x: 0 }}
             className="flex items-center gap-2 text-white/50 text-sm mb-8"
           >
-            <button onClick={() => onNavigate('home')} className="hover:text-white transition-colors">Home</button>
+            <Link to="/" className="hover:text-white transition-colors">Academics</Link>
             <ChevronRight size={14} />
-            <span className="text-white">Department Libraries</span>
+            <span className="text-white">Libraries</span>
           </motion.nav>
 
           <motion.div
@@ -214,32 +215,7 @@ const DepartmentLibraries = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 5. CALL TO ACTION */}
-      <section className="py-24 bg-[#FAF9F6]">
-        <div className="max-w-[1300px] mx-auto px-6 md:px-12 lg:px-24">
-           <motion.div 
-             initial={{ opacity: 0, scale: 0.98 }}
-             whileInView={{ opacity: 1, scale: 1 }}
-             viewport={{ once: true }}
-             className="bg-navy-block rounded-[50px] p-16 md:p-24 text-center relative overflow-hidden shadow-2xl"
-           >
-              <div className="relative z-10">
-                <h2 className="text-white text-4xl md:text-6xl font-bold mb-8 italic">Enhancing Knowledge Ecosystems</h2>
-                <p className="text-white/60 text-xl max-w-2xl mx-auto mb-12 font-light">
-                  All students and faculty members are entitled to make use of the library facilities on taking library membership.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                  <button className="bg-royal-blue text-white px-12 py-5 rounded-2xl font-bold hover:shadow-[0_20px_40px_-15px_rgba(37,51,134,0.3)] transition-all hover:-translate-y-1">
-                    Apply for Membership
-                  </button>
-                  <button className="border-2 border-white/20 text-white px-12 py-5 rounded-2xl font-bold hover:bg-white/5 transition-all">
-                    Search Online Catalog
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-        </div>
-      </section>
+
 
     </div>
   );

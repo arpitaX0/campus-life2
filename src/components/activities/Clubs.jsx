@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 import club1 from '../../assets/annual function.jpg';
 import club2 from '../../assets/cta_convocation.jpg';
@@ -9,11 +10,11 @@ import club5 from '../../assets/dance 2.jpg';
 import club6 from '../../assets/coding club.jpeg';
 
 const clubs = [
-  { img: club1, name: 'Music Club', desc: 'Acoustic performances, band practice, and annual music festivals.', accent: '#E8BD63' },
-  { img: club2, name: 'Communication Club', desc: 'Public speaking, debate competitions, and leadership training.', accent: '#E56D24' },
-  { img: club4, name: 'Social Service Club', desc: 'Community outreach, blood donation drives, and social responsibility.', accent: '#34785A' },
-  { img: club5, name: 'Choreography Club', desc: 'Group performances, flash mobs, and inter-college dance competitions.', accent: '#2C3A8C' },
-  { img: club6, name: 'Coding Club', desc: 'Hackathons, competitive programming, and open-source contributions.', accent: '#A59381' },
+  { img: club1, name: 'Music Club', desc: 'Acoustic performances, band practice, and annual music festivals.', accent: '#E8BD63', path: '/music-club' },
+  { img: club2, name: 'Communication Club', desc: 'Public speaking, debate competitions, and leadership training.', accent: '#E56D24', path: '/communication-club' },
+  { img: club4, name: 'Social Service Club', desc: 'Community outreach, blood donation drives, and social responsibility.', accent: '#34785A', path: '/social-service-club' },
+  { img: club5, name: 'Choreography Club', desc: 'Group performances, flash mobs, and inter-college dance competitions.', accent: '#2C3A8C', path: '/choreography-club' },
+  { img: club6, name: 'Coding Club', desc: 'Hackathons, competitive programming, and open-source contributions.', accent: '#A59381', path: '/coding-club' },
 ]
 
 /*
@@ -114,9 +115,10 @@ export default function Clubs() {
             style={{ x }}
           >
             {clubs.map((club, idx) => (
-              <div
+              <Link
                 key={club.name}
-                className="min-w-[280px] md:min-w-[360px] lg:min-w-[420px] h-[45vh] max-h-[460px] min-h-[280px] rounded-[24px] overflow-hidden relative group flex-shrink-0 cursor-pointer"
+                to={club.path}
+                className="min-w-[280px] md:min-w-[360px] lg:min-w-[420px] h-[45vh] max-h-[460px] min-h-[280px] rounded-[24px] overflow-hidden relative group flex-shrink-0 cursor-pointer block"
               >
                 <img
                   src={club.img}
@@ -139,7 +141,7 @@ export default function Clubs() {
                     {club.desc}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </motion.div>
         </div>

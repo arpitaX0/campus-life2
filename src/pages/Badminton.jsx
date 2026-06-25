@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, Home, Star, Users, Calendar, Award, Target, Trophy, ArrowRight, ChevronDown, CheckCircle2 } from 'lucide-react';
@@ -28,7 +29,7 @@ const achievements = [
 
 export default function Badminton() {
   const [formData, setFormData] = useState({ name: '', email: '', roll: '', style: 'Singles (Men)', racquet: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  
 
   useEffect(() => {
     document.title = 'Badminton Club & Courts | Trident Academy of Technology';
@@ -70,9 +71,9 @@ export default function Badminton() {
           <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
             {/* Breadcrumb */}
             <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-500 mb-8">
-              <a href="/" className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</a>
+              <Link to="/"  className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
               <ChevronRight size={10} />
-              <a href="/extra-curricular" className="hover:text-slate-800 transition-colors">Extra Curricular</a>
+              <Link to="/extra-curricular"  className="hover:text-slate-800 transition-colors">Extra Curricular</Link>
               <ChevronRight size={10} />
               <span className="text-lime-700">Badminton</span>
             </div>
@@ -91,9 +92,7 @@ export default function Badminton() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#join" className="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-white bg-emerald-650 hover:bg-emerald-750 transition-all hover:scale-105 shadow-md shadow-emerald-600/10">
-                Join the Team
-              </a>
+              
               <a href="#about" className="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-emerald-700 border border-emerald-300 hover:bg-emerald-50 transition-all">
                 View Facilities
               </a>
@@ -198,73 +197,7 @@ export default function Badminton() {
           </div>
         </section>
 
-        {/* ── TRYOUTS REGISTRATION ── */}
-        <section id="join" className="py-24 bg-white border-t border-lime-100">
-          <div className="max-w-3xl mx-auto px-6">
-            <FadeInUp className="text-center mb-12">
-              <span className="text-xs text-lime-700 font-bold uppercase tracking-[0.2em]">enrollment open</span>
-              <h2 className="font-serif text-4xl md:text-5xl font-black text-[#1C3F1E] mt-3 uppercase">Join the Team</h2>
-              <p className="text-slate-500 mt-4 text-xs font-semibold">Do you have prior training or fast reflexes? Register below for team selections.</p>
-            </FadeInUp>
-
-            {submitted ? (
-              <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }}
-                className="bg-[#F8FFEE] border border-lime-200 rounded-2xl p-10 text-center shadow-xl">
-                <CheckCircle2 className="w-16 h-16 text-lime-650 mx-auto mb-4" />
-                <h3 className="font-serif text-xl font-bold text-[#1C3F1E] mb-2 uppercase">Registration Submitted!</h3>
-                <p className="text-slate-500 text-sm">Please meet the sports coordinator during evening selection hours to schedule your trials.</p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="bg-[#F8FFEE] border border-lime-200 rounded-2xl p-8 md:p-10 shadow-lg space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Student Name *</label>
-                    <input required value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-lime-500 transition-colors"
-                      placeholder="Your name" />
-                  </div>
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Email Address *</label>
-                    <input required type="email" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-lime-500 transition-colors"
-                      placeholder="your@email.com" />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Roll / ID Number *</label>
-                    <input required value={formData.roll} onChange={e => setFormData(p => ({ ...p, roll: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-lime-500 transition-colors"
-                      placeholder="e.g. 2024CSE231" />
-                  </div>
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Preferred Category</label>
-                    <select value={formData.style} onChange={e => setFormData(p => ({ ...p, style: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-lime-500 transition-colors bg-white">
-                      {['Singles (Men)', 'Singles (Women)', 'Doubles (Men)', 'Doubles (Women)', 'Mixed Doubles'].map(st => <option key={st}>{st}</option>)}
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Racquet / Equipment Brand Used</label>
-                  <input value={formData.racquet} onChange={e => setFormData(p => ({ ...p, racquet: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-lime-500 transition-colors"
-                    placeholder="e.g. Yonex Astrox 77, Li-Ning, etc." />
-                </div>
-                <div>
-                  <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Describe your game style or prior achievements</label>
-                  <textarea value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
-                    rows={3} placeholder="Smash accuracy, fast drop shots, defense clears, etc."
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-lime-500 transition-colors resize-none" />
-                </div>
-                <button type="submit"
-                  className="w-full py-4 rounded-xl text-white font-bold uppercase tracking-wider text-xs bg-emerald-650 hover:bg-emerald-750 transition-all hover:scale-[1.01] shadow-lg shadow-emerald-650/10">
-                  Register for Badminton Selection
-                </button>
-              </form>
-            )}
-          </div>
-        </section>
+        
       </div>
     </SmoothScrollProvider>
   );

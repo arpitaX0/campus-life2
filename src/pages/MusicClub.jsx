@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, Home, Music, Mic2, Star, Award, Users, Calendar, Sparkles, ArrowRight, ChevronDown, CheckCircle2, Play, Volume2 } from 'lucide-react';
@@ -42,8 +43,8 @@ const events = [
 
 export default function MusicClub() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', category: 'Vocalist', instrument: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  
+  
 
   useEffect(() => {
     document.title = 'Music Club | Trident Academy of Technology';
@@ -90,9 +91,9 @@ export default function MusicClub() {
           <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
             {/* Breadcrumb */}
             <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-amber-500/70 mb-8">
-              <a href="/" className="hover:text-amber-400 transition-colors flex items-center gap-1"><Home size={12} />Home</a>
+              <Link to="/"  className="hover:text-amber-400 transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
               <ChevronRight size={10} />
-              <a href="/extra-curricular" className="hover:text-amber-400 transition-colors">Extra Curricular</a>
+              <Link to="/extra-curricular"  className="hover:text-amber-400 transition-colors">Extra Curricular</Link>
               <ChevronRight size={10} />
               <span className="text-amber-400">Music Club</span>
             </div>
@@ -111,9 +112,7 @@ export default function MusicClub() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#join" className="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-black bg-amber-400 hover:bg-amber-300 transition-all hover:scale-105 shadow-lg shadow-amber-400/20">
-                Join the Ensemble
-              </a>
+              
               <a href="#about" className="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-amber-400 border border-amber-500/40 hover:bg-amber-500/10 transition-all">
                 Learn Classes
               </a>
@@ -287,73 +286,7 @@ export default function MusicClub() {
           </div>
         </section>
 
-        {/* ── REGISTRATION FORM ── */}
-        <section id="join" className="py-24 bg-[#06040C] border-t border-purple-950/30">
-          <div className="max-w-3xl mx-auto px-6">
-            <FadeInUp className="text-center mb-12">
-              <span className="text-xs text-amber-500 font-bold uppercase tracking-[0.2em]">auditions live</span>
-              <h2 className="font-serif text-4xl md:text-5xl font-black text-white mt-3">Join the Ensemble</h2>
-              <p className="text-slate-505 mt-4 text-xs font-semibold">Share your musical style and background below.</p>
-            </FadeInUp>
-
-              {submitted ? (
-                <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }}
-                  className="bg-[#0d0a1a] border border-amber-500/30 rounded-2xl p-10 text-center shadow-2xl">
-                  <CheckCircle2 className="w-16 h-16 text-amber-400 mx-auto mb-4" />
-                  <h3 className="font-serif text-xl font-bold text-slate-100 mb-2">Audition Scheduled!</h3>
-                  <p className="text-slate-505 text-sm">Our audition coordinator will contact you with slot timings.</p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="bg-[#0D0A1A] border border-purple-950/30 rounded-2xl p-8 md:p-10 shadow-2xl space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="text-xs font-bold uppercase tracking-wider text-slate-550 mb-2 block">Name *</label>
-                      <input required value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
-                        className="w-full px-4 py-3 rounded-xl border border-[#231A3F] bg-[#06040C] text-sm text-amber-400 focus:outline-none focus:border-amber-400 transition-colors"
-                        placeholder="Your name" />
-                    </div>
-                    <div>
-                      <label className="text-xs font-bold uppercase tracking-wider text-slate-550 mb-2 block">Email *</label>
-                      <input required type="email" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
-                        className="w-full px-4 py-3 rounded-xl border border-[#231A3F] bg-[#06040C] text-sm text-amber-400 focus:outline-none focus:border-amber-400 transition-colors"
-                        placeholder="your@email.com" />
-                    </div>
-                  </div>
-                  <div className="grid md:grid-cols-3 gap-6">
-                    <div>
-                      <label className="text-xs font-bold uppercase tracking-wider text-slate-555 mb-2 block">Phone</label>
-                      <input value={formData.phone} onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))}
-                        className="w-full px-4 py-3 rounded-xl border border-[#231A3F] bg-[#06040C] text-sm text-amber-400 focus:outline-none focus:border-amber-400 transition-colors"
-                        placeholder="+91 XXXXX XXXXX" />
-                    </div>
-                    <div>
-                      <label className="text-xs font-bold uppercase tracking-wider text-slate-555 mb-2 block">Category</label>
-                      <select value={formData.category} onChange={e => setFormData(p => ({ ...p, category: e.target.value }))}
-                        className="w-full px-4 py-3 rounded-xl border border-[#231A3F] bg-[#06040C] text-sm text-amber-400 focus:outline-none focus:border-amber-400 transition-colors bg-[#06040C]">
-                        {['Vocalist', 'Instrumentalist', 'Vocalist + Instrumentalist', 'Sound Setup / Support'].map(cat => <option key={cat}>{cat}</option>)}
-                      </select>
-                    </div>
-                    <div>
-                      <label className="text-xs font-bold uppercase tracking-wider text-slate-555 mb-2 block">Instrument Played</label>
-                      <input value={formData.instrument} onChange={e => setFormData(p => ({ ...p, instrument: e.target.value }))}
-                        className="w-full px-4 py-3 rounded-xl border border-[#231A3F] bg-[#06040C] text-sm text-amber-400 focus:outline-none focus:border-amber-400 transition-colors"
-                        placeholder="Guitar, Synth, None, etc." />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-550 mb-2 block">Tell us about your musical interests or training</label>
-                    <textarea value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
-                      rows={3} placeholder="Classical training, self-taught rock guitar, singing range, etc."
-                      className="w-full px-4 py-3 rounded-xl border border-[#231A3F] bg-[#06040C] text-sm text-amber-400 focus:outline-none focus:border-amber-400 transition-colors resize-none" />
-                  </div>
-                  <button type="submit"
-                    className="w-full py-4 rounded-xl text-black font-bold uppercase tracking-wider text-xs bg-amber-400 hover:bg-amber-300 transition-all hover:scale-[1.01] shadow-lg shadow-amber-500/10">
-                    Request Audition Slot
-                  </button>
-                </form>
-              )}
-          </div>
-        </section>
+        
       </div>
     </SmoothScrollProvider>
   );

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 const milestones = [
   {
@@ -7,7 +8,7 @@ const milestones = [
     title: 'Student Enrichment Clubs',
     desc: '14 college-level Technovation clubs and 10 departmental clubs covering cultural and academic platforms.',
     cta: 'Explore Clubs',
-    href: 'https://tat.ac.in/activities/co-curricullar/',
+    href: '/extra-curricular',
   },
   {
     img: 'https://raw.githubusercontent.com/shubhranshux/trident/main/temp-app/src/assets/news_campus_life.jpg',
@@ -15,7 +16,7 @@ const milestones = [
     title: 'Cultural Programmes',
     desc: 'TRIFEST, UDAYAN, ELIXIR, MANAN, KARTAVYA — annual events nurturing diverse student talents.',
     cta: 'View Events',
-    href: 'https://tat.ac.in/activities/extra-curricullar/',
+    href: '/cultural-evening',
   },
   {
     img: 'https://raw.githubusercontent.com/shubhranshux/trident/main/temp-app/src/assets/discover_graduation.jpg',
@@ -23,7 +24,7 @@ const milestones = [
     title: 'IEDC & Incubation Cell',
     desc: 'ED Cell and IEDC supported by DST, GoI — fostering innovation and startup entrepreneurship.',
     cta: 'Learn More',
-    href: 'https://tat.ac.in/activities/innovation-2/',
+    href: '/innovation-lab',
   },
 ]
 
@@ -81,14 +82,12 @@ export default function Milestones() {
                 </span>
                 <h3 className="font-display font-bold text-xl text-white mt-1 mb-2">{title}</h3>
                 <p className="text-white/60 text-sm mb-4">{desc}</p>
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-white/90 transition-all hover:gap-3"
+                <Link
+                  to={href}
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-white/90 transition-all hover:gap-3 text-decoration-none"
                 >
                   {cta} <i className="ph ph-arrow-right"></i>
-                </a>
+                </Link>
               </div>
             </div>
           ))}

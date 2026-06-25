@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, Home, ShieldAlert, Award, Star, Users, Calendar, Trophy, ArrowRight, ChevronDown, CheckCircle2 } from 'lucide-react';
@@ -32,8 +33,8 @@ const teamAchievements = [
 ];
 
 export default function Football() {
-  const [formData, setFormData] = useState({ name: '', email: '', roll: '', position: 'Forward', experience: 'School Captaincy', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  
+  
 
   useEffect(() => {
     document.title = 'Football Club & Pitch | Trident Academy of Technology';
@@ -67,9 +68,9 @@ export default function Football() {
           <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
             {/* Breadcrumb */}
             <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-500 mb-8">
-              <a href="/" className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</a>
+              <Link to="/"  className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
               <ChevronRight size={10} />
-              <a href="/extra-curricular" className="hover:text-slate-800 transition-colors">Extra Curricular</a>
+              <Link to="/extra-curricular"  className="hover:text-slate-800 transition-colors">Extra Curricular</Link>
               <ChevronRight size={10} />
               <span className="text-emerald-600">Football</span>
             </div>
@@ -88,9 +89,7 @@ export default function Football() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#join" className="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-white bg-green-600 hover:bg-green-750 transition-all hover:scale-105 shadow-md shadow-green-600/10">
-                Register for Tryouts
-              </a>
+              
               <a href="#about" className="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-green-700 border border-green-300 hover:bg-green-50 transition-all">
                 Pitch Details
               </a>
@@ -212,73 +211,7 @@ export default function Football() {
           </div>
         </section>
 
-        {/* ── RECRUITMENT TRYOUTS ── */}
-        <section id="join" className="py-24 bg-white border-t border-emerald-100">
-          <div className="max-w-3xl mx-auto px-6">
-            <FadeInUp className="text-center mb-12">
-              <span className="text-xs text-emerald-700 font-bold uppercase tracking-[0.2em]">squad trial</span>
-              <h2 className="font-serif text-4xl md:text-5xl font-black text-[#1A4D2E] mt-3 uppercase">Join the Team</h2>
-              <p className="text-slate-500 mt-4 text-xs font-semibold">Submit your details below to register for the campus football squad selection trials.</p>
-            </FadeInUp>
-
-            {submitted ? (
-              <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }}
-                className="bg-[#F0FFF4] border border-emerald-200 rounded-2xl p-10 text-center shadow-xl">
-                <CheckCircle2 className="w-16 h-16 text-emerald-600 mx-auto mb-4" />
-                <h3 className="font-serif text-xl font-bold text-[#1A4D2E] mb-2 uppercase">Application Submitted!</h3>
-                <p className="text-slate-555 text-sm">Please report to the sports officer at the pitch during evening selection trials.</p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="bg-[#F0FFF4] border border-emerald-200 rounded-2xl p-8 md:p-10 shadow-lg space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Student Name *</label>
-                    <input required value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-emerald-500 transition-colors"
-                      placeholder="Your name" />
-                  </div>
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Email Address *</label>
-                    <input required type="email" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-emerald-500 transition-colors"
-                      placeholder="your@email.com" />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Roll / ID Number *</label>
-                    <input required value={formData.roll} onChange={e => setFormData(p => ({ ...p, roll: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-emerald-500 transition-colors"
-                      placeholder="e.g. 2024ETC120" />
-                  </div>
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Preferred Position</label>
-                    <select value={formData.position} onChange={e => setFormData(p => ({ ...p, position: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-emerald-500 transition-colors bg-white">
-                      {['Goalkeeper', 'Defender', 'Midfielder', 'Forward', 'Winger'].map(pos => <option key={pos}>{pos}</option>)}
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Prior Experience / Achievements</label>
-                  <input value={formData.experience} onChange={e => setFormData(p => ({ ...p, experience: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-emerald-500 transition-colors"
-                    placeholder="e.g. School Core Team, Zonal Level, etc." />
-                </div>
-                <div>
-                  <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Any notes on fitness or game style</label>
-                  <textarea value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
-                    rows={3} placeholder="Pace, heading accuracy, defensive slide tacking, etc."
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-emerald-500 transition-colors resize-none" />
-                </div>
-                <button type="submit"
-                  className="w-full py-4 rounded-xl text-white font-bold uppercase tracking-wider text-xs bg-emerald-650 hover:bg-emerald-750 transition-all hover:scale-[1.01] shadow-lg shadow-emerald-650/10">
-                  Register for Football Trials
-                </button>
-              </form>
-            )}
-          </div>
-        </section>
+        
       </div>
     </SmoothScrollProvider>
   );

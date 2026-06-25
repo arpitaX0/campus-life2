@@ -13,10 +13,10 @@ import act6 from '../../assets/about_engineering_workshop.jpg';
 const activityCategories = [
   { title: 'Extra Curricular', description: 'Trident promotes and nurtures the talents in its students through sports, athletics, and physical activities.', color: '#E56D24', href: '/extra-curricular', stats: '15+ Sports', img: act1 },
   { title: 'Co-Curricular', description: 'Activities that complement the academic curriculum — debates, quizzes, seminars, workshops, and national-level competitions.', color: '#2C3A8C', href: 'https://activities-tat.tekkzy.com/co-curricular/', stats: '30+ Events', img: act2 },
-  { title: 'Innovation Lab', description: 'Fostering innovation through incubation cells, startup mentoring, and technical project competitions at national level.', color: '#E8BD63', href: 'https://activities-tat.tekkzy.com/innovation-&-entrepreneurship/', stats: 'Innovation Cell', img: act3 },
-  { title: 'Sports & Games', description: 'World-class sports facilities including cricket ground, football field, basketball, volleyball, badminton, and more.', color: '#34785A', href: 'https://activities-tat.tekkzy.com/sports-&-games/', stats: '10+ Facilities', img: act4 },
-  { title: 'IEDC', description: 'Innovation & Entrepreneurship Development Cell (IEDC) supported by DST, Government of India, driving startup culture.', color: '#D3494B', href: 'https://activities-tat.tekkzy.com/iedc(activites)/', stats: 'Govt. Recognized', img: act5 },
-  { title: 'Incubation Cell', description: 'A dedicated incubation center that supports student startups with mentoring, infrastructure, and seed funding.', color: '#A59381', href: 'https://activities-tat.tekkzy.com/incubation-cell/', stats: 'Startup Support', img: act6 },
+  { title: 'Innovation Lab', description: 'Fostering innovation through incubation cells, startup mentoring, and technical project competitions at national level.', color: '#E8BD63', href: '/innovation-lab', stats: 'Innovation Cell', img: act3 },
+  { title: 'Sports & Games', description: 'World-class sports facilities including cricket ground, football field, basketball, volleyball, badminton, and more.', color: '#34785A', href: '/sports-games', stats: '10+ Facilities', img: act4 },
+  { title: 'IEDC', description: 'Innovation & Entrepreneurship Development Cell (IEDC) supported by DST, Government of India, driving startup culture.', color: '#D3494B', href: '/iedc', stats: 'Govt. Recognized', img: act5 },
+  { title: 'Incubation Cell', description: 'A dedicated incubation center that supports student startups with mentoring, infrastructure, and seed funding.', color: '#A59381', href: '/incubation-cell', stats: 'Startup Support', img: act6 },
 ];
 
 /*

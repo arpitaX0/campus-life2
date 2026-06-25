@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronRight, Home, Heart, Leaf, Droplets, Globe, Users, HandHeart, ArrowRight, ChevronDown, CheckCircle2, TrendingUp } from 'lucide-react';
@@ -99,8 +100,8 @@ const ngoPartners = [
 
 export default function SocialServiceClub() {
   const [activeStory, setActiveStory] = useState(0);
-  const [formData, setFormData] = useState({ name: '', email: '', dept: '', area: 'Blood Donation', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  
+  
 
   useEffect(() => {
     document.title = 'Social Service Club | Trident Academy of Technology';
@@ -131,8 +132,8 @@ export default function SocialServiceClub() {
           <div className="flex flex-col justify-center px-8 md:px-16 py-28 relative z-10">
             {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-500 mb-8">
-              <a href="/" className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</a>
-              <ChevronRight size={10} /><a href="/extra-curricular" className="hover:text-slate-800 transition-colors">Extra Curricular</a>
+              <Link to="/"  className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
+              <ChevronRight size={10} /><Link to="/extra-curricular"  className="hover:text-slate-800 transition-colors">Extra Curricular</Link>
               <ChevronRight size={10} /><span className="text-green-700">Social Service Club</span>
             </div>
 
@@ -214,10 +215,7 @@ export default function SocialServiceClub() {
                 <p className="text-slate-500 leading-relaxed mb-8 font-medium">
                   With 500+ active volunteers and partnerships with 30+ NGOs, we're one of the largest student-run social impact organizations in Eastern India's engineering college circuit.
                 </p>
-                <a href="#volunteer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm text-white transition-all hover:scale-105 hover:shadow-lg"
-                  style={{ background: 'linear-gradient(135deg, #1A4731, #38A169)' }}>
-                  Become a Volunteer <ArrowRight size={14} />
-                </a>
+                
               </FadeInUp>
               <div className="grid grid-cols-2 gap-4">
                 <img src={hackathonImg} alt="Service" className="rounded-3xl h-48 object-cover w-full shadow-sm" />
@@ -315,68 +313,7 @@ export default function SocialServiceClub() {
           </div>
         </section>
 
-        {/* ── VOLUNTEER REGISTRATION ── */}
-        <section id="volunteer" className="py-24 bg-white border-t border-green-100">
-          <div className="max-w-3xl mx-auto px-6">
-            <FadeInUp className="text-center mb-12">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-green-600">Be the Change</span>
-              <h2 className="font-serif text-5xl font-black text-[#1A3A2A] mt-3">Volunteer Registration</h2>
-              <p className="text-slate-500 mt-4">Every volunteer matters. Every action counts.</p>
-            </FadeInUp>
-
-            {submitted ? (
-              <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }}
-                className="bg-[#F0FAF5] rounded-3xl p-12 text-center border border-green-200 shadow-xl">
-                <CheckCircle2 className="w-16 h-16 text-green-650 mx-auto mb-4" />
-                <h3 className="font-serif text-2xl font-black text-[#1A3A2A] mb-2">Welcome, Changemaker!</h3>
-                <p className="text-slate-500">Our coordinator will reach out to you within 48 hours.</p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="bg-slate-50 border border-slate-200 rounded-3xl p-10 shadow-lg space-y-5">
-                <div className="grid md:grid-cols-2 gap-5">
-                  <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Full Name *</label>
-                    <input required value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-green-500 bg-white transition-colors text-slate-800"
-                      placeholder="Your full name" />
-                  </div>
-                  <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Email *</label>
-                    <input required type="email" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-green-500 bg-white transition-colors text-slate-800"
-                      placeholder="your@email.com" />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-5">
-                  <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Department</label>
-                    <input value={formData.dept} onChange={e => setFormData(p => ({ ...p, dept: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-green-500 bg-white transition-colors text-slate-800"
-                      placeholder="CSE / ECE / MBA..." />
-                  </div>
-                  <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Interest Area</label>
-                    <select value={formData.area} onChange={e => setFormData(p => ({ ...p, area: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-green-500 bg-white transition-colors text-slate-800">
-                      {['Blood Donation', 'Environmental Drives', 'Teaching & Literacy', 'Disaster Relief', 'Awareness Campaigns', 'NGO Coordination'].map(a => <option key={a}>{a}</option>)}
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Why do you want to volunteer?</label>
-                  <textarea value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
-                    rows={3} placeholder="Share your motivation..."
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-green-500 bg-white transition-colors resize-none text-slate-800" />
-                </div>
-                <button type="submit"
-                  className="w-full py-4 rounded-xl text-white font-bold uppercase tracking-widest text-sm transition-all hover:scale-[1.02] hover:shadow-lg"
-                  style={{ background: 'linear-gradient(135deg, #1A4731, #38A169)' }}>
-                  Register as Volunteer
-                </button>
-              </form>
-            )}
-          </div>
-        </section>
+        
       </div>
     </SmoothScrollProvider>
   );

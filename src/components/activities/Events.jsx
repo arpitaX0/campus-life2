@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 import event1 from '../../assets/news_hackathon.png';
 import event2 from '../../assets/Fest.jpeg';
 import event3 from '../../assets/Freshers party.jpeg';
 
 const events = [
-  { year: '2025', month: 'OCT', title: 'TechFest — TRIDENT 2025', desc: 'Annual technology symposium featuring hackathons, coding competitions, and industry talks.', img: event1, color: '#E56D24' },
-  { year: '2025', month: 'DEC', title: 'Cultural Evening', desc: 'The vibrant annual cultural festival celebrating music, dance, drama, and creative arts.', img: event2, color: '#2C3A8C' },
-  { year: '2026', month: 'FEB', title: 'Freshers Party', desc: 'Welcoming the new batch with a night of music, performances, and memories.', img: event3, color: '#34785A' },
+  { year: '2025', month: 'OCT', title: 'TechFest — TRIDENT 2025', desc: 'Annual technology symposium featuring hackathons, coding competitions, and industry talks.', img: event1, color: '#E56D24', path: '/techfest' },
+  { year: '2025', month: 'DEC', title: 'Cultural Evening', desc: 'The vibrant annual cultural festival celebrating music, dance, drama, and creative arts.', img: event2, color: '#2C3A8C', path: '/cultural-evening' },
+  { year: '2026', month: 'FEB', title: 'Freshers Party', desc: 'Welcoming the new batch with a night of music, performances, and memories.', img: event3, color: '#34785A', path: '/freshers-party' },
 ]
 
 /*
@@ -57,13 +58,10 @@ export default function Events() {
         {/* Event Cards */}
         <div className="space-y-8 max-w-5xl mx-auto">
           {events.map((event, idx) => (
-            <motion.div
+            <Link
               key={event.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: idx * 0.12 }}
-              viewport={{ once: true }}
-              className="group relative grid md:grid-cols-[120px_1fr_280px] gap-6 md:gap-10 items-center bg-white rounded-[24px] p-6 md:p-8 hover:shadow-[0_30px_60px_-20px_rgba(62,58,54,0.12)] transition-shadow duration-500"
+              to={event.path}
+              className="group relative grid md:grid-cols-[120px_1fr_280px] gap-6 md:gap-10 items-center bg-white rounded-[24px] p-6 md:p-8 hover:shadow-[0_30px_60px_-20px_rgba(62,58,54,0.12)] transition-shadow duration-500 text-left text-decoration-none block"
             >
               {/* Left — Big Date */}
               <div className="text-center md:text-left">
@@ -84,7 +82,7 @@ export default function Events() {
 
               {/* Accent bar on the left edge */}
               <div className="absolute left-0 top-8 bottom-8 w-1 rounded-full transition-opacity duration-500 opacity-0 group-hover:opacity-100" style={{ backgroundColor: event.color }} />
-            </motion.div>
+            </Link>
           ))}
         </div>
       </div>

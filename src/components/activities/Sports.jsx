@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 import sport1 from '../../assets/Gym.jpg';
 import sport2 from '../../assets/facilities_sports.jpg';
@@ -10,12 +11,12 @@ import sport5 from '../../assets/news_campus_life.jpg';
 import sport6 from '../../assets/cta_campus_reading.jpg';
 
 const sports = [
-  { img: sport1, label: 'Gymnasium', accent: '#E8BD63', stat: 'Modern Equipments' },
-  { img: sport2, label: 'Basketball', accent: '#E56D24', stat: '3 Courts' },
-  { img: sport3, label: 'Football', accent: '#34785A', stat: 'FIFA Standard' },
-  { img: sport4, label: 'Volleyball', accent: '#D3494B', stat: '2 Courts' },
-  { img: sport5, label: 'Badminton', accent: '#2C3A8C', stat: 'Indoor Arena' },
-  { img: sport6, label: 'Table Tennis', accent: '#A59381', stat: '4 Tables' },
+  { img: sport1, label: 'Gymnasium', accent: '#E8BD63', stat: 'Modern Equipments', path: '/gymnasium' },
+  { img: sport2, label: 'Basketball', accent: '#E56D24', stat: '3 Courts', path: '/basketball' },
+  { img: sport3, label: 'Football', accent: '#34785A', stat: 'FIFA Standard', path: '/football' },
+  { img: sport4, label: 'Volleyball', accent: '#D3494B', stat: '2 Courts', path: '/volleyball' },
+  { img: sport5, label: 'Badminton', accent: '#2C3A8C', stat: 'Indoor Arena', path: '/badminton' },
+  { img: sport6, label: 'Table Tennis', accent: '#A59381', stat: '4 Tables', path: '/table-tennis' },
 ]
 
 /*
@@ -90,6 +91,8 @@ export default function Sports() {
                 onMouseLeave={() => setHoveredIdx(null)}
                 className="group flex flex-col md:flex-row items-center justify-between py-10 md:py-12 border-b border-[#3E3A36]/10 relative cursor-pointer"
               >
+                <Link to={sport.path} className="absolute inset-0 z-30" />
+                
                 {/* Left Side: Stat */}
                 <div className="w-full md:w-48 text-left mb-2 md:mb-0">
                   <span 
@@ -114,7 +117,7 @@ export default function Sports() {
                 </div>
 
                 {/* Right: Arrow Icon */}
-                <div className="hidden md:flex w-16 h-16 rounded-full border border-[#3E3A36]/20 items-center justify-center transition-all duration-500 group-hover:bg-[#3E3A36]">
+                <div className="hidden md:flex w-16 h-16 rounded-full border border-[#3E3A36]/20 items-center justify-center transition-all duration-500 group-hover:bg-[#3E3A36] relative z-10">
                   <ArrowRight size={24} className="text-[#3E3A36] group-hover:text-[#F5EEEC] group-hover:-rotate-45 transition-all duration-500" />
                 </div>
 
@@ -139,7 +142,7 @@ export default function Sports() {
                 </AnimatePresence>
 
                 {/* Mobile Image Reveal (Inline) */}
-                <div className={`md:hidden w-full overflow-hidden transition-all duration-500 mt-6 rounded-[16px] ${isHovered ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}`}>
+                <div className={`md:hidden w-full overflow-hidden transition-all duration-500 mt-6 rounded-[16px] relative z-10 ${isHovered ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <img src={sport.img} alt={sport.label} className="w-full h-48 object-cover" />
                 </div>
               </motion.div>

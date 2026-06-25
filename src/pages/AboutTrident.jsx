@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { 
   ChevronRight, 
   Target, 
@@ -8,10 +9,13 @@ import {
   Shield, 
   ArrowRight, 
   GraduationCap,
-  Award
+  Award,
+  Microscope,
+  Zap,
+  Users
 } from 'lucide-react';
 
-const AboutTrident = ({ onNavigate }) => {
+const AboutTrident = () => {
   // Animation variants
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -52,7 +56,7 @@ const AboutTrident = ({ onNavigate }) => {
             animate={{ opacity: 0.5, x: 0 }}
             className="flex items-center gap-2 text-white/50 text-sm mb-8"
           >
-            <button onClick={() => onNavigate('home')} className="hover:text-white transition-colors">Home</button>
+            <Link to="/" className="hover:text-white transition-colors">Home</Link>
             <ChevronRight size={14} />
             <span className="text-white">About Trident</span>
           </motion.nav>
@@ -233,9 +237,6 @@ const AboutTrident = ({ onNavigate }) => {
                    ))}
                 </ul>
               </div>
-              <button className="bg-royal-blue text-white px-10 py-5 rounded-2xl font-bold transition-all hover:-translate-y-1 hover:shadow-xl self-start">
-                Download Academic Brochure
-              </button>
             </div>
           </div>
         </div>
@@ -250,9 +251,6 @@ const AboutTrident = ({ onNavigate }) => {
                 <h2 className="text-4xl font-bold text-navy-block">Campus Showcase</h2>
                 <p className="text-charcoal/50 text-lg mt-2">Glimpses into life at Trident Academy.</p>
               </div>
-              <button className="hidden md:flex items-center gap-2 text-royal-blue font-bold uppercase tracking-widest text-sm border-b-2 border-royal-blue pb-1 hover:gap-4 transition-all">
-                Full Gallery <ChevronRight size={18} />
-              </button>
            </div>
 
            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -272,37 +270,6 @@ const AboutTrident = ({ onNavigate }) => {
                  <div className="absolute inset-0 bg-navy-block/40 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </div>
            </div>
-        </div>
-      </section>
-
-      {/* 7. CALL TO ACTION SECTION */}
-      <section className="py-24 bg-[#FAF9F6]">
-        <div className="max-w-[1300px] mx-auto px-6 md:px-12 lg:px-24">
-           <motion.div 
-             initial={{ opacity: 0, scale: 0.98 }}
-             whileInView={{ opacity: 1, scale: 1 }}
-             viewport={{ once: true }}
-             className="bg-royal-blue rounded-[50px] p-16 md:p-24 text-center relative overflow-hidden shadow-2xl"
-           >
-              {/* Decorative elements */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-navy-block/20 rounded-full blur-3xl -ml-32 -mb-32"></div>
-
-              <div className="relative z-10">
-                <h2 className="text-white text-4xl md:text-6xl font-bold mb-8">Begin Your Journey Today</h2>
-                <p className="text-white/70 text-xl max-w-2xl mx-auto mb-12 font-light">
-                  Admissions are currently open for the 2026 academic season. Join a community of forward-thinkers and builders.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                  <button className="bg-white text-royal-blue px-12 py-5 rounded-2xl font-bold hover:shadow-[0_20px_40px_-15px_rgba(255,255,255,0.3)] transition-all hover:-translate-y-1">
-                    Apply Now
-                  </button>
-                  <button className="border-2 border-white/20 text-white px-12 py-5 rounded-2xl font-bold hover:bg-white/5 transition-all">
-                    Inquire Online
-                  </button>
-                </div>
-              </div>
-           </motion.div>
         </div>
       </section>
 

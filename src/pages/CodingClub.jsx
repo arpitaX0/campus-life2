@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, Home, Terminal, Code, Award, Users, BookOpen, Cpu, Globe, ArrowRight, ChevronDown, CheckCircle2, Copy, Play, Check } from 'lucide-react';
@@ -38,8 +39,8 @@ export default function CodingClub() {
   const [activeSnippet, setActiveSnippet] = useState(0);
   const [copied, setCopied] = useState(false);
   const [typedText, setTypedText] = useState('');
-  const [formData, setFormData] = useState({ name: '', email: '', roll: '', language: 'C++', experience: 'Intermediate', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  
+  
   const canvasRef = useRef(null);
 
   const fullPrompt = "ssh tat@coding-club -p 2026 && npm run dev --theme=innovate";
@@ -124,9 +125,9 @@ export default function CodingClub() {
 
           <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
             <div className="flex items-center justify-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-green-600 mb-8">
-              <a href="/" className="hover:text-green-400 transition-colors flex items-center gap-1"><Home size={10} />Home</a>
+              <Link to="/"  className="hover:text-green-400 transition-colors flex items-center gap-1"><Home size={10} />Home</Link>
               <ChevronRight size={8} />
-              <a href="/extra-curricular" className="hover:text-green-400 transition-colors">Extra Curricular</a>
+              <Link to="/extra-curricular"  className="hover:text-green-400 transition-colors">Extra Curricular</Link>
               <ChevronRight size={8} />
               <span className="text-green-400">Coding Club</span>
             </div>
@@ -153,9 +154,7 @@ export default function CodingClub() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#join" className="px-8 py-3.5 rounded-lg font-bold text-xs uppercase tracking-wider text-black bg-green-400 hover:bg-green-300 transition-all hover:scale-105 shadow-lg shadow-green-400/20">
-                Initialize Membership
-              </a>
+              
               <a href="#about" className="px-8 py-3.5 rounded-lg font-bold text-xs uppercase tracking-wider text-green-400 border border-green-500/30 hover:bg-green-500/10 transition-all">
                 cat about.txt
               </a>
@@ -332,74 +331,7 @@ export default function CodingClub() {
           </div>
         </section>
 
-        {/* ── REGISTRATION FORM ── */}
-        <section id="join" className="py-24 border-t border-green-950/30 bg-[#020811]">
-          <div className="max-w-3xl mx-auto px-6">
-            <FadeInUp className="text-center mb-12">
-              <span className="text-xs text-green-400 font-bold uppercase tracking-widest">registration open</span>
-              <h2 className="font-serif text-4xl md:text-5xl font-black text-white mt-3">Initialize Membership</h2>
-              <p className="text-green-600/70 mt-4 text-xs">Ready to commit? Fill out the payload below to join.</p>
-            </FadeInUp>
-
-            {submitted ? (
-              <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }}
-                className="bg-green-950/20 border border-green-500/30 rounded-2xl p-10 text-center shadow-2xl">
-                <CheckCircle2 className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                <h3 className="font-serif text-xl font-bold text-white mb-2">Build Successful!</h3>
-                <p className="text-green-600/70 text-sm">We'll review your payload and contact you on Slack/Discord.</p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="bg-[#040D1A] border border-green-950/30 rounded-2xl p-8 md:p-10 shadow-2xl space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-green-700 mb-2 block">Developer Name *</label>
-                    <input required value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-lg border border-green-950/40 bg-[#020811] text-sm text-green-400 focus:outline-none focus:border-green-400 transition-colors font-mono"
-                      placeholder="e.g. John Doe" />
-                  </div>
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-green-700 mb-2 block">Email Address *</label>
-                    <input required type="email" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-lg border border-green-950/40 bg-[#020811] text-sm text-green-400 focus:outline-none focus:border-green-400 transition-colors font-mono"
-                      placeholder="your@email.com" />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-green-700 mb-2 block">Roll / ID Number *</label>
-                    <input required value={formData.roll} onChange={e => setFormData(p => ({ ...p, roll: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-lg border border-green-950/40 bg-[#020811] text-sm text-green-400 focus:outline-none focus:border-green-400 transition-colors font-mono"
-                      placeholder="e.g. 2022CSE104" />
-                  </div>
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-green-700 mb-2 block">Preferred Language</label>
-                    <select value={formData.language} onChange={e => setFormData(p => ({ ...p, language: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-lg border border-green-950/40 bg-[#020811] text-sm text-green-400 focus:outline-none focus:border-green-400 transition-colors font-mono">
-                      {['C++', 'Java', 'Python', 'JavaScript/TypeScript', 'Rust / Go'].map(l => <option key={l}>{l}</option>)}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-green-700 mb-2 block">Experience Level</label>
-                    <select value={formData.experience} onChange={e => setFormData(p => ({ ...p, experience: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-lg border border-green-950/40 bg-[#020811] text-sm text-green-400 focus:outline-none focus:border-green-400 transition-colors font-mono">
-                      {['Beginner', 'Intermediate', 'Advanced / Expert'].map(ex => <option key={ex}>{ex}</option>)}
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <label className="text-[10px] font-bold uppercase tracking-wider text-green-700 mb-2 block">Tell us about a project or algorithm you like</label>
-                  <textarea value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
-                    rows={3} placeholder="e.g. DFS/BFS traversal, building a web scraper, etc."
-                    className="w-full px-4 py-3 rounded-lg border border-green-950/40 bg-[#020811] text-sm text-green-400 focus:outline-none focus:border-green-400 transition-colors font-mono resize-none" />
-                </div>
-                <button type="submit"
-                  className="w-full py-4 rounded-lg text-black font-bold uppercase tracking-wider text-xs bg-green-400 hover:bg-green-300 transition-all hover:scale-[1.01] shadow-lg shadow-green-500/10">
-                  Initialize Client Payload
-                </button>
-              </form>
-            )}
-          </div>
-        </section>
+        
       </div>
     </SmoothScrollProvider>
   );

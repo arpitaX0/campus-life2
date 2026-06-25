@@ -182,15 +182,7 @@ export default function FreshersParty() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-[#06B6D4]/10 to-[#8B5CF6]/10 border border-[#06B6D4]/30 rounded-3xl p-12 text-center relative overflow-hidden shadow-2xl">
-              <h3 className="font-serif text-2xl font-bold text-[#06B6D4] mb-4">Are you a first year?</h3>
-              <p className="text-xs text-slate-400 leading-relaxed mb-8 font-sans">
-                Make sure to submit your details and join the talent hunt nominations to secure your stage showcase slot.
-              </p>
-              <a href="#" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#06B6D4] to-[#8B5CF6] text-black font-bold text-xs uppercase tracking-widest rounded-xl transition-all">
-                Register For Talent Hunt <ArrowRight size={14} />
-              </a>
-            </div>
+
           </div>
         </section>
 

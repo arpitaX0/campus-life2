@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, Home, Star, Users, Calendar, Award, Music, Heart, ArrowRight, ChevronDown, CheckCircle2 } from 'lucide-react';
@@ -62,8 +63,8 @@ const testimonials = [
 
 export default function ChoreographyClub() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', style: 'Bollywood Fusion', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  
+  
 
   useEffect(() => {
     document.title = 'Choreography Club | Trident Academy of Technology';
@@ -113,9 +114,9 @@ export default function ChoreographyClub() {
           <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
             {/* Breadcrumb */}
             <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#9C8060]/70 mb-6">
-              <a href="/" className="hover:text-[#C4882A] transition-colors flex items-center gap-1"><Home size={12} />Home</a>
+              <Link to="/"  className="hover:text-[#C4882A] transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
               <ChevronRight size={10} />
-              <a href="/extra-curricular" className="hover:text-[#C4882A] transition-colors">Extra Curricular</a>
+              <Link to="/extra-curricular"  className="hover:text-[#C4882A] transition-colors">Extra Curricular</Link>
               <ChevronRight size={10} />
               <span className="text-[#C4882A]">Choreography Club</span>
             </div>
@@ -134,10 +135,7 @@ export default function ChoreographyClub() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#join" className="px-8 py-3.5 rounded-full font-bold text-sm uppercase tracking-widest text-white transition-all hover:scale-105 shadow-lg shadow-amber-400/20"
-                style={{ background: 'linear-gradient(135deg, #C4882A, #E8BD63)' }}>
-                Join the Club
-              </a>
+              
               <a href="#about" className="px-8 py-3.5 rounded-full font-bold text-sm uppercase tracking-widest text-amber-700 border border-amber-300 hover:bg-amber-50 transition-all">
                 Explore
               </a>
@@ -389,68 +387,7 @@ export default function ChoreographyClub() {
           </div>
         </section>
 
-        {/* ── JOIN THE CLUB ── */}
-        <section id="join" className="py-24 bg-[#FDF6EF] border-t border-amber-100">
-          <div className="max-w-3xl mx-auto px-6">
-            <FadeInUp className="text-center mb-12">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-amber-600">Auditions Open</span>
-              <h2 className="font-serif text-5xl font-black text-[#2C2117] mt-3">Join the Club</h2>
-              <p className="text-[#9C8060] mt-4 text-base font-semibold">No experience needed — just passion for dance and movement.</p>
-            </FadeInUp>
-
-            {submitted ? (
-              <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }}
-                className="bg-white border border-amber-200 rounded-3xl p-12 text-center shadow-xl">
-                <CheckCircle2 className="w-16 h-16 text-amber-500 mx-auto mb-4" />
-                <h3 className="font-serif text-2xl font-black text-[#2C2117] mb-2">Welcome to the Stage!</h3>
-                <p className="text-[#9C8060]">We'll contact you within 2 working days with audition details.</p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="bg-white border border-amber-100 rounded-3xl p-10 shadow-lg space-y-5">
-                <div className="grid md:grid-cols-2 gap-5">
-                  <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#9C8060] mb-2 block">Full Name *</label>
-                    <input required value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-amber-200 bg-[#FDF6EF] text-sm text-[#3E3A36] focus:outline-none focus:border-amber-500 transition-colors"
-                      placeholder="Your name" />
-                  </div>
-                  <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#9C8060] mb-2 block">Email *</label>
-                    <input required type="email" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-amber-200 bg-[#FDF6EF] text-sm text-[#3E3A36] focus:outline-none focus:border-amber-500 transition-colors"
-                      placeholder="your@email.com" />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-5">
-                  <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#9C8060] mb-2 block">Phone</label>
-                    <input value={formData.phone} onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-amber-200 bg-[#FDF6EF] text-sm text-[#3E3A36] focus:outline-none focus:border-amber-500 transition-colors"
-                      placeholder="+91 XXXXX XXXXX" />
-                  </div>
-                  <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#9C8060] mb-2 block">Preferred Style</label>
-                    <select value={formData.style} onChange={e => setFormData(p => ({ ...p, style: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-amber-200 bg-[#FDF6EF] text-sm text-[#3E3A36] focus:outline-none focus:border-amber-500 transition-colors">
-                      {danceStyles.map(s => <option key={s.name}>{s.name}</option>)}
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#9C8060] mb-2 block">Message</label>
-                  <textarea value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
-                    rows={3} placeholder="Tell us about your dance background..."
-                    className="w-full px-4 py-3 rounded-xl border border-amber-200 bg-[#FDF6EF] text-sm text-[#3E3A36] focus:outline-none focus:border-amber-500 transition-colors resize-none" />
-                </div>
-                <button type="submit"
-                  className="w-full py-4 rounded-xl text-white font-bold uppercase tracking-widest text-sm transition-all hover:scale-[1.02] hover:shadow-lg shadow-amber-400/20"
-                  style={{ background: 'linear-gradient(135deg, #C4882A, #E8BD63)' }}>
-                  Apply for Membership
-                </button>
-              </form>
-            )}
-          </div>
-        </section>
+        
       </div>
     </SmoothScrollProvider>
   );

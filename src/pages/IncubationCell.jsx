@@ -119,25 +119,7 @@ export default function IncubationCell() {
         </div>
       </section>
 
-      {/* ── APPLY FOR INCUBATION CTA ── */}
-      <section className="py-24 max-w-[1300px] mx-auto px-6">
-        <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-900/40 via-purple-900/40 to-slate-900/20 border border-blue-900/30 rounded-3xl p-12 text-center relative overflow-hidden shadow-2xl">
-          <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Launch Your Startup Idea</h2>
-            <p className="text-slate-400 text-sm max-w-xl mx-auto mb-8 leading-relaxed">
-              Admissions for the winter incubation batch are now open. Present your prototype to our VC board and lock in co-working spaces and mentorship support.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a href="#" className="px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all">
-                Apply Online
-              </a>
-              <a href="#" className="px-8 py-3.5 border border-slate-800 hover:border-slate-700 text-slate-300 font-bold text-xs tracking-wider uppercase rounded-xl transition-all">
-                Download Incubation Guide
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* ── UNIFIED NAVIGATION SWITCHER ── */}
 

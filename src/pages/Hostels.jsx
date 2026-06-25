@@ -64,7 +64,7 @@ export default function Hostels() {
             <div className="flex items-center gap-6 text-xs uppercase tracking-widest font-bold">
               <a href="#rooms" className="hover:text-amber-500 transition-colors">Rooms</a>
               <a href="#amenities" className="hover:text-amber-500 transition-colors">Amenities</a>
-              <a href="#apply" className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-full transition-all">Apply Portal</a>
+              
             </div>
           </div>
         </div>
@@ -170,9 +170,7 @@ export default function Hostels() {
                       <span className="text-[10px] uppercase tracking-wider opacity-60">Yearly Tariff</span>
                       <div className="text-xl font-bold text-amber-500">{roomTypes[activeRoom].price}</div>
                     </div>
-                    <a href="#apply" className="px-6 py-3 bg-amber-500 text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-amber-600 transition-colors">
-                      Book Now
-                    </a>
+                    
                   </div>
                 </div>
 
@@ -259,18 +257,7 @@ export default function Hostels() {
         </section>
 
 
-        {/* ── APPLY SECTION (CTA) ── */}
-        <section id="apply" className="py-24 bg-gradient-to-br from-amber-600 to-yellow-700 text-white text-center">
-          <div className="max-w-3xl mx-auto px-6">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">Reserve Your Suite Today</h2>
-            <p className="text-amber-100 max-w-xl mx-auto mb-10 text-sm leading-relaxed">
-              TAT hostel berths are allocated strictly on a merit basis and registration date. Lock in your slot for the 2026 academic year.
-            </p>
-            <a href="#" className="inline-flex items-center gap-2 px-8 py-4 bg-stone-900 hover:bg-stone-850 text-white rounded-full font-bold text-xs uppercase tracking-widest transition-all">
-              Apply Online Portal <ArrowRight size={14} />
-            </a>
-          </div>
-        </section>
+        
 
       </div>
     </SmoothScrollProvider>

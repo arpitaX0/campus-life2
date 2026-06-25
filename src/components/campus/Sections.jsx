@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Microscope, Beaker, Globe, Cpu, Home, Utensils, HeartPulse, Wifi, Building, Bus, Quote as QuoteIcon } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 import researchImg from '../../assets/real_research.jpg'
 import facility1 from '../../assets/facilities_campus_green.jpg'
@@ -67,12 +68,12 @@ export function Research() {
 // ==========================================
 export function Facilities() {
   const facilities = [
-    { title: 'Premium Hostels', desc: 'In-campus safe residence with modern amenities, 24/7 security, and a home-like atmosphere.', img: facility1, icon: Home },
-    { title: 'Food Centers', desc: 'Multi-cuisine dining halls offering wholesome meals in spacious, naturally-lit settings.', img: facility2, icon: Utensils },
-    { title: 'Healthcare', desc: 'Dedicated health center with qualified medical professionals and emergency care facilities.', img: facility3, icon: HeartPulse },
-    { title: 'Modern Labs', desc: 'AICTE-standard smart classrooms and advanced computing labs for immersive learning.', img: facility4, icon: Building },
-    { title: 'Campus WiFi', desc: 'High-speed internet connectivity across the entire campus, enabling seamless digital learning.', img: facility5, icon: Wifi },
-    { title: 'Safe Transport', desc: 'Extensive bus fleet covering all major routes across Bhubaneswar for safe daily commute.', img: facility6, icon: Bus },
+    { title: 'Premium Hostels', desc: 'In-campus safe residence with modern amenities, 24/7 security, and a home-like atmosphere.', img: facility1, icon: Home, path: '/hostels' },
+    { title: 'Food Centers', desc: 'Multi-cuisine dining halls offering wholesome meals in spacious, naturally-lit settings.', img: facility2, icon: Utensils, path: '/cafeteria' },
+    { title: 'Healthcare', desc: 'Dedicated health center with qualified medical professionals and emergency care facilities.', img: facility3, icon: HeartPulse, path: '/healthcare' },
+    { title: 'Modern Labs', desc: 'AICTE-standard smart classrooms and advanced computing labs for immersive learning.', img: facility4, icon: Building, path: '/modern-labs' },
+    { title: 'Campus WiFi', desc: 'High-speed internet connectivity across the entire campus, enabling seamless digital learning.', img: facility5, icon: Wifi, path: '/campus-wifi' },
+    { title: 'Safe Transport', desc: 'Extensive bus fleet covering all major routes across Bhubaneswar for safe daily commute.', img: facility6, icon: Bus, path: '/safe-transport' },
   ]
 
   return (
@@ -100,14 +101,15 @@ export function Facilities() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-[24px] overflow-hidden shadow-[0_15px_35px_-15px_rgba(0,0,0,0.08)] hover:shadow-[0_25px_50px_-15px_rgba(0,0,0,0.15)] hover:-translate-y-2 transition-all duration-500 group flex flex-col"
+                className="bg-white rounded-[24px] overflow-hidden shadow-[0_15px_35px_-15px_rgba(0,0,0,0.08)] hover:shadow-[0_25px_50px_-15px_rgba(0,0,0,0.15)] hover:-translate-y-2 transition-all duration-500 group flex flex-col relative"
               >
+                <Link to={fac.path} className="absolute inset-0 z-20" />
                 <div className="h-[200px] overflow-hidden relative">
                   <img src={fac.img} alt={fac.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
                 </div>
                 <div className="p-8 flex flex-col flex-grow relative">
-                  <div className="absolute -top-8 right-8 w-14 h-14 bg-white rounded-2xl shadow-lg flex items-center justify-center text-[#2C3A8C]">
+                  <div className="absolute -top-8 right-8 w-14 h-14 bg-white rounded-2xl shadow-lg flex items-center justify-center text-[#2C3A8C] z-10">
                     <Icon size={24} />
                   </div>
                   <h4 className="serif text-2xl font-bold text-[#3E3A36] mb-3">{fac.title}</h4>

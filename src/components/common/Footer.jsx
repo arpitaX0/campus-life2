@@ -1,5 +1,6 @@
 import logo from "../../assets/logo.png";
 import { FadeInUp } from "../../utils/animations";
+import { Link } from "react-router-dom";
 
 import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram, ArrowRight, Youtube } from "lucide-react";
 
@@ -71,17 +72,17 @@ export default function Footer() {
             <div className="lg:col-span-8 grid grid-cols-2 lg:grid-cols-3 gap-12">
               {[
                 { h:"Academics & Student Life", ls:[
-                  { t:"Library", h:"#" },
+                  { t:"Library", h:"/libraries" },
                   { t:"IQAC", h:"#" },
                   { t:"Testimonials", h:"#" },
-                  { t:"Student Clubs", h:"#" },
-                  { t:"CISCO thingQbator", h:"#" },
+                  { t:"Student Clubs", h:"/extra-curricular" },
+                  { t:"CISCO thingQbator", h:"/innovation-lab" },
                   { t:"E-Governance Portal", h:"https://ais.tat.ac.in/ais/" },
                   { t:"Grievance", h:"#" },
                   { t:"ICC", h:"#" },
                 ] },
                 { h:"About the Institution", ls:[
-                  { t:"About Us", h:"#" },
+                  { t:"About Us", h:"/about" },
                   { t:"NAAC", h:"#" },
                   { t:"NBA", h:"#" },
                   { t:"NIRF", h:"#" },
@@ -105,10 +106,17 @@ export default function Footer() {
                   <ul className="space-y-5">
                     {col.ls.map((link) => (
                       <li key={link.t}>
-                        <a href={link.h} className="text-[14px] font-medium text-gray-500 hover:text-[#E5AA3E] transition-all flex items-center gap-3 group">
-                          <span className="w-0 h-[1px] bg-[#E5AA3E] group-hover:w-4 transition-all duration-300" />
-                          {link.t}
-                        </a>
+                        {link.h.startsWith('/') ? (
+                          <Link to={link.h} className="text-[14px] font-medium text-gray-500 hover:text-[#E5AA3E] transition-all flex items-center gap-3 group text-decoration-none">
+                            <span className="w-0 h-[1px] bg-[#E5AA3E] group-hover:w-4 transition-all duration-300" />
+                            {link.t}
+                          </Link>
+                        ) : (
+                          <a href={link.h} className="text-[14px] font-medium text-gray-500 hover:text-[#E5AA3E] transition-all flex items-center gap-3 group text-decoration-none" target={link.h.startsWith('http') ? '_blank' : '_self'} rel={link.h.startsWith('http') ? 'noopener noreferrer' : ''}>
+                            <span className="w-0 h-[1px] bg-[#E5AA3E] group-hover:w-4 transition-all duration-300" />
+                            {link.t}
+                          </a>
+                        )}
                       </li>
                     ))}
                   </ul>

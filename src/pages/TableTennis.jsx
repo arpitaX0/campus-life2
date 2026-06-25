@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, Home, Star, Users, Calendar, Award, Target, Trophy, ArrowRight, ChevronDown, CheckCircle2 } from 'lucide-react';
@@ -26,8 +27,8 @@ const achievements = [
 ];
 
 export default function TableTennis() {
-  const [formData, setFormData] = useState({ name: '', email: '', roll: '', style: 'Attack / Top-spin loop', bat: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  
+  
 
   useEffect(() => {
     document.title = 'Table Tennis Club & Indoor | Trident Academy of Technology';
@@ -68,9 +69,9 @@ export default function TableTennis() {
           <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
             {/* Breadcrumb */}
             <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-500 mb-8">
-              <a href="/" className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</a>
+              <Link to="/"  className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
               <ChevronRight size={10} />
-              <a href="/extra-curricular" className="hover:text-slate-800 transition-colors">Extra Curricular</a>
+              <Link to="/extra-curricular"  className="hover:text-slate-800 transition-colors">Extra Curricular</Link>
               <ChevronRight size={10} />
               <span className="text-sky-655">Table Tennis</span>
             </div>
@@ -89,9 +90,7 @@ export default function TableTennis() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#join" className="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-white bg-orange-600 hover:bg-orange-700 transition-all hover:scale-105 shadow-md shadow-orange-600/10">
-                Join the Team
-              </a>
+              
               <a href="#about" className="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-orange-700 border border-orange-300 hover:bg-orange-50 transition-all">
                 View Facilities
               </a>
@@ -196,73 +195,7 @@ export default function TableTennis() {
           </div>
         </section>
 
-        {/* ── SQUAD TRYOUTS REGISTRATION ── */}
-        <section id="join" className="py-24 bg-white border-t border-sky-100">
-          <div className="max-w-3xl mx-auto px-6">
-            <FadeInUp className="text-center mb-12">
-              <span className="text-xs text-sky-700 font-bold uppercase tracking-[0.2em]">trials signup</span>
-              <h2 className="font-serif text-4xl md:text-5xl font-black text-sky-900 mt-3 uppercase">Join the Team</h2>
-              <p className="text-slate-500 mt-4 text-xs font-semibold">Do you have prior training or fast reflexes? Register below for selection trials.</p>
-            </FadeInUp>
-
-            {submitted ? (
-              <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }}
-                className="bg-[#F0F8FF] border border-sky-200 rounded-2xl p-10 text-center shadow-xl">
-                <CheckCircle2 className="w-16 h-16 text-sky-700 mx-auto mb-4" />
-                <h3 className="font-serif text-xl font-bold text-sky-900 mb-2 uppercase">Application Submitted!</h3>
-                <p className="text-slate-500 text-sm">Our captain will contact you with test hours scheduled in the TT room.</p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="bg-[#F0F8FF] border border-sky-200 rounded-2xl p-8 md:p-10 shadow-lg space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Student Name *</label>
-                    <input required value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-sky-500 transition-colors"
-                      placeholder="Your name" />
-                  </div>
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Email Address *</label>
-                    <input required type="email" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-sky-500 transition-colors"
-                      placeholder="your@email.com" />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Roll / ID Number *</label>
-                    <input required value={formData.roll} onChange={e => setFormData(p => ({ ...p, roll: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-sky-500 transition-colors"
-                      placeholder="e.g. 2024CSE225" />
-                  </div>
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Playing Style</label>
-                    <select value={formData.style} onChange={e => setFormData(p => ({ ...p, style: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-sky-500 transition-colors bg-white">
-                      {['Attack / Top-spin loop', 'Defensive Chop / Block', 'All-Rounder Play style'].map(st => <option key={st}>{st}</option>)}
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Bat / Rubber Brand Used</label>
-                  <input value={formData.bat} onChange={e => setFormData(p => ({ ...p, bat: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-sky-500 transition-colors"
-                    placeholder="e.g. Butterfly Gergely, GKI Kung Fu, Custom, etc." />
-                </div>
-                <div>
-                  <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Tell us about your game background or table highlights</label>
-                  <textarea value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
-                    rows={3} placeholder="Reflex loops, quick serves, defense details..."
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-sky-500 transition-colors resize-none" />
-                </div>
-                <button type="submit"
-                  className="w-full py-4 rounded-xl text-white font-bold uppercase tracking-wider text-xs bg-orange-600 hover:bg-orange-700 transition-all hover:scale-[1.01] shadow-lg shadow-orange-650/10">
-                  Register for Table Tennis Selections
-                </button>
-              </form>
-            )}
-          </div>
-        </section>
+        
       </div>
     </SmoothScrollProvider>
   );

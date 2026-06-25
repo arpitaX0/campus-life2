@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, Home, Dribbble, Award, Target, Users, Calendar, Trophy, ArrowRight, ChevronDown, CheckCircle2 } from 'lucide-react';
@@ -33,8 +34,8 @@ const upcomingMatches = [
 ];
 
 export default function Basketball() {
-  const [formData, setFormData] = useState({ name: '', email: '', roll: '', position: 'Point Guard', height: '', experience: 'School Level', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  
+  
 
   useEffect(() => {
     document.title = 'Basketball Club & Courts | Trident Academy of Technology';
@@ -76,9 +77,9 @@ export default function Basketball() {
           <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
             {/* Breadcrumb */}
             <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-500 mb-8">
-              <a href="/" className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</a>
+              <Link to="/"  className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
               <ChevronRight size={10} />
-              <a href="/extra-curricular" className="hover:text-slate-800 transition-colors">Extra Curricular</a>
+              <Link to="/extra-curricular"  className="hover:text-slate-800 transition-colors">Extra Curricular</Link>
               <ChevronRight size={10} />
               <span className="text-orange-600">Basketball</span>
             </div>
@@ -97,9 +98,7 @@ export default function Basketball() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#join" className="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-white bg-orange-600 hover:bg-orange-750 transition-all hover:scale-105 shadow-md shadow-orange-600/10">
-                Join the Squad
-              </a>
+              
               <a href="#about" className="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-orange-700 border border-orange-300 hover:bg-orange-50 transition-all">
                 Facilities Details
               </a>
@@ -229,80 +228,7 @@ export default function Basketball() {
           </div>
         </section>
 
-        {/* ── RECRUITMENT TRYOUTS ── */}
-        <section id="join" className="py-24 bg-white border-t border-orange-100">
-          <div className="max-w-3xl mx-auto px-6">
-            <FadeInUp className="text-center mb-12">
-              <span className="text-xs text-orange-600 font-bold uppercase tracking-[0.2em]">squad selections</span>
-              <h2 className="font-serif text-4xl md:text-5xl font-black text-[#1A120B] mt-3 uppercase">Join the Team</h2>
-              <p className="text-slate-500 mt-4 text-xs font-semibold">Ready to hit the courts? Submit your student profile below for selection trial dates.</p>
-            </FadeInUp>
-
-            {submitted ? (
-              <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }}
-                className="bg-[#FFF8F2] border border-orange-200 rounded-2xl p-10 text-center shadow-xl">
-                <CheckCircle2 className="w-16 h-16 text-orange-600 mx-auto mb-4" />
-                <h3 className="font-serif text-xl font-bold text-[#1A120B] mb-2 uppercase">Application Submitted!</h3>
-                <p className="text-slate-500 text-sm">Our team captain will reach out to you with selection dates and slots.</p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="bg-[#FFF8F2] border border-orange-200 rounded-2xl p-8 md:p-10 shadow-lg space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Student Name *</label>
-                    <input required value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-orange-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-orange-500 transition-colors"
-                      placeholder="Your name" />
-                  </div>
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Email Address *</label>
-                    <input required type="email" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-orange-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-orange-500 transition-colors"
-                      placeholder="your@email.com" />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Roll / ID Number *</label>
-                    <input required value={formData.roll} onChange={e => setFormData(p => ({ ...p, roll: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-orange-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-orange-500 transition-colors"
-                      placeholder="e.g. 2024CSE180" />
-                  </div>
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Court Position</label>
-                    <select value={formData.position} onChange={e => setFormData(p => ({ ...p, position: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-orange-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-orange-500 transition-colors bg-white">
-                      {['Point Guard', 'Shooting Guard', 'Small Forward', 'Power Forward', 'Center'].map(pos => <option key={pos}>{pos}</option>)}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Height (cm / ft)</label>
-                    <input value={formData.height} onChange={e => setFormData(p => ({ ...p, height: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-orange-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-orange-500 transition-colors"
-                      placeholder="e.g. 182 cm" />
-                  </div>
-                </div>
-                <div>
-                  <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Prior Experience</label>
-                  <select value={formData.experience} onChange={e => setFormData(p => ({ ...p, experience: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl border border-orange-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-orange-500 transition-colors bg-white">
-                    {['Beginner / Interest only', 'School Level Core Team', 'District / Zonal Level', 'State / National Level'].map(ex => <option key={ex}>{ex}</option>)}
-                  </select>
-                </div>
-                <div>
-                  <label className="text-[10px] font-bold uppercase tracking-wider text-slate-550 mb-2 block">Tell us about your game, strengths or fitness</label>
-                  <textarea value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
-                    rows={3} placeholder="Three-point shooting, fast defense, scoring agility, etc."
-                    className="w-full px-4 py-3 rounded-xl border border-orange-200 bg-white text-sm text-slate-800 focus:outline-none focus:border-orange-500 transition-colors resize-none" />
-                </div>
-                <button type="submit"
-                  className="w-full py-4 rounded-xl text-white font-bold uppercase tracking-wider text-xs bg-orange-600 hover:bg-orange-700 transition-all hover:scale-[1.01] shadow-lg shadow-orange-650/10">
-                  Register for Selection Trials
-                </button>
-              </form>
-            )}
-          </div>
-        </section>
+        
       </div>
     </SmoothScrollProvider>
   );
