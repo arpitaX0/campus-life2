@@ -23,6 +23,37 @@ import Footer from './components/common/Footer';
 
 import AboutTrident from './pages/AboutTrident';
 import DepartmentLibraries from './pages/DepartmentLibraries';
+import Scholarships from './pages/Scholarships';
+import ICTClassrooms from './pages/ICTClassrooms';
+import ExtraCurricular from './pages/ExtraCurricular';
+import CampusSecurity from './pages/CampusSecurity';
+import InnovationLab from './pages/InnovationLab';
+import SportsGames from './pages/SportsGames';
+import IEDC from './pages/IEDC';
+import IncubationCell from './pages/IncubationCell';
+import Hostels from './pages/Hostels';
+import FoodCenters from './pages/FoodCenters';
+import Healthcare from './pages/Healthcare';
+import ModernLabs from './pages/ModernLabs';
+import CampusWiFi from './pages/CampusWiFi';
+import SafeTransport from './pages/SafeTransport';
+import TechFest from './pages/TechFest';
+import CulturalEvening from './pages/CulturalEvening';
+import FreshersParty from './pages/FreshersParty';
+
+import ChoreographyClub from './pages/ChoreographyClub';
+import SocialServiceClub from './pages/SocialServiceClub';
+import CodingClub from './pages/CodingClub';
+import CommunicationClub from './pages/CommunicationClub';
+import MusicClub from './pages/MusicClub';
+import Gymnasium from './pages/Gymnasium';
+import Basketball from './pages/Basketball';
+import Football from './pages/Football';
+import Volleyball from './pages/Volleyball';
+import Badminton from './pages/Badminton';
+import TableTennis from './pages/TableTennis';
+
+
 
 function MainContent() {
   return (
@@ -113,6 +144,38 @@ export default function App() {
         <Route path="/" element={<MainContent />} />
         <Route path="/about" element={<AboutTrident />} />
         <Route path="/libraries" element={<DepartmentLibraries />} />
+        <Route path="/scholarships" element={<Scholarships />} />
+        <Route path="/ict-classrooms" element={<ICTClassrooms />} />
+        <Route path="/extra-curricular" element={<ExtraCurricular />} />
+        <Route path="/security" element={<CampusSecurity />} />
+        <Route path="/innovation-lab" element={<InnovationLab />} />
+        <Route path="/sports-games" element={<SportsGames />} />
+        <Route path="/iedc" element={<IEDC />} />
+        <Route path="/incubation-cell" element={<IncubationCell />} />
+        <Route path="/hostels" element={<Hostels />} />
+        <Route path="/cafeteria" element={<FoodCenters />} />
+        <Route path="/healthcare" element={<Healthcare />} />
+        <Route path="/modern-labs" element={<ModernLabs />} />
+        <Route path="/campus-wifi" element={<CampusWiFi />} />
+        <Route path="/safe-transport" element={<SafeTransport />} />
+        <Route path="/techfest" element={<TechFest />} />
+        <Route path="/cultural-evening" element={<CulturalEvening />} />
+        <Route path="/freshers-party" element={<FreshersParty />} />
+
+        {/* Club Pages */}
+        <Route path="/choreography-club" element={<ChoreographyClub />} />
+        <Route path="/social-service-club" element={<SocialServiceClub />} />
+        <Route path="/coding-club" element={<CodingClub />} />
+        <Route path="/communication-club" element={<CommunicationClub />} />
+        <Route path="/music-club" element={<MusicClub />} />
+
+        {/* Sports Pages */}
+        <Route path="/gymnasium" element={<Gymnasium />} />
+        <Route path="/basketball" element={<Basketball />} />
+        <Route path="/football" element={<Football />} />
+        <Route path="/volleyball" element={<Volleyball />} />
+        <Route path="/badminton" element={<Badminton />} />
+        <Route path="/table-tennis" element={<TableTennis />} />
       </Routes>
       
       <Footer />

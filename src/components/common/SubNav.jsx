@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -8,8 +9,14 @@ function cn(...inputs) {
 }
 
 const SubNav = () => {
+  const location = useLocation();
   const [activeToken, setActiveToken] = useState('news');
   const [isVisible, setIsVisible] = useState(false);
+
+  // Do not render SubNav on subpages/tertiary pages
+  if (location.pathname !== '/') {
+    return null;
+  }
 
   const links = [
     { name: 'News', id: 'news' },

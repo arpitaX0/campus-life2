@@ -4,17 +4,11 @@ import {
   ChevronRight, 
   Target, 
   Lightbulb, 
-  Users, 
-  Award, 
-  Zap, 
   Globe, 
   Shield, 
   ArrowRight, 
-  GraduationCap, 
-  Microscope,
-  BookOpen,
-  Image as ImageIcon,
-  Library
+  GraduationCap,
+  Award
 } from 'lucide-react';
 
 const AboutTrident = ({ onNavigate }) => {
@@ -34,10 +28,10 @@ const AboutTrident = ({ onNavigate }) => {
   };
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen pt-20 font-jakarta text-charcoal overflow-x-hidden">
+    <div className="bg-[#FAF9F6] min-h-screen font-jakarta text-charcoal overflow-x-hidden">
       
       {/* 1. HERO BANNER */}
-      <section className="relative py-20 bg-navy-block overflow-hidden">
+      <section className="relative pt-32 pb-20 bg-navy-block overflow-hidden">
         {/* Abstract Background Elements */}
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
           <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-royal-blue blur-[120px]"></div>
@@ -247,32 +241,6 @@ const AboutTrident = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 5. STATISTICS / ACHIEVEMENTS SECTION */}
-      <section className="py-24 bg-navy-block">
-        <div className="max-w-[1300px] mx-auto px-6 md:px-12 lg:px-24">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { label: "Active Students", value: "12k+", icon: Users },
-              { label: "Elite Faculty", value: "250+", icon: Award },
-              { label: "Specialized Labs", value: "45+", icon: Microscope },
-              { label: "Placement Rate", value: "95%", icon: Zap }
-            ].map((stat, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center p-8 bg-white/5 rounded-3xl border border-white/10 hover:bg-white/10 transition-all group"
-              >
-                <stat.icon className="mx-auto text-royal-blue mb-6 group-hover:scale-110 transition-transform" size={40} />
-                <div className="text-5xl font-bold text-white mb-2">{stat.value}</div>
-                <div className="text-white/40 font-semibold uppercase tracking-widest text-xs">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* 6. GALLERY / VISUAL SHOWCASE */}
       <section className="py-24 bg-white">
@@ -339,38 +307,6 @@ const AboutTrident = ({ onNavigate }) => {
       </section>
 
       {/* 8. RELATED PAGES / NAVIGATION */}
-      <section className="py-24 bg-white border-t border-slate-100">
-        <div className="max-w-[1300px] mx-auto px-6 md:px-12 lg:px-24">
-           <div className="flex flex-col md:flex-row justify-between items-center gap-12">
-              <div className="text-center md:text-left">
-                 <h4 className="text-2xl font-bold text-navy-block mb-2">Explore Further</h4>
-                 <p className="text-charcoal/40 uppercase tracking-[0.2em] text-xs font-bold">Continue exploring the Trident ecosystem</p>
-              </div>
-              <div className="flex flex-wrap justify-center gap-4">
-                 {[
-                   { label: "Departments", onClick: () => onNavigate('libraries') },
-                   { label: "Research Centers", href: "#" },
-                   { label: "Campus Life", href: "#" },
-                   { label: "Placements", href: "#" }
-                 ].map((link, i) => (
-                   <a 
-                     key={i} 
-                     href={link.href || "#"}
-                     onClick={(e) => {
-                       if (link.onClick) {
-                         e.preventDefault();
-                         link.onClick();
-                       }
-                     }}
-                     className="px-8 py-4 bg-slate-50 text-navy-block rounded-2xl font-bold border border-slate-100 hover:border-royal-blue hover:text-royal-blue transition-all cursor-pointer"
-                   >
-                     {link.label}
-                   </a>
-                 ))}
-              </div>
-           </div>
-        </div>
-      </section>
 
     </div>
   );

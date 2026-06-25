@@ -4,7 +4,6 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 import club1 from '../../assets/annual function.jpg';
 import club2 from '../../assets/cta_convocation.jpg';
-import club3 from '../../assets/Dance 1.jpeg';
 import club4 from '../../assets/about_students_studying.jpg';
 import club5 from '../../assets/dance 2.jpg';
 import club6 from '../../assets/coding club.jpeg';
@@ -12,7 +11,6 @@ import club6 from '../../assets/coding club.jpeg';
 const clubs = [
   { img: club1, name: 'Music Club', desc: 'Acoustic performances, band practice, and annual music festivals.', accent: '#E8BD63' },
   { img: club2, name: 'Communication Club', desc: 'Public speaking, debate competitions, and leadership training.', accent: '#E56D24' },
-  { img: club3, name: 'Dance Club', desc: 'Classical, contemporary, and hip-hop dance workshops and performances.', accent: '#D3494B' },
   { img: club4, name: 'Social Service Club', desc: 'Community outreach, blood donation drives, and social responsibility.', accent: '#34785A' },
   { img: club5, name: 'Choreography Club', desc: 'Group performances, flash mobs, and inter-college dance competitions.', accent: '#2C3A8C' },
   { img: club6, name: 'Coding Club', desc: 'Hackathons, competitive programming, and open-source contributions.', accent: '#A59381' },

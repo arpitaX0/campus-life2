@@ -1,0 +1,72 @@
+[
+  {
+    "title": "About Trident",
+    "path": "/about",
+    "description": "Learn about our history, mission, vision, and academic excellence.",
+    "icon": "School",
+    "color": "from-blue-500 to-indigo-600"
+  },
+  {
+    "title": "Department Libraries",
+    "path": "/libraries",
+    "description": "Explore specialized collections and digital research databases.",
+    "icon": "Library",
+    "color": "from-teal-500 to-emerald-600"
+  },
+  {
+    "title": "Scholarships",
+    "path": "/scholarships",
+    "description": "Find financial aid and scholarship options to support your studies.",
+    "icon": "Award",
+    "color": "from-violet-500 to-purple-600"
+  },
+  {
+    "title": "ICT Classrooms",
+    "path": "/ict-classrooms",
+    "description": "Experience modern, technology-enabled interactive learning spaces.",
+    "icon": "Monitor",
+    "color": "from-cyan-500 to-blue-600"
+  },
+  {
+    "title": "Extra Curricular",
+    "path": "/extra-curricular",
+    "description": "Discover sports, athletics, clubs, and vibrant campus life.",
+    "icon": "Activity",
+    "color": "from-orange-500 to-red-600"
+  },
+  {
+    "title": "Campus Security",
+    "path": "/security",
+    "description": "Smart security systems, surveillance, and emergency contacts.",
+    "icon": "Shield",
+    "color": "from-blue-600 to-cyan-500"
+  },
+  {
+    "title": "Innovation Lab",
+    "path": "/innovation-lab",
+    "description": "Research, AI, IoT, robotics, and prototype development.",
+    "icon": "Cpu",
+    "color": "from-purple-600 to-cyan-400"
+  },
+  {
+    "title": "Sports & Games",
+    "path": "/sports-games",
+    "description": "Indoor and outdoor sports facilities, meets, and tournaments.",
+    "icon": "Trophy",
+    "color": "from-emerald-500 to-orange-500"
+  },
+  {
+    "title": "IEDC",
+    "path": "/iedc",
+    "description": "Entrepreneurship programs, workshops, and business idea funding.",
+    "icon": "Zap",
+    "color": "from-orange-500 to-purple-600"
+  },
+  {
+    "title": "Incubation Cell",
+    "path": "/incubation-cell",
+    "description": "Startup launchpad, mentorship, support, and success stories.",
+    "icon": "Compass",
+    "color": "from-indigo-600 to-amber-500"
+  }
+]

@@ -50,10 +50,10 @@ const DepartmentLibraries = ({ onNavigate }) => {
   ];
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen pt-20 font-jakarta text-charcoal overflow-x-hidden">
+    <div className="bg-[#FAF9F6] min-h-screen font-jakarta text-charcoal overflow-x-hidden">
       
       {/* 1. HERO BANNER */}
-      <section className="relative py-20 bg-navy-block overflow-hidden">
+      <section className="relative pt-32 pb-20 bg-navy-block overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
           <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-royal-blue blur-[120px]"></div>
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -237,7 +237,7 @@ const DepartmentLibraries = ({ onNavigate }) => {
                   </button>
                 </div>
               </div>
-           </motion.div>
+            </motion.div>
         </div>
       </section>
 

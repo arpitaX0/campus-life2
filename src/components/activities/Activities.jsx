@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 import act1 from '../../assets/facilities_sports.jpg';
 import act2 from '../../assets/news_seminar.jpg';
@@ -10,7 +11,7 @@ import act5 from '../../assets/news_innovation_lab.png';
 import act6 from '../../assets/about_engineering_workshop.jpg';
 
 const activityCategories = [
-  { title: 'Extra Curricular', description: 'Trident promotes and nurtures the talents in its students through sports, athletics, and physical activities.', color: '#E56D24', href: 'https://activities-tat.tekkzy.com/extra-curricullar/', stats: '15+ Sports', img: act1 },
+  { title: 'Extra Curricular', description: 'Trident promotes and nurtures the talents in its students through sports, athletics, and physical activities.', color: '#E56D24', href: '/extra-curricular', stats: '15+ Sports', img: act1 },
   { title: 'Co-Curricular', description: 'Activities that complement the academic curriculum — debates, quizzes, seminars, workshops, and national-level competitions.', color: '#2C3A8C', href: 'https://activities-tat.tekkzy.com/co-curricular/', stats: '30+ Events', img: act2 },
   { title: 'Innovation Lab', description: 'Fostering innovation through incubation cells, startup mentoring, and technical project competitions at national level.', color: '#E8BD63', href: 'https://activities-tat.tekkzy.com/innovation-&-entrepreneurship/', stats: 'Innovation Cell', img: act3 },
   { title: 'Sports & Games', description: 'World-class sports facilities including cricket ground, football field, basketball, volleyball, badminton, and more.', color: '#34785A', href: 'https://activities-tat.tekkzy.com/sports-&-games/', stats: '10+ Facilities', img: act4 },
@@ -95,15 +96,27 @@ export default function Activities() {
                       <div className="grid md:grid-cols-[1fr_1.2fr] gap-8 px-8 pb-8">
                         <div className="flex flex-col justify-center">
                           <p className="text-[#3E3A36]/60 text-[16px] leading-relaxed mb-6">{cat.description}</p>
-                          <a
-                            href={cat.href}
-                            target="_blank"
-                            className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest hover:gap-5 transition-all duration-300"
-                            style={{ color: cat.color }}
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            Explore <ArrowRight size={14} />
-                          </a>
+                          {cat.href.startsWith('http') ? (
+                            <a
+                              href={cat.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest hover:gap-5 transition-all duration-300"
+                              style={{ color: cat.color }}
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              Explore <ArrowRight size={14} />
+                            </a>
+                          ) : (
+                            <Link
+                              to={cat.href}
+                              className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest hover:gap-5 transition-all duration-300"
+                              style={{ color: cat.color }}
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              Explore <ArrowRight size={14} />
+                            </Link>
+                          )}
                         </div>
                         <div className="h-[250px] md:h-[300px] rounded-[16px] overflow-hidden">
                           <img src={cat.img} alt={cat.title} className="w-full h-full object-cover" />
