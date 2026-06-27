@@ -23,7 +23,7 @@ import Footer from './components/common/Footer';
 import ScrollToTop from './components/common/ScrollToTop';
 
 import AboutTrident from './pages/AboutTrident';
-import DepartmentLibraries from './pages/DepartmentLibraries';
+import LibraryPage from './pages/LibraryPage';
 import Scholarships from './pages/Scholarships';
 import ICTClassrooms from './pages/ICTClassrooms';
 import ExtraCurricular from './pages/ExtraCurricular';
@@ -54,6 +54,7 @@ import Volleyball from './pages/Volleyball';
 import Badminton from './pages/Badminton';
 import TableTennis from './pages/TableTennis';
 import ComingSoon from './pages/ComingSoon';
+import AlumniPage from './pages/AlumniPage';
 
 // Pages copied from academics-trident (header/footer links)
 import AICTEDisclosurePage from './pages/AICTEDisclosurePage';
@@ -167,7 +168,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<MainContent />} />
         <Route path="/about" element={<AboutTrident />} />
-        <Route path="/library" element={<DepartmentLibraries />} />
+        <Route path="/library" element={<LibraryPage />} />
         <Route path="/scholarships" element={<Scholarships />} />
         <Route path="/ict-classrooms" element={<ICTClassrooms />} />
         <Route path="/extra-curricular" element={<ExtraCurricular />} />
@@ -210,6 +211,7 @@ export default function App() {
         <Route path="/anti-ragging" element={<AntiRaggingPage />} />
         <Route path="/iqac" element={<IQACPage />} />
         <Route path="/testimonials" element={<TestimonialsPage />} />
+        <Route path="/alumni" element={<AlumniPage />} />
         <Route path="/student-clubs" element={<StudentClubsPage />} />
         <Route path="/cisco-thingqbator" element={<CiscoThingQbatorPage />} />
         <Route path="/grievance" element={<GrievancePage />} />
