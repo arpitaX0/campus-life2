@@ -53,66 +53,61 @@ export default function Hostels() {
 
   return (
     <SmoothScrollProvider>
-      <div className={`transition-colors duration-1000 min-h-screen font-sans ${
-        isNightMode ? 'bg-[#0f141c] text-slate-100' : 'bg-[#FAF6F0] text-stone-800'
-      }`}>
-        
-        {/* ── Bespoke Floating Header ── */}
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-40 w-11/12 max-w-5xl">
-          <div className="backdrop-blur-md bg-white/10 dark:bg-black/20 border border-white/20 rounded-full px-6 py-3 flex items-center justify-between shadow-lg">
-            <span className="font-serif text-lg font-bold tracking-wider text-amber-500">TAT Luxury Living</span>
-            <div className="flex items-center gap-6 text-xs uppercase tracking-widest font-bold">
-              <a href="#rooms" className="hover:text-amber-500 transition-colors">Rooms</a>
-              <a href="#amenities" className="hover:text-amber-500 transition-colors">Amenities</a>
-              
-            </div>
-          </div>
-        </div>
+      <div className="bg-[#FAF6F0] text-stone-800 min-h-screen font-sans overflow-x-hidden">
 
-        {/* ── HERO BANNER with Day/Night Transition ── */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-32">
-          {/* Day & Night Interactive Backdrop */}
-          <div className="absolute inset-0 z-0 transition-opacity duration-1000">
-            <img 
-              src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=2069&auto=format&fit=crop" 
-              alt="Luxury Hostels Day" 
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                isNightMode ? 'opacity-0' : 'opacity-30'
-              }`}
+        {/* ── HERO ── */}
+        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[520px] flex flex-col justify-end">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=2069&auto=format&fit=crop"
+              alt="Hostels"
+              className="w-full h-full object-cover"
             />
-            <div className={`absolute inset-0 bg-gradient-to-b transition-colors duration-1000 ${
-              isNightMode 
-                ? 'from-blue-950/80 via-slate-900 to-[#0f141c]' 
-                : 'from-amber-100/40 via-stone-100/20 to-[#FAF6F0]'
-            }`} />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(15,20,28,0.93) 0%, rgba(15,20,28,0.80) 55%, rgba(15,20,28,0.40) 100%)' }} />
           </div>
-
-          <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
-            {/* Day/Night Interactive Switch */}
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setIsNightMode(!isNightMode)}
-              className="mb-8 px-4 py-2 rounded-full border border-amber-500/30 bg-white/10 backdrop-blur-md flex items-center gap-3 text-xs uppercase font-bold tracking-widest text-amber-500 transition-colors"
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+            <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <span style={{ color: '#E5AA3E', fontWeight: 700 }}>Hostels</span>
+            </nav>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-white/70 text-[13px] font-bold uppercase tracking-[0.25em] mb-3"
             >
-              {isNightMode ? <Sun size={14} /> : <Moon size={14} />}
-              Toggle {isNightMode ? 'Day Light' : 'Night Mood'}
-            </motion.button>
-
-            <h1 className="font-serif text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-none">
-              Luxury Student <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-yellow-600">
-                Living Redefined.
-              </span>
-            </h1>
-
-            <p className="text-base md:text-lg max-w-2xl mb-12 opacity-80 leading-relaxed font-light">
-              Experience a premium residential enclave combining premium rooms, high-speed amenities, and 24/7 security circles to guarantee a comfortable academic environment.
-            </p>
-
-            <a href="#rooms" className="px-8 py-4 bg-amber-500 hover:bg-amber-600 text-white rounded-full font-bold text-xs uppercase tracking-widest transition-all shadow-lg shadow-amber-500/20">
-              Explore Residence Units
-            </a>
+              Student Residences
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="leading-[1.05] tracking-tight mb-6"
+              style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
+            >
+              Luxury Student<br />
+              <span style={{ color: '#E5AA3E' }}>Living Redefined.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="max-w-2xl leading-relaxed font-medium mb-10"
+              style={{ color: 'rgba(255,255,255,0.75)', fontSize: '17px' }}
+            >
+              A premium residential enclave combining comfortable rooms, high-speed amenities, and 24/7 security circles for a peaceful academic environment.
+            </motion.p>
+            <div className="flex flex-wrap gap-4">
+              {[{ val: '3', lbl: 'Room Types' }, { val: '24/7', lbl: 'Security' }, { val: 'Biometric', lbl: 'Access Gates' }, { val: 'WiFi', lbl: 'Gigabit Speed' }].map((s, i) => (
+                <div key={i} className="px-5 py-3 rounded-lg text-center" style={{ backgroundColor: 'rgba(0,0,0,0.45)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                  <div className="text-[22px] font-black text-white">{s.val}</div>
+                  <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold mt-0.5">{s.lbl}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

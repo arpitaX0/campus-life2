@@ -1,18 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Brain, Radio, Settings, Hammer, 
   Handshake, CheckCircle2, FlaskConical, ArrowRight 
 } from 'lucide-react';
 
 export default function InnovationLab() {
-
-  const labs = [
-    { title: "AI & Machine Learning Lab", icon: Brain, desc: "Building neural networks, NLP bots, and machine vision models for autonomous systems.", color: "from-pink-500 to-purple-600" },
-    { title: "IoT Innovation Center", icon: Radio, desc: "Working on smart grid technologies, edge computing nodes, and automated remote sensors.", color: "from-cyan-500 to-blue-600" },
-    { title: "Robotics Laboratory", icon: Settings, desc: "Creating micro-controller driven arms, line followers, and custom unmanned aerial units.", color: "from-violet-500 to-indigo-600" },
-    { title: "Product Prototyping Space", icon: Hammer, desc: "Rapid prototyping equipped with advanced 3D printers, laser cutters, and hardware workshops.", color: "from-purple-500 to-cyan-500" }
-  ];
 
   const showcase = [
     { title: "Smart Crop Health Detector", category: "IoT", team: "Final Year B.Tech CSE", desc: "A smart multispectral camera system checking local plant nutrient deficiencies in real-time." },
@@ -21,81 +13,72 @@ export default function InnovationLab() {
   ];
 
   return (
-    <div className="bg-[#0b0813] min-h-screen text-slate-200 font-sans overflow-x-hidden">
+    <div className="min-h-screen font-sans overflow-x-hidden" style={{ backgroundColor: '#f5eeec', color: '#3e3a36' }}>
       
-      <section className="relative pt-36 pb-28 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-950/50 via-[#0b0813] to-[#0b0813] border-b border-indigo-900/30 overflow-hidden">
-        {/* Animated Hologram sweep scan lines */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:100%_4px] z-0 opacity-40 pointer-events-none" />
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[520px] flex flex-col justify-end">
+        {/* Background image + dark gradient overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1600"
+            alt="Innovation Lab"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(13,27,62,0.90) 0%, rgba(26,38,96,0.75) 55%, rgba(13,27,62,0.40) 100%)' }} />
+        </div>
 
-        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 25 }}
+        {/* Content */}
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+            <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+            <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+            <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+            <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+            <span style={{ color: '#E5AA3E', fontWeight: 700 }}>Innovation Lab</span>
+          </nav>
+
+          {/* Title */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col items-center"
+            transition={{ duration: 0.7 }}
+            className="leading-[1.05] tracking-tight mb-6"
+            style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
           >
-            <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight mb-6 leading-none font-display">
-              Innovation <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-400 to-pink-500">
-                Laboratory.
-              </span>
-            </h1>
-            
-            <p className="text-slate-400 text-lg md:text-xl max-w-xl mb-4 leading-relaxed font-light">
-              Where bright minds design future-proof systems. Supporting students with hardware tools, supercomputers, and expert research mentors.
-            </p>
-          </motion.div>
+            Innovation
+            <br />
+            <span style={{ color: '#E5AA3E' }}>Laboratory.</span>
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="max-w-3xl leading-relaxed font-medium mb-12"
+            style={{ color: 'rgba(255,255,255,0.80)', fontSize: '18px' }}
+          >
+            Where bright minds design future-proof systems. Supporting students with hardware tools, supercomputers, and expert research mentors.
+          </motion.p>
+
 
         </div>
       </section>
 
 
-      {/* ── LAB SUB-DIVISIONS ── */}
-      <section id="labs" className="py-24 max-w-[1300px] mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
-            Our Core Laboratories
-          </h2>
-          <p className="text-slate-400 max-w-xl mx-auto">
-            Equipped with premium compute setups, development kits, and prototyping systems.
-          </p>
-        </div>
 
-        <div className="grid md:grid-cols-4 gap-6">
-          {labs.map((lab, idx) => {
-            const Icon = lab.icon;
-            return (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="bg-slate-900/40 border border-slate-850 hover:border-cyan-500/30 rounded-3xl p-6 transition-all hover:-translate-y-1 group relative overflow-hidden"
-              >
-                <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${lab.color} flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform`}>
-                  <Icon size={22} />
-                </div>
-                <h3 className="text-lg font-bold mb-3 text-white">{lab.title}</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">{lab.desc}</p>
-              </motion.div>
-            );
-          })}
-        </div>
-      </section>
 
       {/* ── STUDENT PROJECTS SHOWCASE ── */}
-      <section className="py-24 bg-[#07050d] border-t border-indigo-950">
+      <section className="py-24" style={{ backgroundColor: '#eae0d5', borderTop: '1px solid #d6cfc9' }}>
         <div className="max-w-[1300px] mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
             <div>
-              <span className="text-[10px] font-bold text-pink-500 uppercase tracking-widest">Active Development</span>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-1">
+              <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: '#2c3a8c' }}>Active Development</span>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-1" style={{ color: '#3e3a36' }}>
                 Student Projects
               </h2>
             </div>
-            <p className="text-slate-400 max-w-md text-sm leading-relaxed">
+            <p className="max-w-md text-sm leading-relaxed" style={{ color: '#6b6460' }}>
               Cutting edge engineering prototypes designed and tested entirely inside our campus innovation workspaces.
             </p>
           </div>
@@ -108,17 +91,18 @@ export default function InnovationLab() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="bg-[#0f0b1a] border border-slate-800/80 rounded-3xl p-8 hover:border-pink-500/30 hover:shadow-xl transition-all"
+                className="rounded-3xl p-8 hover:shadow-lg transition-all"
+                style={{ backgroundColor: '#ffffff', border: '1px solid #e8e2d9', boxShadow: '0 2px 12px rgba(62,58,54,0.05)' }}
               >
                 <div className="flex justify-between items-center mb-6">
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-pink-500/10 text-pink-400 px-3 py-1 rounded">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded" style={{ backgroundColor: 'rgba(44,58,140,0.08)', color: '#2c3a8c' }}>
                     {proj.category}
                   </span>
-                  <span className="text-[10px] text-slate-500">{proj.team}</span>
+                  <span className="text-[10px]" style={{ color: '#9c9390' }}>{proj.team}</span>
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-white">{proj.title}</h3>
-                <p className="text-xs text-slate-400 leading-relaxed mb-6">{proj.desc}</p>
-                <a href="#" className="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300">
+                <h3 className="text-xl font-bold mb-4" style={{ color: '#3e3a36' }}>{proj.title}</h3>
+                <p className="text-xs leading-relaxed mb-6" style={{ color: '#6b6460' }}>{proj.desc}</p>
+                <a href="#" className="inline-flex items-center gap-2 text-xs font-bold" style={{ color: '#2c3a8c' }}>
                   Read Patent Details <ArrowRight size={12} />
                 </a>
               </motion.div>
@@ -137,11 +121,11 @@ export default function InnovationLab() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-[10px] font-bold text-cyan-400 uppercase tracking-widest">Global IP Strategy</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mt-1 mb-6">
+            <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: '#2c3a8c' }}>Global IP Strategy</span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-1 mb-6" style={{ color: '#3e3a36' }}>
               Patent Support & Prototyping Ecosystem
             </h2>
-            <p className="text-slate-400 leading-relaxed mb-8">
+            <p className="leading-relaxed mb-8" style={{ color: '#6b6460' }}>
               We guide innovative project creators through the entire legal process of filing and securing intellectual property. From state-level utility checks to national patent offices, our lab coordinates resources to protect student ideas.
             </p>
 
@@ -152,33 +136,33 @@ export default function InnovationLab() {
                 "Advanced mentorship loops with global researchers"
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-3">
-                  <CheckCircle2 size={16} className="text-cyan-400 flex-shrink-0" />
-                  <span className="text-sm text-slate-300">{item}</span>
+                  <CheckCircle2 size={16} style={{ color: '#2c3a8c' }} className="flex-shrink-0" />
+                  <span className="text-sm" style={{ color: '#3e3a36' }}>{item}</span>
                 </div>
               ))}
             </div>
           </motion.div>
 
           <div className="space-y-6">
-            <div className="p-6 bg-slate-900/40 border border-slate-850 rounded-2xl flex gap-6 items-start">
-              <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-400 flex-shrink-0">
+            <div className="p-6 rounded-2xl flex gap-6 items-start" style={{ backgroundColor: '#ffffff', border: '1px solid #e8e2d9', boxShadow: '0 2px 12px rgba(62,58,54,0.05)' }}>
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'rgba(124,58,237,0.08)', color: '#7c3aed' }}>
                 <Handshake size={22} />
               </div>
               <div>
-                <h4 className="font-bold text-white mb-2">Industry Collaborators</h4>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <h4 className="font-bold mb-2" style={{ color: '#3e3a36' }}>Industry Collaborators</h4>
+                <p className="text-xs leading-relaxed" style={{ color: '#6b6460' }}>
                   Trident teams code and build side-by-side with engineers from top tech companies to resolve localized industrial bottlenecks.
                 </p>
               </div>
             </div>
 
-            <div className="p-6 bg-slate-900/40 border border-slate-850 rounded-2xl flex gap-6 items-start">
-              <div className="w-12 h-12 bg-pink-500/10 rounded-xl flex items-center justify-center text-pink-400 flex-shrink-0">
+            <div className="p-6 rounded-2xl flex gap-6 items-start" style={{ backgroundColor: '#ffffff', border: '1px solid #e8e2d9', boxShadow: '0 2px 12px rgba(62,58,54,0.05)' }}>
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'rgba(219,39,119,0.08)', color: '#db2777' }}>
                 <FlaskConical size={22} />
               </div>
               <div>
-                <h4 className="font-bold text-white mb-2">Government R&D Funding</h4>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <h4 className="font-bold mb-2" style={{ color: '#3e3a36' }}>Government R&D Funding</h4>
+                <p className="text-xs leading-relaxed" style={{ color: '#6b6460' }}>
                   Our innovation labs coordinate multiple grants backed by national councils to facilitate high-tech sensor procurement.
                 </p>
               </div>

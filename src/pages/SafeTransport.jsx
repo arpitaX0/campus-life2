@@ -59,52 +59,61 @@ export default function SafeTransport() {
 
   return (
     <SmoothScrollProvider>
-      <div className="bg-[#0B0F19] text-slate-100 min-h-screen font-sans overflow-x-hidden selection:bg-[#F59E0B] selection:text-black">
-        
-        {/* ── Fleet Floating Header ── */}
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-40 w-11/12 max-w-5xl">
-          <div className="backdrop-blur-md bg-slate-900/90 text-slate-100 border border-slate-800 rounded-full px-6 py-3 flex items-center justify-between shadow-[0_0_20px_rgba(245,158,11,0.1)]">
-            <span className="font-bold tracking-wider text-[#F59E0B] flex items-center gap-2">
-              <Bus size={18} className="text-[#F59E0B] animate-pulse" /> Fleet Transit
-            </span>
-            <div className="flex items-center gap-6 text-xs uppercase tracking-widest font-bold">
-              <a href="#routes" className="hover:text-[#F59E0B] transition-colors">Transit Routes</a>
-              <a href="#safety" className="hover:text-[#F59E0B] transition-colors">Safety Standards</a>
-              <a href="#feedback" className="px-4 py-2 bg-[#F59E0B] hover:bg-amber-600 text-slate-900 rounded-full transition-all">Submit Feedback</a>
-            </div>
+      <div className="bg-[#FAF9F7] text-[#3E3A36] min-h-screen font-sans overflow-x-hidden">
+
+        {/* ── HERO ── */}
+        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[520px] flex flex-col justify-end">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&q=80&w=1600"
+              alt="Safe Transport"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(11,15,25,0.93) 0%, rgba(11,15,25,0.80) 55%, rgba(11,15,25,0.40) 100%)' }} />
           </div>
-        </div>
-
-        {/* ── HERO BANNER with Bus Line animations ── */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-32">
-          {/* Moving routes/vectors background */}
-          <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
-            <svg className="w-full h-full" viewBox="0 0 1000 600" preserveAspectRatio="none">
-              <path d="M0,100 L400,100 L600,400 L1000,400" fill="none" stroke="#6366F1" strokeWidth="2" strokeDasharray="5,5" />
-              <path d="M0,500 L500,500 L700,200 L1000,200" fill="none" stroke="#F59E0B" strokeWidth="2" strokeDasharray="5,5" />
-            </svg>
-          </div>
-
-          <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F59E0B]/10 border border-[#F59E0B]/30 text-[#F59E0B] mb-6 text-xs font-bold uppercase tracking-widest">
-              <ShieldCheck className="w-4 h-4 animate-bounce" />
-              <span>Safety Rating: Class-A Fleet</span>
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+            <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <span style={{ color: '#E5AA3E', fontWeight: 700 }}>Safe Transport</span>
+            </nav>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-white/70 text-[13px] font-bold uppercase tracking-[0.25em] mb-3"
+            >
+              Fleet Transit & Safety
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="leading-[1.05] tracking-tight mb-6"
+              style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
+            >
+              Smart Transit &<br />
+              <span style={{ color: '#E5AA3E' }}>Safe Transport.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="max-w-2xl leading-relaxed font-medium mb-10"
+              style={{ color: 'rgba(255,255,255,0.75)', fontSize: '17px' }}
+            >
+              Connecting Bhubaneswar and Cuttack seamlessly to TAT campus — a fleet of 15+ GPS-tracked buses managed by certified drivers and emergency coordinators.
+            </motion.p>
+            <div className="flex flex-wrap gap-4">
+              {[{ val: '15+', lbl: 'Buses in Fleet' }, { val: '3', lbl: 'Major Routes' }, { val: 'GPS', lbl: 'Live Tracking' }, { val: 'Class-A', lbl: 'Safety Rating' }].map((s, i) => (
+                <div key={i} className="px-5 py-3 rounded-lg text-center" style={{ backgroundColor: 'rgba(0,0,0,0.45)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                  <div className="text-[22px] font-black text-white">{s.val}</div>
+                  <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold mt-0.5">{s.lbl}</div>
+                </div>
+              ))}
             </div>
-
-            <h1 className="font-serif text-5xl md:text-8xl font-bold tracking-tight mb-8 leading-none">
-              Smart Transit & <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6366F1] via-indigo-400 to-[#F59E0B]">
-                Safe Transport.
-              </span>
-            </h1>
-
-            <p className="text-sm md:text-base max-w-2xl mb-12 text-slate-400 leading-relaxed font-light">
-              Connecting Bhubaneswar and Cuttack seamlessly to TAT campus. We operate a fleet of 15+ multi-stop passenger buses, managed by GPS trackers and emergency response coordinators.
-            </p>
-
-            <a href="#routes" className="px-8 py-4 bg-[#F59E0B] hover:bg-amber-600 text-slate-900 font-bold text-xs uppercase tracking-widest transition-all rounded-xl shadow-[0_0_15px_rgba(245,158,11,0.3)]">
-              View Route Timing
-            </a>
           </div>
         </section>
 

@@ -70,42 +70,50 @@ const Scholarships = () => {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen">
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        {/* Background Image & Overlay */}
+    <div style={{ backgroundColor: '#FAF9F7' }} className="min-h-screen font-sans">
+      {/* ── HERO (academics-tat style) ── */}
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[480px] flex flex-col justify-end">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
-            alt="Students celebrating graduation" 
-            className="w-full h-full object-cover object-center"
+          <img
+            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1600"
+            alt="Scholarships"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-indigo-950/70 mix-blend-multiply" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-slate-50/20 to-transparent" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(13,27,62,0.90) 0%, rgba(26,38,96,0.75) 55%, rgba(13,27,62,0.40) 100%)' }} />
         </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="max-w-3xl"
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+          <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+            <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+            <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+            <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+            <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+            <span style={{ color: '#E5AA3E', fontWeight: 700 }}>Scholarships</span>
+          </nav>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="leading-[1.05] tracking-tight mb-6"
+            style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
           >
-
-            <motion.h1 variants={fadeIn} className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 font-display">
-              Empowering Dreams Through <span className="text-indigo-300">Financial Support</span>
-            </motion.h1>
-            
-            <motion.p variants={fadeIn} className="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl leading-relaxed">
-              "Trident Academy of Technology is committed to ensuring that deserving students receive financial assistance to pursue quality education."
-            </motion.p>
-            
-          </motion.div>
+            Empowering Dreams
+            <br />
+            <span style={{ color: '#E5AA3E' }}>Through Financial Support.</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="max-w-3xl leading-relaxed font-medium"
+            style={{ color: 'rgba(255,255,255,0.80)', fontSize: '18px' }}
+          >
+            Trident Academy is committed to ensuring that deserving students receive financial assistance to pursue quality education.
+          </motion.p>
         </div>
       </section>
 
       {/* Main Content Area */}
-      <section className="py-16 lg:py-24 relative z-20">
+      <section className="py-16 lg:py-24 relative z-20" style={{ backgroundColor: '#FAF9F7' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Introduction Statement */}
@@ -114,9 +122,10 @@ const Scholarships = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeIn}
-            className="bg-white rounded-3xl p-8 md:p-12 shadow-xl shadow-slate-200/50 border border-slate-100 text-center mb-20 max-w-4xl mx-auto transform -translate-y-12"
+            className="rounded-3xl p-8 md:p-12 text-center mb-20 max-w-4xl mx-auto transform -translate-y-12"
+            style={{ backgroundColor: '#ffffff', border: '1px solid #ede8e3', boxShadow: '0 8px 40px rgba(0,0,0,0.06)' }}
           >
-            <p className="text-xl md:text-2xl text-slate-700 leading-relaxed font-medium">
+            <p className="text-xl md:text-2xl leading-relaxed font-medium" style={{ color: '#3e3a36' }}>
               The institution provides Scholarships from its own fund/corpus and supports scholarships on various heads from various available State and National schemes and the financial aid are disbursed in time.
             </p>
           </motion.div>
@@ -124,10 +133,10 @@ const Scholarships = () => {
           {/* In-House Scholarships */}
           <div className="mb-24">
             <div className="flex items-center gap-4 mb-10">
-              <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#e8ecf8', color: '#2c3a8c' }}>
                 <IndianRupee className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 font-display">In-House Scholarships</h2>
+              <h2 className="text-3xl md:text-4xl font-bold" style={{ color: '#1a1a2e', fontFamily: '"Source Serif 4", Georgia, serif' }}>In-House Scholarships</h2>
             </div>
             
             <div className="grid md:grid-cols-2 gap-8">
@@ -138,13 +147,15 @@ const Scholarships = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-2xl p-8 border border-slate-100 shadow-lg shadow-slate-200/20 hover:shadow-xl hover:shadow-indigo-100/40 transition-all duration-300 group"
+                  className="rounded-2xl p-8 transition-all duration-300 group hover:shadow-lg"
+                style={{ backgroundColor: '#ffffff', border: '1px solid #ede8e3' }}
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-indigo-50 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-indigo-100 transition-transform">
+                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform" style={{ backgroundColor: '#e8ecf8', color: '#2c3a8c' }}>
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-4">{item.title}</h3>
-                  <p className="text-slate-600 leading-relaxed">{item.description}</p>
+                  <div className="w-8 h-[3px] rounded-full mb-4" style={{ backgroundColor: '#2c3a8c' }} />
+                  <h3 className="text-xl font-bold mb-4" style={{ color: '#1a1a2e' }}>{item.title}</h3>
+                  <p className="leading-relaxed" style={{ color: '#6b6460' }}>{item.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -153,10 +164,10 @@ const Scholarships = () => {
           {/* State Level Scholarships */}
           <div className="mb-24">
             <div className="flex items-center gap-4 mb-10">
-              <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#e0f4ec', color: '#1a6b4a' }}>
                 <FileText className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 font-display">State Level Scholarships</h2>
+              <h2 className="text-3xl md:text-4xl font-bold" style={{ color: '#1a1a2e', fontFamily: '"Source Serif 4", Georgia, serif' }}>State Level Scholarships</h2>
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -167,10 +178,12 @@ const Scholarships = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-gradient-to-br from-white to-slate-50 rounded-2xl p-6 border border-slate-200 shadow-md hover:shadow-xl transition-all"
+                  className="rounded-2xl p-6 transition-all hover:shadow-md"
+                  style={{ backgroundColor: '#ffffff', border: '1px solid #ede8e3' }}
                 >
-                  <h3 className="text-lg font-bold text-slate-900 mb-3">{item.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{item.description}</p>
+                  <div className="w-6 h-[3px] rounded-full mb-4" style={{ backgroundColor: '#1a6b4a' }} />
+                  <h3 className="text-lg font-bold mb-3" style={{ color: '#1a1a2e' }}>{item.title}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: '#6b6460' }}>{item.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -179,10 +192,10 @@ const Scholarships = () => {
           {/* National Level Scholarships */}
           <div className="mb-10">
             <div className="flex items-center gap-4 mb-10">
-              <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#e8ecf8', color: '#2c3a8c' }}>
                 <Award className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 font-display">National Level Scholarships</h2>
+              <h2 className="text-3xl md:text-4xl font-bold" style={{ color: '#1a1a2e', fontFamily: '"Source Serif 4", Georgia, serif' }}>National Level Scholarships</h2>
             </div>
             
             <div className="grid md:grid-cols-2 gap-6">
@@ -193,12 +206,13 @@ const Scholarships = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex gap-6 bg-white rounded-2xl p-6 md:p-8 border border-slate-100 shadow-lg shadow-slate-200/40 hover:-translate-y-1 transition-transform"
+                  className="flex gap-6 rounded-2xl p-6 md:p-8 hover:-translate-y-1 transition-transform"
+                  style={{ backgroundColor: '#ffffff', border: '1px solid #ede8e3', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}
                 >
-                  <div className="flex-shrink-0 w-2 bg-indigo-500 rounded-full h-full" />
+                  <div className="flex-shrink-0 w-1.5 rounded-full" style={{ backgroundColor: '#2c3a8c', minHeight: '100%' }} />
                   <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
-                    <p className="text-slate-600 leading-relaxed">{item.description}</p>
+                    <h3 className="text-xl font-bold mb-3" style={{ color: '#1a1a2e' }}>{item.title}</h3>
+                    <p className="leading-relaxed" style={{ color: '#6b6460' }}>{item.description}</p>
                   </div>
                 </motion.div>
               ))}

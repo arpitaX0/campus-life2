@@ -47,48 +47,61 @@ export default function ModernLabs() {
 
   return (
     <SmoothScrollProvider>
-      <div className="bg-[#020617] text-slate-100 min-h-screen font-mono overflow-x-hidden selection:bg-cyan-500 selection:text-black">
-        
-        {/* ── Futuristic Tech Navbar ── */}
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-40 w-11/12 max-w-5xl">
-          <div className="backdrop-blur-md bg-slate-950/90 text-slate-100 border border-cyan-500/20 rounded-full px-6 py-3 flex items-center justify-between shadow-[0_0_15px_rgba(6,182,212,0.1)]">
-            <span className="font-bold tracking-wider text-cyan-400 flex items-center gap-2">
-              <Cpu size={16} className="text-cyan-400 animate-spin" /> LabConsole v1.0
-            </span>
-            <div className="flex items-center gap-6 text-[10px] uppercase tracking-widest font-bold">
-              <a href="#workbench" className="hover:text-cyan-400 transition-colors">Workbench</a>
-              <a href="#facilities" className="hover:text-cyan-400 transition-colors">Facilities</a>
-              <a href="#diagnostics" className="px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-black rounded-full font-bold transition-all shadow-[0_0_10px_rgba(6,182,212,0.3)]">Run Test</a>
-            </div>
+      <div className="bg-[#F8FAFD] text-slate-800 min-h-screen font-sans overflow-x-hidden">
+
+        {/* ── HERO ── */}
+        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[520px] flex flex-col justify-end">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&q=80&w=1600"
+              alt="Modern Labs"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(2,6,23,0.93) 0%, rgba(2,6,23,0.80) 55%, rgba(2,6,23,0.40) 100%)' }} />
           </div>
-        </div>
-
-        {/* ── HERO BANNER with Neon Sci-Fi overlay ── */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-32">
-          {/* Cyber matrix grid backdrop */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(6,182,212,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(6,182,212,0.05)_1px,transparent_1px)] bg-[size:30px_30px]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,#020617_90%)]" />
-
-          <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 mb-6 text-xs uppercase tracking-widest font-bold">
-              <Terminal className="w-4 h-4" />
-              <span>System: ONLINE</span>
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+            <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <span style={{ color: '#E5AA3E', fontWeight: 700 }}>Modern Labs</span>
+            </nav>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-white/70 text-[13px] font-bold uppercase tracking-[0.25em] mb-3"
+            >
+              Research & Technology Infrastructure
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="leading-[1.05] tracking-tight mb-6"
+              style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
+            >
+              Modern Labs &<br />
+              <span style={{ color: '#E5AA3E' }}>Workspaces.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="max-w-2xl leading-relaxed font-medium mb-10"
+              style={{ color: 'rgba(255,255,255,0.75)', fontSize: '17px' }}
+            >
+              Powering student prototyping, machine learning, and robotics coding with industrial-grade instrumentation and compute clusters built to push academic limits.
+            </motion.p>
+            <div className="flex flex-wrap gap-4">
+              {[{ val: '3', lbl: 'Specialized Labs' }, { val: 'RTX A6000', lbl: 'GPU Clusters' }, { val: 'ROS2', lbl: 'Robotics Stack' }, { val: 'FPGA', lbl: 'VLSI Equipment' }].map((s, i) => (
+                <div key={i} className="px-5 py-3 rounded-lg text-center" style={{ backgroundColor: 'rgba(0,0,0,0.45)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                  <div className="text-[22px] font-black text-white">{s.val}</div>
+                  <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold mt-0.5">{s.lbl}</div>
+                </div>
+              ))}
             </div>
-
-            <h1 className="text-5xl md:text-8xl font-black tracking-tight mb-8 uppercase leading-none">
-              Modern Labs & <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 animate-pulse">
-                Workspaces.
-              </span>
-            </h1>
-
-            <p className="text-sm md:text-base max-w-2xl mb-12 text-slate-400 leading-relaxed font-light font-sans">
-              Powering student prototyping, machine learning modeling, and robotics coding. Experience industrial-grade instrumentation and compute clusters, custom built to push academic limits.
-            </p>
-
-            <a href="#workbench" className="px-8 py-4 bg-cyan-500 hover:bg-cyan-600 text-black font-bold text-xs uppercase tracking-widest transition-all rounded-xl shadow-[0_0_15px_rgba(6,182,212,0.4)]">
-              Initialize Workbench
-            </a>
           </div>
         </section>
 

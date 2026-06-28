@@ -57,48 +57,64 @@ export default function Football() {
     <SmoothScrollProvider>
       <div className="bg-[#F0FFF4] min-h-screen text-slate-800 font-sans overflow-x-hidden">
 
-        {/* ── HERO SECTION: Scoreboard counter + image overlay ── */}
-        <section className="relative min-h-[80vh] flex items-center justify-center pt-24 overflow-hidden bg-gradient-to-br from-green-50/20 via-white to-[#F0FFF4]">
-          {/* Pitch background overlays */}
-          <div className="absolute inset-0 z-0 opacity-10 filter grayscale">
-            <img src={sportsImg2} alt="Football stadium pitch" className="w-full h-full object-cover" />
+        {/* ── HERO SECTION (academics-tat style) ── */}
+        <section className="relative min-h-[88vh] flex flex-col justify-end overflow-hidden">
+          {/* Full-width photo background */}
+          <div className="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?auto=format&fit=crop&w=1400&q=85" alt="Football Pitch" className="w-full h-full object-cover object-center" />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/80 to-[#F0FFF4] z-1" />
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0 z-[1]" style={{ background: 'linear-gradient(to right, rgba(3,12,5,0.90) 0%, rgba(3,12,5,0.68) 55%, rgba(3,12,5,0.30) 100%)' }} />
+          <div className="absolute inset-0 z-[1]" style={{ background: 'linear-gradient(to top, rgba(3,12,5,0.75) 0%, transparent 50%)' }} />
 
-          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            {/* Breadcrumb */}
-            <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-500 mb-8">
-              <Link to="/"  className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
-              <ChevronRight size={10} />
-              <Link to="/extra-curricular"  className="hover:text-slate-800 transition-colors">Extra Curricular</Link>
-              <ChevronRight size={10} />
-              <span className="text-emerald-600">Football</span>
-            </div>
+          {/* Content */}
+          <div className="relative z-10 max-w-7xl mx-auto px-6 xl:px-12 w-full pb-0">
+            <div className="max-w-3xl pt-36 pb-12">
+              {/* Breadcrumb */}
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/60 mb-6">
+                <Link to="/" className="hover:text-[#E5AA3E] transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
+                <ChevronRight size={10} className="text-white/40" />
+                <Link to="/extra-curricular" className="hover:text-[#E5AA3E] transition-colors">Extra Curricular</Link>
+                <ChevronRight size={10} className="text-white/40" />
+                <span className="text-[#E5AA3E]">Football</span>
+              </div>
 
-            <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded mb-8">
-              PLAY WITH PASSION
-            </div>
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 border border-[#E5AA3E]/60 text-[#E5AA3E] text-[10px] font-bold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full mb-6">
+                Play With Passion
+              </div>
 
-            <h1 className="font-serif text-5xl md:text-8xl font-black text-slate-900 leading-none mb-8 tracking-tight uppercase">
-              FOOTBALL <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-500">PITCH</span>
-            </h1>
+              {/* Title */}
+              <h1 className="font-serif text-5xl md:text-7xl font-black text-white leading-[1.05] mb-5">
+                Football
+                <span className="block" style={{ color: '#E5AA3E' }}>Club & Pitch</span>
+              </h1>
 
-            <p className="text-slate-650 text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
-              Dominate the pitch. Join Trident United for advanced tactical training, inter-college knockout tournaments, and daily training on our standard grass playground.
-            </p>
+              {/* Description */}
+              <p className="text-white/75 text-lg leading-relaxed max-w-2xl mb-8">
+                Dominate the pitch. Join Trident United for advanced tactical training, inter-college knockout tournaments, and daily training on our standard grass playground.
+              </p>
 
-            <div className="flex flex-wrap justify-center gap-4">
-              
-              <a href="#about" className="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-green-700 border border-green-300 hover:bg-green-50 transition-all">
-                Pitch Details
+              <a href="#about" className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all" style={{ background: '#E5AA3E', color: '#030C05' }}>
+                Pitch Details <ArrowRight size={13} />
               </a>
             </div>
           </div>
 
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center opacity-60">
-            <span className="text-[9px] tracking-widest text-slate-500 uppercase mb-2">scroll down</span>
-            <ChevronDown className="w-4 h-4 text-emerald-650 animate-bounce" />
+          {/* Stats bar */}
+          <div className="relative z-10 w-full" style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)', borderTop: '1px solid rgba(229,170,62,0.2)' }}>
+            <div className="max-w-7xl mx-auto px-6 xl:px-12">
+              <div className="grid grid-cols-2 md:grid-cols-4">
+                {stats.map((s, i) => (
+                  <div key={i} className="py-5 px-6 flex flex-col" style={{ borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
+                    <span className="font-black text-2xl text-white">
+                      <GSAPCounter end={s.end} suffix={s.suffix} duration={2} />
+                    </span>
+                    <span className="text-[11px] text-white/55 uppercase tracking-widest mt-0.5 font-semibold">{s.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 

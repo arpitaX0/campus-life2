@@ -11,7 +11,7 @@ import act5 from '../../assets/news_innovation_lab.png';
 import act6 from '../../assets/about_engineering_workshop.jpg';
 
 const activityCategories = [
-  { title: 'Extra Curricular', description: 'Trident promotes and nurtures the talents in its students through sports, athletics, and physical activities.', color: '#E56D24', href: '/extra-curricular', stats: '15+ Sports', img: act1 },
+  { title: 'Extra Curricular', description: 'Trident promotes and nurtures the talents in its students through sports, athletics, and physical activities.', color: '#E56D24', href: '/extra-curricular', stats: '15+ Sports', img: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=800&q=80' },
   { title: 'Co-Curricular', description: 'Activities that complement the academic curriculum — debates, quizzes, seminars, workshops, and national-level competitions.', color: '#2C3A8C', href: 'https://activities-tat.tekkzy.com/co-curricular/', stats: '30+ Events', img: act2 },
   { title: 'Innovation Lab', description: 'Fostering innovation through incubation cells, startup mentoring, and technical project competitions at national level.', color: '#E8BD63', href: '/innovation-lab', stats: 'Innovation Cell', img: act3 },
   { title: 'Sports & Games', description: 'World-class sports facilities including cricket ground, football field, basketball, volleyball, badminton, and more.', color: '#34785A', href: '/sports-games', stats: '10+ Facilities', img: act4 },

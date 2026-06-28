@@ -47,60 +47,60 @@ export default function Healthcare() {
   return (
     <SmoothScrollProvider>
       <div className="bg-[#F0FDF4] min-h-screen text-slate-800 font-sans overflow-x-hidden">
-        
-        {/* ── Healthcare Floating Header ── */}
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-40 w-11/12 max-w-5xl">
-          <div className="backdrop-blur-md bg-white/80 border border-emerald-200/80 rounded-full px-6 py-3 flex items-center justify-between shadow-lg">
-            <span className="font-serif text-lg font-bold tracking-wider text-emerald-600 flex items-center gap-2">
-              <HeartPulse size={20} className="text-emerald-500 animate-pulse" /> Wellness Center
-            </span>
-            <div className="flex items-center gap-6 text-xs uppercase tracking-widest font-bold text-slate-600">
-              <a href="#staff" className="hover:text-emerald-600 transition-colors">OPD Staff</a>
-              <a href="#checker" className="hover:text-emerald-600 transition-colors">Symptom Guide</a>
-              <a href="tel:+916746649219" className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full transition-all flex items-center gap-2">
-                <Phone size={12} /> Emergency Dial
-              </a>
-            </div>
+
+        {/* ── HERO ── */}
+        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[520px] flex flex-col justify-end">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=1600"
+              alt="Healthcare"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(4,47,46,0.93) 0%, rgba(4,47,46,0.80) 55%, rgba(4,47,46,0.40) 100%)' }} />
           </div>
-        </div>
-
-        {/* ── HERO BANNER with Pulse Path SVG Animation ── */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-32 bg-white">
-          <div className="absolute inset-0 z-0 opacity-10">
-            {/* Heart Rate Pulse SVG Line Drawing */}
-            <svg className="w-full h-full" viewBox="0 0 1000 400" preserveAspectRatio="none">
-              <motion.path 
-                d="M0,200 L400,200 L420,150 L440,250 L460,180 L480,220 L500,200 L1000,200" 
-                fill="none" 
-                stroke="#10b981" 
-                strokeWidth="4" 
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </svg>
-          </div>
-
-          <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 mb-6">
-              <Activity className="w-4 h-4 animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-widest">Active Care Hub</span>
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+            <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <span style={{ color: '#E5AA3E', fontWeight: 700 }}>Healthcare</span>
+            </nav>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-white/70 text-[13px] font-bold uppercase tracking-[0.25em] mb-3"
+            >
+              Student Wellness Center
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="leading-[1.05] tracking-tight mb-6"
+              style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
+            >
+              Student Wellness<br />
+              <span style={{ color: '#E5AA3E' }}>& Healthcare.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="max-w-2xl leading-relaxed font-medium mb-10"
+              style={{ color: 'rgba(255,255,255,0.75)', fontSize: '17px' }}
+            >
+              TAT prioritizes student health with 24/7 dedicated first aid, general physician consulting, emergency ambulances, and expert psychological guidance on campus.
+            </motion.p>
+            <div className="flex flex-wrap gap-4">
+              {[{ val: '24/7', lbl: 'First Aid' }, { val: '3', lbl: 'Specialists' }, { val: 'Emergency', lbl: 'Ambulance' }, { val: 'Free', lbl: 'Consultations' }].map((s, i) => (
+                <div key={i} className="px-5 py-3 rounded-lg text-center" style={{ backgroundColor: 'rgba(0,0,0,0.45)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                  <div className="text-[22px] font-black text-white">{s.val}</div>
+                  <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold mt-0.5">{s.lbl}</div>
+                </div>
+              ))}
             </div>
-
-            <h1 className="font-serif text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-none">
-              Student Wellness <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">
-                & Healthcare.
-              </span>
-            </h1>
-
-            <p className="text-base md:text-lg max-w-2xl mb-12 opacity-80 leading-relaxed font-light text-slate-600">
-              TAT prioritizes student health. Access 24/7 dedicated first aid beds, general physician consulting, emergency ambulances, and expert psychological guidance on campus.
-            </p>
-
-            <a href="#checker" className="px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-bold text-xs uppercase tracking-widest transition-all shadow-lg shadow-emerald-500/20">
-              Check Consultation Slots
-            </a>
           </div>
         </section>
 

@@ -8,7 +8,7 @@ import { SmoothScrollProvider } from '../lib/smooth-scroll';
 
 export default function TechFest() {
   const [selectedPass, setSelectedPass] = useState('general');
-  
+  const [isReceiptOpen, setIsReceiptOpen] = useState(false);
   const [activeDay, setActiveDay] = useState('day1');
 
   // Live countdown timer (simulate techfest date)
@@ -54,58 +54,65 @@ export default function TechFest() {
   return (
     <SmoothScrollProvider>
       <div className="bg-[#030014] text-slate-100 min-h-screen font-sans overflow-x-hidden selection:bg-fuchsia-500 selection:text-black">
-        
-        {/* ── Cyber Event Floating Header ── */}
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-40 w-11/12 max-w-5xl">
-          <div className="backdrop-blur-md bg-purple-950/70 border border-fuchsia-500/20 rounded-full px-6 py-3 flex items-center justify-between shadow-[0_0_20px_rgba(236,72,153,0.15)]">
-            <span className="font-mono text-sm font-bold tracking-wider text-fuchsia-400 flex items-center gap-2">
-              <Cpu size={16} className="text-fuchsia-400 animate-spin" /> TRIDENT '25
-            </span>
-            <div className="flex items-center gap-6 text-xs uppercase tracking-widest font-bold">
-              <a href="#schedule" className="hover:text-fuchsia-400 transition-colors">Schedule</a>
-              
-              
-            </div>
+
+        {/* ── HERO ── */}
+        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[520px] flex flex-col justify-end">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=1600"
+              alt="TechFest"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(3,0,20,0.95) 0%, rgba(15,10,35,0.85) 55%, rgba(3,0,20,0.45) 100%)' }} />
           </div>
-        </div>
-
-        {/* ── HERO BANNER with Glitch Countdown ── */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-32">
-          {/* Cyber matrix purple gradient circles */}
-          <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full bg-purple-500/10 blur-[130px] -z-10" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-fuchsia-500/10 blur-[130px] -z-10" />
-
-          <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
-            
-            {/* Live Countdown Timer */}
-            <div className="grid grid-cols-4 gap-4 md:gap-8 mb-12 text-center bg-purple-950/20 border border-purple-500/15 p-6 rounded-3xl backdrop-blur-md">
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+            <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <span style={{ color: '#E5AA3E', fontWeight: 700 }}>TechFest</span>
+            </nav>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-white/70 text-[13px] font-bold uppercase tracking-[0.25em] mb-3"
+            >
+              Annual Technology Symposium
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="leading-[1.05] tracking-tight mb-6"
+              style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
+            >
+              TAT TechFest<br />
+              <span style={{ color: '#E5AA3E' }}>TRIDENT 2025.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="max-w-2xl leading-relaxed font-medium mb-10"
+              style={{ color: 'rgba(255,255,255,0.75)', fontSize: '17px' }}
+            >
+              Eastern India's mega technology carnival is back — featuring automated robotics combat, 36-hour developer hackathons, global tech panels, and esports arenas.
+            </motion.p>
+            <div className="flex flex-wrap gap-4">
               {[
-                { label: "Days", val: timeLeft.days },
-                { label: "Hours", val: timeLeft.hours },
-                { label: "Mins", val: timeLeft.minutes },
-                { label: "Secs", val: timeLeft.seconds }
-              ].map((t, idx) => (
-                <div key={idx}>
-                  <div className="text-3xl md:text-5xl font-mono font-black text-transparent bg-clip-text bg-gradient-to-b from-fuchsia-400 to-purple-500">
-                    {String(t.val).padStart(2, '0')}
-                  </div>
-                  <div className="text-[10px] uppercase tracking-wider text-slate-500 mt-1">{t.label}</div>
+                { val: String(timeLeft.days).padStart(2, '0'), lbl: 'Days Left' },
+                { val: String(timeLeft.hours).padStart(2, '0'), lbl: 'Hours' },
+                { val: String(timeLeft.minutes).padStart(2, '0'), lbl: 'Minutes' },
+                { val: String(timeLeft.seconds).padStart(2, '0'), lbl: 'Seconds' }
+              ].map((s, i) => (
+                <div key={i} className="px-5 py-3 rounded-lg text-center min-w-[90px]" style={{ backgroundColor: 'rgba(0,0,0,0.65)', border: '1px solid rgba(255,255,255,0.15)' }}>
+                  <div className="text-[24px] font-black text-transparent bg-clip-text bg-gradient-to-b from-fuchsia-400 to-purple-400 font-mono">{s.val}</div>
+                  <div className="text-[9px] text-white/50 uppercase tracking-widest font-bold mt-0.5">{s.lbl}</div>
                 </div>
               ))}
             </div>
-
-            <h1 className="font-serif text-5xl md:text-8xl font-bold tracking-tight mb-8 leading-none">
-              TAT TechFest <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-purple-500 to-pink-500 animate-pulse">
-                TRIDENT 2025.
-              </span>
-            </h1>
-
-            <p className="text-sm md:text-base max-w-2xl mb-12 text-slate-400 leading-relaxed font-light font-sans">
-              Eastern India's mega technology carnival is back. Featuring automated robotics combat, 36-hour developer hackathons, global tech panels, and esports arenas.
-            </p>
-
-            
           </div>
         </section>
 
@@ -165,9 +172,49 @@ export default function TechFest() {
           </div>
         </section>
 
+        {/* ── TICKETS & PASSES ── */}
+        <section id="passes" className="py-24 max-w-[1300px] mx-auto px-6 border-t border-purple-950/30">
+          <div className="text-center mb-20">
+            <span className="text-xs font-bold text-fuchsia-400 uppercase tracking-widest">Entry Authorization</span>
+            <h2 className="font-serif text-3xl md:text-5xl font-bold mt-2">Get Your Festival Pass</h2>
+            <p className="text-slate-400 text-sm mt-3">Select a access pass level and download your instant registration receipt.</p>
+          </div>
 
-        
-
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {Object.keys(passes).map((key) => {
+              const pass = passes[key];
+              return (
+                <motion.div
+                  key={key}
+                  whileHover={{ y: -5 }}
+                  className="bg-purple-950/10 border border-purple-500/10 rounded-3xl p-8 flex flex-col justify-between hover:border-fuchsia-500/30 transition-all relative overflow-hidden"
+                >
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-200 mb-4">{pass.name}</h3>
+                    <div className="text-3xl font-black text-fuchsia-400 mb-6 font-mono">₹{pass.price}</div>
+                    <ul className="space-y-3 mb-8">
+                      {pass.access.map((acc, i) => (
+                        <li key={i} className="flex items-center gap-2 text-xs text-slate-400">
+                          <CheckCircle2 size={12} className="text-fuchsia-500" />
+                          <span>{acc}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setSelectedPass(key);
+                      setIsReceiptOpen(true);
+                    }}
+                    className="w-full py-3 bg-fuchsia-600 hover:bg-fuchsia-700 text-white rounded-full text-xs font-bold uppercase tracking-wider transition-all"
+                  >
+                    Claim Pass
+                  </button>
+                </motion.div>
+              );
+            })}
+          </div>
+        </section>
 
         {/* ── REGISTRATION RECEIPT OVERLAY (MOCK TERMINAL) ── */}
         <AnimatePresence>
@@ -188,7 +235,12 @@ export default function TechFest() {
 
                 <div className="flex justify-between items-center pb-4 border-b border-purple-950 mb-6">
                   <span className="text-xs text-fuchsia-400 font-bold uppercase tracking-widest flex items-center gap-2"><Terminal size={14} /> Receipt Module</span>
-                  
+                  <button 
+                    onClick={() => setIsReceiptOpen(false)}
+                    className="text-slate-400 hover:text-white transition-colors"
+                  >
+                    <X size={18} />
+                  </button>
                 </div>
 
                 <div className="space-y-4 text-xs text-slate-300">

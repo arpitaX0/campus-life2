@@ -50,7 +50,7 @@ export default function ExtraCurricular() {
 
   // Hero backgrounds
   const heroSlides = [
-    { img: sportsImg, title: "Sports & Athletics", subtitle: "Building character, determination, and leadership on the field." },
+    { img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=1600", title: "Sports & Athletics", subtitle: "Building character, determination, and leadership on the field." },
     { img: danceImg1, title: "Cultural Events", subtitle: "Expressing creativity and showcasing diverse talents." },
     { img: codingClubImg, title: "Student Clubs", subtitle: "Collaborating to solve real-world technical problems." },
     { img: hackathonImg, title: "Technical Competitions", subtitle: "Pushing the boundaries of coding and innovation." },
@@ -152,10 +152,10 @@ export default function ExtraCurricular() {
   // Sports Facilities Data
   const sportsFacilities = [
     { name: "Cricket Ground", desc: "Full-sized green outfield cricket ground with dedicated turf pitch nets for professional practice.", img: athleticsImg },
-    { name: "Football Ground", desc: "Vibrant grass field hosting inter-college soccer matches, athletic track events, and practice runs.", img: sportsImg },
-    { name: "Basketball Court", desc: "Standard dimensions, acrylic synthetic court layout hosting high-speed dribble and shooting matches.", img: sportsImg },
-    { name: "Volleyball Court", desc: "State-of-the-art courts equipped with high-intensity floodlights for competitive matches at night.", img: sportsImg },
-    { name: "Indoor Games Arena", desc: "Ergonomically designed tables and seating zones hosting indoor chess, carrom, and table tennis games.", img: sportsImg },
+    { name: "Football Ground", desc: "Vibrant grass field hosting inter-college soccer matches, athletic track events, and practice runs.", img: "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=800&q=80" },
+    { name: "Basketball Court", desc: "Standard dimensions, acrylic synthetic court layout hosting high-speed dribble and shooting matches.", img: "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80" },
+    { name: "Volleyball Court", desc: "State-of-the-art courts equipped with high-intensity floodlights for competitive matches at night.", img: "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=800&q=80" },
+    { name: "Indoor Games Arena", desc: "Ergonomically designed tables and seating zones hosting indoor chess, carrom, and table tennis games.", img: "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&q=80&w=800" },
     { name: "Gymnasium", desc: "Fully air-conditioned indoor fitness center with multi-gym setups, free weights, and cardio equipment.", img: gymImg }
   ];
 
@@ -206,7 +206,7 @@ export default function ExtraCurricular() {
 
   // Gallery Data
   const galleryItems = [
-    { title: "Annual Athletic Meet", category: "Sports", img: sportsImg, desc: "Students participating in track and field events." },
+    { title: "Annual Athletic Meet", category: "Sports", img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&q=80&w=800", desc: "Students participating in track and field events." },
     { title: "Smart India Hackathon", category: "Technical", img: hackathonImg, desc: "Trident team coding overnight at SIH." },
     { title: "Trifest Stage Concert", category: "Cultural", img: trifestImg, desc: "A vibrant music concert under the stars." },
     { title: "Dance Club Performance", category: "Cultural", img: danceImg1, desc: "Dynamic dance routines during the annual meet." },
@@ -215,7 +215,7 @@ export default function ExtraCurricular() {
     { title: "Coding Club Hacknight", category: "Technical", img: codingClubImg, desc: "Late night developer sprint at TAT incubation lab." },
     { title: "Annual Function Awards", category: "Ceremonies", img: annualFuncImg, desc: "Distributing academic and activities awards to winners." },
     { title: "Convocation Ceremony", category: "Ceremonies", img: convocationImg, desc: "Graduating batch of students celebrating their degrees." },
-    { title: "Dance Performance Group", category: "Cultural", img: danceImg2, desc: "Traditional fusion performance at Trifest stage." }
+    { title: "Dance Performance Group", category: "Cultural", img: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=800", desc: "Traditional fusion performance at Trifest stage." }
   ];
 
   // FAQ Accordion Data
@@ -241,90 +241,50 @@ export default function ExtraCurricular() {
 
   return (
     <SmoothScrollProvider>
-      <div className="bg-[#FFF7ED] min-h-screen text-slate-900 font-sans overflow-hidden selection:bg-orange-500 selection:text-white relative">
+      <div style={{ backgroundColor: '#FAF9F7' }} className="min-h-screen font-sans overflow-hidden relative">
         
         {/* Ambient background particles */}
         <AmbientParticles count={25} color="rgba(249, 115, 22, 0.12)" />
 
-        {/* ── 1. HERO SECTION ── */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden">
-          
-          {/* Animated Background Mesh */}
-          <AnimatedGradient 
-            colors={["#F97316", "#1E3A8A", "#8B5CF6", "#FACC15"]} 
-            speed={25} 
-            opacity={0.12} 
-          />
-          
-          {/* Background Images Crossfade Slider */}
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={heroIndex}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.5, ease: 'easeInOut' }}
-                className="absolute inset-0 w-full h-full"
-              >
-                <img
-                  src={heroSlides[heroIndex].img}
-                  alt={heroSlides[heroIndex].title}
-                  className="w-full h-full object-cover object-center"
-                />
-              </motion.div>
-            </AnimatePresence>
-            {/* Gradient overlays for layout and readability */}
-            <div className="absolute inset-0 bg-gradient-to-b from-blue-950/80 via-blue-900/40 to-[#FFF7ED]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#FFF7ED_100%)]" />
+        {/* ── 1. HERO (academics-tat style) ── */}
+        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[480px] flex flex-col justify-end">
+          <div className="absolute inset-0 z-0">
+            <img
+              src={heroSlides[0].img}
+              alt="Extra Curricular Activities"
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(13,27,62,0.90) 0%, rgba(26,38,96,0.75) 55%, rgba(13,27,62,0.40) 100%)' }} />
           </div>
-
-          {/* Floating Geometric Orbs (Parallax feel) */}
-          <div className="absolute inset-0 pointer-events-none z-10">
-            <FloatingElement className="absolute top-[20%] left-[10%] opacity-40" range={20} duration={8}>
-              <div className="w-16 h-16 rounded-full border border-orange-500/30 bg-orange-500/10 blur-[1px]" />
-            </FloatingElement>
-            <FloatingElement className="absolute bottom-[25%] right-[12%] opacity-30" range={25} duration={10}>
-              <div className="w-24 h-24 rounded-full border border-purple-500/20 bg-purple-500/5 blur-[2px]" />
-            </FloatingElement>
-            <FloatingElement className="absolute top-[40%] right-[15%] opacity-20" range={15} duration={6}>
-              <div className="w-12 h-12 rounded-xl border border-yellow-500/30 bg-yellow-500/10 rotate-12" />
-            </FloatingElement>
-          </div>
-
-          {/* Hero Content Wrapper */}
-          <div className="relative z-20 max-w-7xl mx-auto px-6 text-center flex flex-col items-center">
-            
-
-
-            <TextReveal blur={true} stagger={0.03} className="w-full">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8 leading-[1.05] text-blue-900 uppercase">
-                Extra Curricular <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-purple-600 to-orange-500 bg-size-200 animate-gradient-shift">
-                  Activities
-                </span>
-              </h1>
-            </TextReveal>
-
-            <motion.p 
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+            <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <span style={{ color: '#E5AA3E', fontWeight: 700 }}>Extra Curricular</span>
+            </nav>
+            <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="text-lg md:text-xl text-slate-700 max-w-3xl mb-12 font-medium leading-relaxed"
+              transition={{ duration: 0.7 }}
+              className="leading-[1.05] tracking-tight mb-6"
+              style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
             >
-              "Trident promotes and nurtures the talents in its students through sports, athletics, cultural programs, technical events, leadership opportunities, and physical activities."
+              Extra Curricular
+              <br />
+              <span style={{ color: '#E5AA3E' }}>Activities.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="max-w-3xl leading-relaxed font-medium"
+              style={{ color: 'rgba(255,255,255,0.80)', fontSize: '18px' }}
+            >
+              Trident promotes and nurtures the talents in its students through sports, athletics, cultural programs, technical events, leadership opportunities, and physical activities.
             </motion.p>
-
-
-
           </div>
-
-          {/* Scroll down indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center opacity-60">
-            <span className="text-[10px] tracking-[0.25em] font-extrabold text-blue-900 uppercase mb-2">Scroll Down</span>
-            <ChevronDown className="w-5 h-5 text-orange-500 animate-bounce" />
-          </div>
-
         </section>
 
         {/* ── 2. OVERVIEW SECTION ── */}
@@ -333,14 +293,14 @@ export default function ExtraCurricular() {
             
             <div className="grid lg:grid-cols-12 gap-12 items-center mb-24">
               <div className="lg:col-span-6">
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">Holistic Ecosystem</span>
-                <h2 className="text-4xl md:text-5xl font-black text-blue-900 mt-3 uppercase leading-tight">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] mb-3" style={{ color: '#2c3a8c' }}>Holistic Ecosystem</p>
+                <h2 className="text-4xl md:text-5xl font-bold mt-2 leading-tight" style={{ color: '#1a1a2e', fontFamily: '"Source Serif 4", Georgia, serif' }}>
                   Learning Beyond <br />
-                  <span className="text-orange-500">The Classroom</span>
+                  <span style={{ color: '#2c3a8c' }}>The Classroom</span>
                 </h2>
               </div>
               <div className="lg:col-span-6">
-                <p className="text-slate-700 text-lg font-medium leading-relaxed">
+                <p className="text-lg font-medium leading-relaxed" style={{ color: '#6b6460' }}>
                   Extra curricular activities at Trident Academy help students discover their talents, develop leadership qualities, improve teamwork, build confidence, and maintain a healthy balance between academics and personal growth.
                 </p>
               </div>
@@ -378,13 +338,13 @@ export default function ExtraCurricular() {
         </section>
 
         {/* ── 3. STUDENT CLUBS SECTION ── */}
-        <section id="clubs-section" className="py-24 md:py-32 bg-white/40 border-y border-orange-100 relative z-20">
+        <section id="clubs-section" className="py-24 md:py-32 relative z-20" style={{ backgroundColor: '#ffffff', borderTop: '1px solid #ede8e3', borderBottom: '1px solid #ede8e3' }}>
           <div className="max-w-7xl mx-auto px-6">
 
             <div className="text-center max-w-2xl mx-auto mb-20">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">Student Guilds</span>
-              <h2 className="text-4xl md:text-5xl font-black text-blue-900 mt-3 uppercase">Student Clubs</h2>
-              <p className="text-slate-600 text-sm md:text-base mt-4 font-medium">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] mb-3" style={{ color: '#2c3a8c' }}>Student Guilds</p>
+              <h2 className="text-4xl md:text-5xl font-bold mt-2" style={{ color: '#1a1a2e', fontFamily: '"Source Serif 4", Georgia, serif' }}>Student Clubs</h2>
+              <p className="text-sm md:text-base mt-4 font-medium" style={{ color: '#6b6460' }}>
                 Join student-run communities where you can collaborate, learn, build projects, and express creativity.
               </p>
             </div>
@@ -392,13 +352,13 @@ export default function ExtraCurricular() {
             <StaggerChildren className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {clubs.map((club) => (
                 <Tilt3D key={club.name} intensity={10} className="h-full">
-                  <div className="bg-white rounded-3xl p-8 border border-orange-500/5 shadow-md flex flex-col justify-between hover:shadow-xl transition-all duration-500 h-full">
+                  <div className="bg-white rounded-2xl p-8 border flex flex-col justify-between hover:shadow-lg transition-all duration-500 h-full" style={{ border: '1px solid #ede8e3' }}>
                     <div>
-                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 border ${club.color}`}>
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 border ${club.color}`}>
                         {club.icon}
                       </div>
-                      <h3 className="text-xl font-bold text-blue-900 mb-3">{club.name}</h3>
-                      <p className="text-slate-500 text-xs leading-relaxed mb-6 font-medium">{club.desc}</p>
+                      <h3 className="text-xl font-bold mb-3" style={{ color: '#1a1a2e' }}>{club.name}</h3>
+                      <p className="text-xs leading-relaxed mb-6 font-medium" style={{ color: '#6b6460' }}>{club.desc}</p>
                     </div>
                     
                     <button
@@ -406,7 +366,7 @@ export default function ExtraCurricular() {
                       className={`w-full py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 border ${
                         joinedClubs[club.name]
                           ? 'bg-emerald-500 border-emerald-500 text-white hover:bg-emerald-600'
-                          : 'border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white'
+                          : 'border-[#2c3a8c] text-[#2c3a8c] hover:bg-[#2c3a8c] hover:text-white'
                       }`}
                     >
                       {joinedClubs[club.name] ? 'Joined! ✓' : 'Join Club'}
@@ -425,8 +385,8 @@ export default function ExtraCurricular() {
 
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
               <div className="max-w-xl">
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">Elite Infrastructures</span>
-                <h2 className="text-4xl md:text-5xl font-black text-blue-900 mt-3 uppercase leading-tight">Sports Facilities</h2>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] mb-3" style={{ color: '#2c3a8c' }}>Elite Infrastructures</p>
+                <h2 className="text-4xl md:text-5xl font-bold mt-2 leading-tight" style={{ color: '#1a1a2e', fontFamily: '"Source Serif 4", Georgia, serif' }}>Sports Facilities</h2>
               </div>
               <p className="text-slate-600 max-w-md font-medium text-base">
                 Discover standard training pitches, playgrounds, and gymnasium centers constructed inside Trident campus coordinates.
@@ -468,92 +428,58 @@ export default function ExtraCurricular() {
         </section>
 
         {/* ── 5. ANNUAL EVENTS SECTION ── */}
-        <section className="relative z-20 overflow-hidden">
-          
-          {/* Dark luxury background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a] via-[#1e1b4b] to-[#1e3a8a]" />
-          <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-orange-500/10 rounded-full blur-[120px] -translate-x-1/3 -translate-y-1/3 pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px] translate-x-1/4 translate-y-1/4 pointer-events-none" />
-
-          <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 md:py-32">
-
-            {/* Section Header */}
-            <div className="text-center max-w-3xl mx-auto mb-24">
-              <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.25em] text-orange-400 bg-orange-500/10 border border-orange-500/20 px-4 py-1.5 rounded-full">
-                <Calendar className="w-3.5 h-3.5" /> TAT Timeline
-              </span>
-              <h2 className="text-5xl md:text-7xl font-black text-white mt-5 uppercase leading-tight">
-                Annual <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">Events</span>
+        <section className="relative z-20 overflow-hidden py-24 md:py-32" style={{ backgroundColor: '#ffffff', borderTop: '1px solid #ede8e3', borderBottom: '1px solid #ede8e3' }}>
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-20">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] mb-3" style={{ color: '#2c3a8c' }}>TAT Timeline</p>
+              <h2 className="text-4xl md:text-6xl font-bold mt-2" style={{ color: '#1a1a2e', fontFamily: '"Source Serif 4", Georgia, serif' }}>
+                Annual <span style={{ color: '#2c3a8c' }}>Events</span>
               </h2>
-              <p className="text-blue-200/70 text-base mt-5 font-medium leading-relaxed">
+              <p className="text-base mt-5 font-medium leading-relaxed" style={{ color: '#6b6460' }}>
                 Step through the sequence of flagship campus activities, cultural programs, and hackathons configured across the academic calendar.
               </p>
             </div>
-
-            {/* Alternate-side Timeline Layout */}
             <div className="relative max-w-5xl mx-auto">
-              
-              {/* Central vertical line */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-orange-500 via-purple-500 to-blue-500 hidden md:block" />
-
-              <div className="space-y-16">
+              <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 hidden md:block" style={{ backgroundColor: '#ddd8d3' }} />
+              <div className="space-y-12">
                 {events.map((event, idx) => {
                   const isLeft = idx % 2 === 0;
-                  const borderGlow = idx % 3 === 0 
-                    ? "hover:border-orange-500/40" 
-                    : idx % 3 === 1 
-                      ? "hover:border-purple-500/40" 
-                      : "hover:border-blue-500/40";
-
                   return (
                     <div key={idx} className={`relative flex flex-col md:flex-row items-center justify-between ${isLeft ? 'md:flex-row-reverse' : ''}`}>
-                      
-                      {/* Timeline Central Dot */}
-                      <div className="absolute left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-slate-900 border-4 border-orange-500 z-10 hidden md:block" />
-
-                      {/* Spacer for structure */}
+                      <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 z-10 hidden md:block" style={{ backgroundColor: '#ffffff', borderColor: '#2c3a8c' }} />
                       <div className="w-full md:w-[45%] hidden md:block" />
-
-                      {/* Card Content */}
                       <motion.div
                         initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
+                        viewport={{ once: true, margin: '-80px' }}
                         transition={{ duration: 0.6, ease: 'easeOut' }}
-                        className={`w-full md:w-[45%] bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 ${borderGlow}`}
+                        className="w-full md:w-[45%] rounded-2xl p-7 transition-shadow hover:shadow-md"
+                        style={{ backgroundColor: '#FAF9F7', border: '1px solid #ede8e3' }}
                       >
-                        <div className="flex items-center justify-between mb-4">
-                          <span className="text-[10px] font-extrabold uppercase tracking-widest text-orange-400 bg-orange-500/10 border border-orange-500/20 px-3 py-1 rounded-full">
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full" style={{ backgroundColor: '#e8ecf8', color: '#2c3a8c' }}>
                             {event.date}
                           </span>
-                          <span className="text-white/20 font-black text-2xl">0{idx + 1}</span>
+                          <span className="font-black text-2xl" style={{ color: '#ede8e3' }}>0{idx + 1}</span>
                         </div>
-                        <h4 className="text-2xl font-bold text-white mb-3 hover:text-orange-300 transition-colors duration-300">
-                          {event.title}
-                        </h4>
-                        <p className="text-blue-200/60 text-sm leading-relaxed font-medium">
-                          {event.desc}
-                        </p>
+                        <h4 className="text-xl font-bold mb-2" style={{ color: '#1a1a2e', fontFamily: '"Source Serif 4", Georgia, serif' }}>{event.title}</h4>
+                        <p className="text-sm leading-relaxed font-medium" style={{ color: '#6b6460' }}>{event.desc}</p>
                       </motion.div>
-
                     </div>
                   );
                 })}
               </div>
-
             </div>
-
           </div>
         </section>
 
         {/* ── 6. BENEFITS SECTION ── */}
-        <section className="py-24 md:py-32 relative z-20">
+        <section className="py-24 md:py-32 relative z-20" style={{ backgroundColor: '#FAF9F7' }}>
           <div className="max-w-7xl mx-auto px-6">
-
             <div className="text-center max-w-2xl mx-auto mb-20">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">Value Proposition</span>
-              <h2 className="text-4xl md:text-5xl font-black text-blue-900 mt-3 uppercase">Growth Benefits</h2>
-              <p className="text-slate-600 text-sm md:text-base mt-4 font-medium">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] mb-3" style={{ color: '#2c3a8c' }}>Value Proposition</p>
+              <h2 className="text-4xl md:text-5xl font-bold mt-2" style={{ color: '#1a1a2e', fontFamily: '"Source Serif 4", Georgia, serif' }}>Growth Benefits</h2>
+              <p className="text-sm md:text-base mt-4 font-medium" style={{ color: '#6b6460' }}>
                 Unlock multi-dimensional development and build attributes that prepare you for a global professional career.
               </p>
             </div>
@@ -566,13 +492,14 @@ export default function ExtraCurricular() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.05 }}
-                  className="bg-white rounded-3xl p-8 border border-orange-500/5 shadow-md flex flex-col hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 group"
+                  className="rounded-2xl p-8 border flex flex-col hover:shadow-lg hover:-translate-y-1.5 transition-all duration-500 group"
+                  style={{ backgroundColor: '#ffffff', border: '1px solid #ede8e3' }}
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center mb-8 border border-slate-100 shadow-sm group-hover:scale-110 transition-transform">
+                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-7 border group-hover:scale-110 transition-transform" style={{ backgroundColor: '#FAF9F7', borderColor: '#ede8e3' }}>
                     {benefit.icon}
                   </div>
-                  <h4 className="text-xl font-bold text-blue-900 mb-3">{benefit.title}</h4>
-                  <p className="text-slate-500 text-xs md:text-sm leading-relaxed font-medium">
+                  <h4 className="text-xl font-bold mb-3" style={{ color: '#1a1a2e' }}>{benefit.title}</h4>
+                  <p className="text-xs md:text-sm leading-relaxed font-medium" style={{ color: '#6b6460' }}>
                     {benefit.desc}
                   </p>
                 </motion.div>
@@ -583,12 +510,11 @@ export default function ExtraCurricular() {
         </section>
 
         {/* ── 7. STUDENT SUCCESS STORIES ── */}
-        <section className="py-24 md:py-32 bg-white/40 border-y border-orange-100 relative z-20">
+        <section className="py-24 md:py-32 relative z-20" style={{ backgroundColor: '#ffffff', borderTop: '1px solid #ede8e3', borderBottom: '1px solid #ede8e3' }}>
           <div className="max-w-7xl mx-auto px-6">
-
             <div className="text-center max-w-2xl mx-auto mb-20">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">TAT Alumni Achievers</span>
-              <h2 className="text-4xl md:text-5xl font-black text-blue-900 mt-3 uppercase">Student Success Stories</h2>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] mb-3" style={{ color: '#2c3a8c' }}>TAT Alumni Achievers</p>
+              <h2 className="text-4xl md:text-5xl font-bold mt-2" style={{ color: '#1a1a2e', fontFamily: '"Source Serif 4", Georgia, serif' }}>Student Success Stories</h2>
             </div>
 
             {/* Testimonials Carousel */}

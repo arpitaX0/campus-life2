@@ -53,10 +53,10 @@ const tabs = [
 ];
 
 const colorMap = {
-  blue:   { bg: 'bg-blue-500/10',   border: 'border-blue-500/30',   text: 'text-blue-400',   glow: 'shadow-blue-500/20',   badge: 'bg-blue-500/10 text-blue-300',   active: 'bg-blue-600' },
-  teal:   { bg: 'bg-teal-500/10',   border: 'border-teal-500/30',   text: 'text-teal-400',   glow: 'shadow-teal-500/20',   badge: 'bg-teal-500/10 text-teal-300',   active: 'bg-teal-600' },
-  purple: { bg: 'bg-purple-500/10', border: 'border-purple-500/30', text: 'text-purple-400', glow: 'shadow-purple-500/20', badge: 'bg-purple-500/10 text-purple-300', active: 'bg-purple-600' },
-  rose:   { bg: 'bg-rose-500/10',   border: 'border-rose-500/30',   text: 'text-rose-400',   glow: 'shadow-rose-500/20',   badge: 'bg-rose-500/10 text-rose-300',   active: 'bg-rose-600' },
+  blue:   { bg: 'bg-blue-50',   border: 'border-blue-200',   text: 'text-blue-700',   glow: 'shadow-blue-100',   badge: 'bg-blue-50 text-blue-700 border border-blue-200',   active: 'bg-blue-700' },
+  teal:   { bg: 'bg-teal-50',   border: 'border-teal-200',   text: 'text-teal-700',   glow: 'shadow-teal-100',   badge: 'bg-teal-50 text-teal-700 border border-teal-200',   active: 'bg-teal-700' },
+  purple: { bg: 'bg-purple-50', border: 'border-purple-200', text: 'text-purple-700', glow: 'shadow-purple-100', badge: 'bg-purple-50 text-purple-700 border border-purple-200', active: 'bg-purple-700' },
+  rose:   { bg: 'bg-rose-50',   border: 'border-rose-200',   text: 'text-rose-700',   glow: 'shadow-rose-100',   badge: 'bg-rose-50 text-rose-700 border border-rose-200',   active: 'bg-rose-700' },
 };
 
 const protocols = [
@@ -88,98 +88,66 @@ export default function CampusSecurity() {
   const Icon = current.icon;
 
   return (
-    <div className="bg-[#030712] min-h-screen text-slate-100 font-sans overflow-x-hidden">
+    <div className="min-h-screen font-sans overflow-x-hidden" style={{ backgroundColor: '#f5eeec', color: '#3e3a36' }}>
 
-      {/* ── HERO ── */}
-      <section className="relative pt-36 pb-32 overflow-hidden">
-        {/* Animated radar rings */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          {[1, 2, 3, 4].map(i => (
-            <motion.div
-              key={i}
-              className="absolute rounded-full border border-blue-500/10"
-              style={{ width: i * 220, height: i * 220 }}
-              animate={{ scale: [1, 1.04, 1], opacity: [0.4, 0.15, 0.4] }}
-              transition={{ duration: 3, delay: i * 0.5, repeat: Infinity, ease: 'easeInOut' }}
-            />
-          ))}
-          {/* Radar sweep */}
-          <motion.div
-            className="absolute w-[500px] h-[500px] origin-center"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-          >
-            <div className="absolute top-1/2 left-1/2 w-[250px] h-[2px] origin-left"
-              style={{ background: 'linear-gradient(to right, rgba(59,130,246,0.6), transparent)' }}
-            />
-          </motion.div>
+      {/* ── HERO (academics-tat style) ── */}
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[520px] flex flex-col justify-end">
+        {/* Background image with dark gradient overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1557597774-9d475d4a1e2f?auto=format&fit=crop&q=80&w=1600"
+            alt="Campus Security"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(13,27,62,0.88) 0%, rgba(26,38,96,0.72) 50%, rgba(13,27,62,0.45) 100%)' }} />
         </div>
 
-        {/* Blue glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+        {/* Content */}
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+            <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+            <span className="text-white/30">›</span>
+            <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+            <span className="text-white/30">›</span>
+            <span style={{ color: '#E5AA3E', fontWeight: 700 }}>Campus Security</span>
+          </nav>
 
-        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-8"
-          >
-            <Shield size={14} />
-            Campus Security Systems
-          </motion.div>
-
+          {/* Title */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.05]"
+            transition={{ duration: 0.7 }}
+            className="leading-[1.05] tracking-tight mb-6"
+            style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
           >
             Trident Smart
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500">
-              Security Systems.
-            </span>
+            <span style={{ color: '#E5AA3E' }}>Security Systems.</span>
           </motion.h1>
 
+          {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed"
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="max-w-3xl leading-relaxed font-medium mb-12"
+            style={{ color: 'rgba(255,255,255,0.80)', fontSize: '18px' }}
           >
             Integrating 24/7 advanced surveillance, access control, and specialized quick response squads to maintain an absolute safety envelope.
           </motion.p>
 
-          {/* Quick Stats Bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.35 }}
-            className="mt-12 flex flex-wrap justify-center gap-8"
-          >
-            {[
-              { val: '300+', label: 'CCTV Cameras' },
-              { val: '24/7', label: 'Active Coverage' },
-              { val: '50+', label: 'Security Personnel' },
-              { val: '12', label: 'Access Points' },
-            ].map((s, i) => (
-              <div key={i} className="text-center">
-                <div className="text-3xl font-black text-white">{s.val}</div>
-                <div className="text-xs text-slate-500 uppercase tracking-widest mt-1">{s.label}</div>
-              </div>
-            ))}
-          </motion.div>
+
         </div>
       </section>
 
       {/* ── SECURITY DEPLOYMENTS (TABS) ── */}
       <section className="py-24 max-w-[1300px] mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4" style={{ color: '#3e3a36' }}>
             Security Deployments
           </h2>
-          <p className="text-slate-400 max-w-xl mx-auto">
+          <p className="max-w-xl mx-auto" style={{ color: '#6b6460' }}>
             Our multi-tier deployment coordinates electronic security, personnel, and fast-response units.
           </p>
         </div>
@@ -197,8 +165,9 @@ export default function CampusSecurity() {
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
                   isActive
                     ? `${cc.active} text-white shadow-lg`
-                    : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-600'
+                    : 'text-xs font-bold uppercase tracking-wider transition-all duration-200'
                 }`}
+                style={!isActive ? { backgroundColor: '#eae0d5', border: '1px solid #d6cfc9', color: '#6b6460' } : {}}
               >
                 <TIcon size={13} />
                 {tab.label}
@@ -215,15 +184,16 @@ export default function CampusSecurity() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.35 }}
-            className={`rounded-3xl border ${c.border} bg-slate-900/50 p-8 md:p-12 backdrop-blur-sm`}
+            className={`rounded-3xl border ${c.border} p-8 md:p-12`}
+            style={{ backgroundColor: '#ffffff', boxShadow: '0 2px 20px rgba(62,58,54,0.06)' }}
           >
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <div className={`w-14 h-14 ${c.bg} rounded-2xl flex items-center justify-center ${c.text} mb-6 shadow-lg ${c.glow}`}>
+                <div className={`w-14 h-14 ${c.bg} rounded-2xl flex items-center justify-center ${c.text} mb-6 shadow-sm`}>
                   <Icon size={26} />
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-white">{current.title}</h3>
-                <p className="text-slate-400 leading-relaxed mb-8 text-base">{current.desc}</p>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#3e3a36' }}>{current.title}</h3>
+                <p className="leading-relaxed mb-8 text-base" style={{ color: '#6b6460' }}>{current.desc}</p>
                 <div className="flex flex-wrap gap-2">
                   {current.badges.map(badge => (
                     <span key={badge} className={`text-xs font-bold px-3 py-1.5 rounded-lg ${c.badge}`}>
@@ -236,15 +206,15 @@ export default function CampusSecurity() {
               {/* Visual panel */}
               <div className={`h-[280px] rounded-2xl border ${c.border} ${c.bg} flex flex-col items-center justify-center gap-4 relative overflow-hidden`}>
                 <motion.div
-                  animate={{ scale: [1, 1.08, 1], opacity: [0.3, 0.5, 0.3] }}
+                  animate={{ scale: [1, 1.08, 1], opacity: [0.15, 0.25, 0.15] }}
                   transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                  className={`${c.text} opacity-20 absolute`}
+                  className={`${c.text} absolute`}
                 >
                   <Icon size={180} />
                 </motion.div>
                 <div className="relative z-10 text-center">
                   <div className={`text-6xl font-black ${c.text}`}>{current.stat}</div>
-                  <div className="text-slate-500 text-sm uppercase tracking-widest mt-2">{current.statLabel}</div>
+                  <div className="text-sm uppercase tracking-widest mt-2" style={{ color: '#9c9390' }}>{current.statLabel}</div>
                 </div>
               </div>
             </div>
@@ -253,13 +223,13 @@ export default function CampusSecurity() {
       </section>
 
       {/* ── PROTOCOLS & FAQ ── */}
-      <section className="py-24 border-t border-slate-900">
+      <section className="py-24" style={{ borderTop: '1px solid #e8e2d9' }}>
         <div className="max-w-[1300px] mx-auto px-6 grid lg:grid-cols-2 gap-16">
 
           {/* Safety Protocols */}
           <div>
-            <h2 className="text-3xl font-bold mb-10 flex items-center gap-3 text-white">
-              <AlertOctagon className="text-blue-500" size={28} />
+            <h2 className="text-3xl font-bold mb-10 flex items-center gap-3" style={{ color: '#3e3a36' }}>
+              <AlertOctagon style={{ color: '#2c3a8c' }} size={28} />
               Safety Protocols
             </h2>
             <div className="space-y-4">
@@ -272,14 +242,15 @@ export default function CampusSecurity() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="flex gap-4 p-5 bg-slate-900/40 rounded-2xl border border-slate-800/60 hover:border-blue-800/50 transition-all"
+                    className="flex gap-4 p-5 rounded-2xl transition-all"
+                    style={{ backgroundColor: '#ffffff', border: '1px solid #e8e2d9' }}
                   >
-                    <div className="mt-0.5 w-9 h-9 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 flex-shrink-0">
+                    <div className="mt-0.5 w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'rgba(44,58,140,0.08)', color: '#2c3a8c' }}>
                       <PIcon size={16} />
                     </div>
                     <div>
-                      <h4 className="font-bold text-white text-sm mb-1">{p.title}</h4>
-                      <p className="text-sm text-slate-400 leading-relaxed">{p.desc}</p>
+                      <h4 className="font-bold text-sm mb-1" style={{ color: '#3e3a36' }}>{p.title}</h4>
+                      <p className="text-sm leading-relaxed" style={{ color: '#6b6460' }}>{p.desc}</p>
                     </div>
                   </motion.div>
                 );
@@ -289,8 +260,8 @@ export default function CampusSecurity() {
 
           {/* FAQ */}
           <div>
-            <h2 className="text-3xl font-bold mb-10 flex items-center gap-3 text-white">
-              <HelpCircle className="text-cyan-400" size={28} />
+            <h2 className="text-3xl font-bold mb-10 flex items-center gap-3" style={{ color: '#3e3a36' }}>
+              <HelpCircle style={{ color: '#2c3a8c' }} size={28} />
               Safety FAQ
             </h2>
             <div className="space-y-4">
@@ -301,17 +272,20 @@ export default function CampusSecurity() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="rounded-2xl border border-slate-800 overflow-hidden"
+                  className="rounded-2xl overflow-hidden"
+                  style={{ border: '1px solid #e8e2d9' }}
                 >
                   <button
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    className="w-full flex items-center justify-between p-5 bg-slate-900/40 hover:bg-slate-900/70 transition-all text-left"
+                    className="w-full flex items-center justify-between p-5 transition-all text-left"
+                    style={{ backgroundColor: '#ffffff' }}
                   >
-                    <span className="font-bold text-white text-sm pr-4">{faq.q}</span>
+                    <span className="font-bold text-sm pr-4" style={{ color: '#3e3a36' }}>{faq.q}</span>
                     <motion.div
                       animate={{ rotate: openFaq === i ? 45 : 0 }}
                       transition={{ duration: 0.2 }}
-                      className="text-slate-500 flex-shrink-0"
+                      style={{ color: '#9c9390' }}
+                      className="flex-shrink-0"
                     >
                       <span className="text-xl leading-none">+</span>
                     </motion.div>
@@ -325,7 +299,7 @@ export default function CampusSecurity() {
                         transition={{ duration: 0.25 }}
                         className="overflow-hidden"
                       >
-                        <p className="text-sm text-slate-400 leading-relaxed px-5 pb-5 bg-slate-900/20">
+                        <p className="text-sm leading-relaxed px-5 pb-5" style={{ backgroundColor: '#faf6f3', color: '#6b6460' }}>
                           {faq.a}
                         </p>
                       </motion.div>
@@ -339,12 +313,12 @@ export default function CampusSecurity() {
       </section>
 
       {/* ── EMERGENCY CONTACTS ── */}
-      <section className="py-24 max-w-[1300px] mx-auto px-6 border-t border-slate-900">
+      <section className="py-24 max-w-[1300px] mx-auto px-6" style={{ borderTop: '1px solid #e8e2d9' }}>
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4" style={{ color: '#3e3a36' }}>
             Security Control Desk
           </h2>
-          <p className="text-slate-400 max-w-xl mx-auto">
+          <p className="max-w-xl mx-auto" style={{ color: '#6b6460' }}>
             Save these numbers in your contacts for immediate response in any situation.
           </p>
         </div>
@@ -359,14 +333,15 @@ export default function CampusSecurity() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={`bg-gradient-to-br from-slate-900 to-slate-950 p-6 rounded-2xl border ${cc.border} text-center hover:scale-[1.03] transition-transform cursor-default`}
+                className={`p-6 rounded-2xl border ${cc.border} text-center hover:scale-[1.03] transition-transform cursor-default`}
+                style={{ backgroundColor: '#ffffff', boxShadow: '0 2px 12px rgba(62,58,54,0.05)' }}
               >
                 <div className={`w-11 h-11 ${cc.bg} rounded-full flex items-center justify-center ${cc.text} mx-auto mb-4`}>
                   <PhoneCall size={18} />
                 </div>
-                <h4 className="text-slate-300 font-bold text-sm mb-1">{contact.title}</h4>
+                <h4 className="font-bold text-sm mb-1" style={{ color: '#3e3a36' }}>{contact.title}</h4>
                 <p className={`font-mono text-lg font-black my-2 ${cc.text}`}>{contact.detail}</p>
-                <span className="text-[10px] text-slate-500 uppercase tracking-widest">{contact.info}</span>
+                <span className="text-[10px] uppercase tracking-widest" style={{ color: '#9c9390' }}>{contact.info}</span>
               </motion.div>
             );
           })}

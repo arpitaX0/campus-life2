@@ -58,56 +58,64 @@ export default function Basketball() {
     <SmoothScrollProvider>
       <div className="bg-[#FFF8F2] min-h-screen text-slate-800 font-sans overflow-x-hidden">
 
-        {/* ── HERO SECTION: Scoreboard counter + Animated Basketball Arc SVG ── */}
-        <section className="relative min-h-[80vh] flex items-center justify-center pt-24 overflow-hidden bg-gradient-to-br from-orange-50/30 via-white to-[#FFF8F2]">
-          {/* Animated ball arc SVG path */}
-          <svg className="absolute inset-0 w-full h-full opacity-20 pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
-            <motion.path
-              d="M 100 800 Q 600 100 1100 800"
-              fill="none"
-              stroke="#F97316"
-              strokeWidth="4"
-              strokeDasharray="10 10"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
-            />
-          </svg>
+        {/* ── HERO SECTION (academics-tat style) ── */}
+        <section className="relative min-h-[88vh] flex flex-col justify-end overflow-hidden">
+          {/* Full-width photo background */}
+          <div className="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1400&q=85" alt="Basketball Court" className="w-full h-full object-cover object-center" />
+          </div>
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0 z-[1]" style={{ background: 'linear-gradient(to right, rgba(12,6,2,0.90) 0%, rgba(12,6,2,0.68) 55%, rgba(12,6,2,0.30) 100%)' }} />
+          <div className="absolute inset-0 z-[1]" style={{ background: 'linear-gradient(to top, rgba(12,6,2,0.75) 0%, transparent 50%)' }} />
 
-          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            {/* Breadcrumb */}
-            <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-500 mb-8">
-              <Link to="/"  className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
-              <ChevronRight size={10} />
-              <Link to="/extra-curricular"  className="hover:text-slate-800 transition-colors">Extra Curricular</Link>
-              <ChevronRight size={10} />
-              <span className="text-orange-600">Basketball</span>
-            </div>
+          {/* Content */}
+          <div className="relative z-10 max-w-7xl mx-auto px-6 xl:px-12 w-full pb-0">
+            <div className="max-w-3xl pt-36 pb-12">
+              {/* Breadcrumb */}
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/60 mb-6">
+                <Link to="/" className="hover:text-[#E5AA3E] transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
+                <ChevronRight size={10} className="text-white/40" />
+                <Link to="/extra-curricular" className="hover:text-[#E5AA3E] transition-colors">Extra Curricular</Link>
+                <ChevronRight size={10} className="text-white/40" />
+                <span className="text-[#E5AA3E]">Basketball</span>
+              </div>
 
-            <div className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-700 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-8">
-              <Target size={12} className="text-orange-600 animate-pulse" /> RISE ABOVE THE RIM
-            </div>
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 border border-[#E5AA3E]/60 text-[#E5AA3E] text-[10px] font-bold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full mb-6">
+                <Target size={11} /> Rise Above the Rim
+              </div>
 
-            <h1 className="font-serif text-5xl md:text-8xl font-black text-slate-900 leading-none mb-8 tracking-tight uppercase">
-              COURT & <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-650 to-orange-500">ATHLETICS</span>
-            </h1>
+              {/* Title */}
+              <h1 className="font-serif text-5xl md:text-7xl font-black text-white leading-[1.05] mb-5">
+                Basketball
+                <span className="block" style={{ color: '#E5AA3E' }}>Club & Courts</span>
+              </h1>
 
-            <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
-              Experience FIBA-standard court action at Trident Academy. Master ball-handling, tactical spacing, conditioning drills, and compete at national-level university athletic meets.
-            </p>
+              {/* Description */}
+              <p className="text-white/75 text-lg leading-relaxed max-w-2xl mb-8">
+                Experience FIBA-standard court action at Trident Academy. Master ball-handling, tactical spacing, conditioning drills, and compete at national-level university athletic meets.
+              </p>
 
-            <div className="flex flex-wrap justify-center gap-4">
-              
-              <a href="#about" className="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-orange-700 border border-orange-300 hover:bg-orange-50 transition-all">
-                Facilities Details
+              <a href="#about" className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all" style={{ background: '#E5AA3E', color: '#0C0602' }}>
+                Facilities Details <ArrowRight size={13} />
               </a>
             </div>
           </div>
 
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center opacity-60">
-            <span className="text-[9px] tracking-widest text-slate-500 uppercase mb-2">scroll down</span>
-            <ChevronDown className="w-4 h-4 text-orange-600 animate-bounce" />
+          {/* Stats bar */}
+          <div className="relative z-10 w-full" style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)', borderTop: '1px solid rgba(229,170,62,0.2)' }}>
+            <div className="max-w-7xl mx-auto px-6 xl:px-12">
+              <div className="grid grid-cols-2 md:grid-cols-4">
+                {stats.map((s, i) => (
+                  <div key={i} className="py-5 px-6 flex flex-col" style={{ borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
+                    <span className="font-black text-2xl text-white">
+                      <GSAPCounter end={s.end} suffix={s.suffix} duration={2} />
+                    </span>
+                    <span className="text-[11px] text-white/55 uppercase tracking-widest mt-0.5 font-semibold">{s.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 

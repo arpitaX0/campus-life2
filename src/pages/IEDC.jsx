@@ -21,29 +21,59 @@ export default function IEDC() {
   return (
     <div className="bg-[#FAF9F6] min-h-screen text-[#3E3A36] font-sans overflow-x-hidden">
       
-      {/* ── HERO ECOSYSTEM ── */}
-      <section className="relative pt-36 pb-28 bg-gradient-to-br from-[#1a1230] via-[#2A1D4E] to-[#120B24] text-white overflow-hidden">
-        {/* Abstract background mesh */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(249,115,22,0.15),transparent_40%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(139,92,246,0.15),transparent_40%)]" />
-
-        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 25 }}
+      {/* ── HERO ── */}
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[520px] flex flex-col justify-end">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1600"
+            alt="IEDC"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(26,18,48,0.92) 0%, rgba(42,29,78,0.80) 55%, rgba(26,18,48,0.45) 100%)' }} />
+        </div>
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+          <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+            <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+            <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+            <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+            <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+            <span style={{ color: '#E5AA3E', fontWeight: 700 }}>IEDC</span>
+          </nav>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col items-center"
+            transition={{ duration: 0.6 }}
+            className="text-white/70 text-[13px] font-bold uppercase tracking-[0.25em] mb-3"
           >
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight font-display text-white">
-              IEDC <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-[#e9bd63]">Ecosystem.</span>
-            </h1>
-            
-            <p className="text-slate-300/80 text-lg md:text-xl max-w-2xl mb-4 leading-relaxed font-light">
-              Supported by DST, Govt. of India. The Innovation & Entrepreneurship Development Cell (IEDC) accelerates student ideas into scaled commercial startups.
-            </p>
-          </motion.div>
-
+            Innovation & Entrepreneurship
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="leading-[1.05] tracking-tight mb-6"
+            style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
+          >
+            Development<br />
+            <span style={{ color: '#E5AA3E' }}>Cell (IEDC).</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="max-w-2xl leading-relaxed font-medium mb-10"
+            style={{ color: 'rgba(255,255,255,0.75)', fontSize: '17px' }}
+          >
+            Supported by DST, Govt. of India — accelerating student ideas into scaled commercial startups through mentorship, funding, and incubation.
+          </motion.p>
+          <div className="flex flex-wrap gap-4">
+            {[{ val: 'DST', lbl: 'Govt. Recognized' }, { val: '₹2L', lbl: 'Seed Grants' }, { val: '3+', lbl: 'Active Startups' }, { val: '10+', lbl: 'Mentor Network' }].map((s, i) => (
+              <div key={i} className="px-5 py-3 rounded-lg text-center" style={{ backgroundColor: 'rgba(0,0,0,0.45)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                <div className="text-[22px] font-black text-white">{s.val}</div>
+                <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold mt-0.5">{s.lbl}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

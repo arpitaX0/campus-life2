@@ -31,99 +31,60 @@ export default function CulturalEvening() {
   return (
     <SmoothScrollProvider>
       <div className="bg-[#1A051D] text-[#FAF3EB] min-h-screen font-sans overflow-x-hidden selection:bg-[#D4AF37] selection:text-black">
-        
-        {/* ── Artistic Floating Gold Header ── */}
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-40 w-11/12 max-w-5xl">
-          <div className="backdrop-blur-md bg-[#1A051D]/80 text-[#FAF3EB] border border-[#D4AF37]/35 rounded-full px-6 py-3 flex items-center justify-between shadow-[0_0_20px_rgba(212,175,55,0.15)]">
-            <span className="font-serif text-lg font-bold tracking-wider text-[#D4AF37]">TAT Trifest '26</span>
-            <div className="flex items-center gap-6 text-xs uppercase tracking-widest font-bold text-[#FAF3EB]/80">
-              <a href="#events" className="hover:text-[#D4AF37] transition-colors">Showcases</a>
-              <a href="#schedule" className="hover:text-[#D4AF37] transition-colors">Schedule</a>
-              <a href="#spotlight" className="px-4 py-2 bg-[#D4AF37] hover:bg-amber-500 text-slate-950 rounded-full transition-all">VIP Tickets</a>
-            </div>
-          </div>
-        </div>
 
-        {/* ── HERO BANNER with Spotlight reveal ── */}
-        <section 
-          id="spotlight"
-          ref={containerRef}
-          onMouseMove={handleMouseMove}
-          onMouseEnter={() => setIsInside(true)}
-          onMouseLeave={() => setIsInside(false)}
-          className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-32 cursor-none"
-        >
-          {/* Spotlight Mask reveal overlay */}
-          <div 
-            className="absolute inset-0 bg-[#0C010E] transition-opacity duration-500 pointer-events-none"
-            style={{
-              clipPath: isInside 
-                ? `circle(120px at ${mousePos.x}px ${mousePos.y}px)` 
-                : 'circle(0px at 0px 0px)',
-              mixBlendMode: 'difference'
-            }}
-          />
-
-          <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-            <img 
-              src="https://images.unsplash.com/photo-1460881680858-30d872d5b530?q=80&w=2071&auto=format&fit=crop" 
-              alt="Cultural spotlight stage" 
-              className="w-full h-full object-cover scale-105"
+        {/* ── HERO ── */}
+        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[520px] flex flex-col justify-end">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1460881680858-30d872d5b530?q=80&w=2071&auto=format&fit=crop"
+              alt="Cultural Evening"
+              className="w-full h-full object-cover"
             />
-            {/* Elegant overlay gradients */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#1A051D]/60 via-[#1A051D]/90 to-[#1A051D]" />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(26,5,29,0.95) 0%, rgba(26,5,29,0.80) 55%, rgba(26,5,29,0.40) 100%)' }} />
           </div>
-
-          {/* Floating music note symbols (CSS Floating Particles) */}
-          <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden opacity-25">
-            <style>{`
-              @keyframes note-float {
-                0% { transform: translateY(105vh) rotate(0deg); opacity: 0; }
-                20% { opacity: 0.8; }
-                80% { opacity: 0.8; }
-                100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-              }
-              .music-note {
-                position: absolute;
-                bottom: 0;
-                font-size: 24px;
-                color: #D4AF37;
-              }
-            `}</style>
-            {['♫', '♪', '♬', '♩', '♫', '♪'].map((note, idx) => (
-              <div 
-                key={idx}
-                className="music-note"
-                style={{
-                  left: `${10 + idx * 18}%`,
-                  animation: `note-float ${12 + idx * 3}s ease-in-out ${idx * 2}s infinite`
-                }}
-              >
-                {note}
-              </div>
-            ))}
-          </div>
-
-          <div className="relative z-20 max-w-4xl mx-auto text-center flex flex-col items-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/35 text-[#D4AF37] mb-6 text-xs font-bold uppercase tracking-widest">
-              <Sparkles className="w-4 h-4 animate-spin" />
-              <span>Hover To Illuminate Stage</span>
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+            <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <span style={{ color: '#E5AA3E', fontWeight: 700 }}>Cultural Evening</span>
+            </nav>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-white/70 text-[13px] font-bold uppercase tracking-[0.25em] mb-3"
+            >
+              Annual Cultural Carnival
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="leading-[1.05] tracking-tight mb-6"
+              style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
+            >
+              Cultural Evening<br />
+              <span style={{ color: '#E5AA3E' }}>Trifest 2026.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="max-w-2xl leading-relaxed font-medium mb-10"
+              style={{ color: 'rgba(255,255,255,0.75)', fontSize: '17px' }}
+            >
+              Celebrate creative expressions, traditional drama, fusion dances, and fashion showcases ending with a high-energy live celebrity musical concert.
+            </motion.p>
+            <div className="flex flex-wrap gap-4">
+              {[{ val: '5+', lbl: 'Major Shows' }, { val: '400+', lbl: 'Performers' }, { val: '3000+', lbl: 'Attendees' }, { val: 'Live', lbl: 'Music Band' }].map((s, i) => (
+                <div key={i} className="px-5 py-3 rounded-lg text-center" style={{ backgroundColor: 'rgba(0,0,0,0.65)', border: '1px solid rgba(255,255,255,0.15)' }}>
+                  <div className="text-[22px] font-black text-white">{s.val}</div>
+                  <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold mt-0.5">{s.lbl}</div>
+                </div>
+              ))}
             </div>
-
-            <h1 className="font-serif text-5xl md:text-8xl font-bold tracking-tight mb-8 leading-none">
-              Arts & Cultural <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-pink-500 to-purple-500">
-                Evening.
-              </span>
-            </h1>
-
-            <p className="text-sm md:text-base max-w-2xl mb-12 text-slate-300 leading-relaxed font-light font-sans">
-              TAT celebrates the symphony of classical traditions and contemporary fusion. Explore stellar dance chronicles, music band showoffs, fashion run walks, and visual art arrays.
-            </p>
-
-            <a href="#events" className="px-8 py-4 bg-[#D4AF37] hover:bg-amber-500 text-slate-950 font-bold text-xs uppercase tracking-widest transition-all rounded-xl shadow-[0_0_15px_rgba(212,175,55,0.3)]">
-              View Showcase Highlights
-            </a>
           </div>
         </section>
 

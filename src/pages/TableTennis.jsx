@@ -51,55 +51,64 @@ export default function TableTennis() {
     <SmoothScrollProvider>
       <div className="bg-[#F0F8FF] min-h-screen text-slate-800 font-sans overflow-x-hidden">
 
-        {/* ── HERO SECTION: Split diagonal + bounce animation ── */}
-        <section className="relative min-h-[80vh] flex items-center justify-center pt-24 overflow-hidden bg-gradient-to-br from-sky-50/20 via-white to-[#F0F8FF]">
-          {/* Animated bouncy ping pong ball */}
-          <div className="absolute inset-0 pointer-events-none z-0">
-            <motion.div
-              className="w-5 h-5 bg-orange-500 rounded-full absolute shadow-lg"
-              animate={{
-                x: [100, 300, 500, 700, 900, 1100, 900, 700, 500, 300, 100],
-                y: [600, 300, 600, 350, 600, 400, 600, 350, 600, 300, 600],
-              }}
-              transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-            />
+        {/* ── HERO SECTION (academics-tat style) ── */}
+        <section className="relative min-h-[88vh] flex flex-col justify-end overflow-hidden">
+          {/* Full-width photo background */}
+          <div className="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1611251135345-18c56206b863?auto=format&fit=crop&w=1400&q=85" alt="Table Tennis Facility" className="w-full h-full object-cover object-center" />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/80 to-[#F0F8FF] z-1" />
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0 z-[1]" style={{ background: 'linear-gradient(to right, rgba(5,8,20,0.90) 0%, rgba(5,8,20,0.68) 55%, rgba(5,8,20,0.30) 100%)' }} />
+          <div className="absolute inset-0 z-[1]" style={{ background: 'linear-gradient(to top, rgba(5,8,20,0.75) 0%, transparent 50%)' }} />
 
-          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            {/* Breadcrumb */}
-            <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-500 mb-8">
-              <Link to="/"  className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
-              <ChevronRight size={10} />
-              <Link to="/extra-curricular"  className="hover:text-slate-800 transition-colors">Extra Curricular</Link>
-              <ChevronRight size={10} />
-              <span className="text-sky-655">Table Tennis</span>
-            </div>
+          {/* Content */}
+          <div className="relative z-10 max-w-7xl mx-auto px-6 xl:px-12 w-full pb-0">
+            <div className="max-w-3xl pt-36 pb-12">
+              {/* Breadcrumb */}
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/60 mb-6">
+                <Link to="/" className="hover:text-[#E5AA3E] transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
+                <ChevronRight size={10} className="text-white/40" />
+                <Link to="/extra-curricular" className="hover:text-[#E5AA3E] transition-colors">Extra Curricular</Link>
+                <ChevronRight size={10} className="text-white/40" />
+                <span className="text-[#E5AA3E]">Table Tennis</span>
+              </div>
 
-            <div className="inline-flex items-center gap-2 bg-sky-50 border border-sky-200 text-sky-700 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-8">
-              <Target size={12} className="text-orange-550" /> FAST REFLEXES, SHARP FOCUS
-            </div>
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 border border-[#E5AA3E]/60 text-[#E5AA3E] text-[10px] font-bold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full mb-6">
+                <Target size={11} /> Fast Reflexes, Sharp Focus
+              </div>
 
-            <h1 className="font-serif text-5xl md:text-8xl font-black text-slate-900 leading-none mb-8 tracking-tight uppercase">
-              REFLEX & <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-500">SPIN</span>
-            </h1>
+              {/* Title */}
+              <h1 className="font-serif text-5xl md:text-7xl font-black text-white leading-[1.05] mb-5">
+                Table Tennis
+                <span className="block" style={{ color: '#E5AA3E' }}>Club & Facility</span>
+              </h1>
 
-            <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
-              Unleash your reaction speed. Practice top-spin loop attacks and chop defenses inside our indoor table tennis facility equipped with competition Stag boards.
-            </p>
+              {/* Description */}
+              <p className="text-white/75 text-lg leading-relaxed max-w-2xl mb-8">
+                Unleash your reaction speed. Practice top-spin loop attacks and chop defenses inside our indoor table tennis facility equipped with competition Stag boards.
+              </p>
 
-            <div className="flex flex-wrap justify-center gap-4">
-              
-              <a href="#about" className="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-orange-700 border border-orange-300 hover:bg-orange-50 transition-all">
-                View Facilities
+              <a href="#about" className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all" style={{ background: '#E5AA3E', color: '#050814' }}>
+                View Facilities <ArrowRight size={13} />
               </a>
             </div>
           </div>
 
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center opacity-60">
-            <span className="text-[9px] tracking-widest text-slate-500 uppercase mb-2">scroll down</span>
-            <ChevronDown className="w-4 h-4 text-sky-600 animate-bounce" />
+          {/* Stats bar */}
+          <div className="relative z-10 w-full" style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)', borderTop: '1px solid rgba(229,170,62,0.2)' }}>
+            <div className="max-w-7xl mx-auto px-6 xl:px-12">
+              <div className="grid grid-cols-2 md:grid-cols-4">
+                {stats.map((s, i) => (
+                  <div key={i} className="py-5 px-6 flex flex-col" style={{ borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
+                    <span className="font-black text-2xl text-white">
+                      <GSAPCounter end={s.end} suffix={s.suffix} duration={2} />
+                    </span>
+                    <span className="text-[11px] text-white/55 uppercase tracking-widest mt-0.5 font-semibold">{s.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 

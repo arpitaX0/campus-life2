@@ -50,55 +50,61 @@ export default function CampusWiFi() {
 
   return (
     <SmoothScrollProvider>
-      <div className="bg-[#090D1F] text-slate-100 min-h-screen font-sans overflow-x-hidden selection:bg-[#38BDF8] selection:text-black">
-        
-        {/* ── NetOps Floating Header ── */}
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-40 w-11/12 max-w-5xl">
-          <div className="backdrop-blur-md bg-[#090D1F]/90 text-white border border-[#38BDF8]/20 rounded-full px-6 py-3 flex items-center justify-between shadow-[0_0_20px_rgba(56,189,248,0.15)]">
-            <span className="font-mono text-sm font-bold tracking-wider text-[#38BDF8] flex items-center gap-2">
-              <Wifi size={16} className="text-[#38BDF8] animate-bounce" /> NetOps Online
-            </span>
-            <div className="flex items-center gap-6 text-xs uppercase tracking-widest font-bold">
-              <a href="#coverage" className="hover:text-[#38BDF8] transition-colors">Hotspots Map</a>
-              <a href="#setup" className="hover:text-[#38BDF8] transition-colors">Setup Guide</a>
-              <a href="#policies" className="px-4 py-2 bg-[#38BDF8] hover:bg-[#0EA5E9] text-black rounded-full font-bold transition-all">Support Desk</a>
-            </div>
+      <div className="bg-[#F8FAFC] text-slate-800 min-h-screen font-sans overflow-x-hidden">
+
+        {/* ── HERO ── */}
+        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[520px] flex flex-col justify-end">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1600"
+              alt="Campus WiFi"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(9,13,31,0.93) 0%, rgba(9,13,31,0.80) 55%, rgba(9,13,31,0.40) 100%)' }} />
           </div>
-        </div>
-
-        {/* ── HERO BANNER with Network Radar Pulse ── */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-32">
-          {/* Pulsing visual radial wave background */}
-          <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
-            <div className="absolute w-[600px] h-[600px] rounded-full border border-[#38BDF8]/25 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <motion.div 
-                animate={{ scale: [1, 1.5, 2], opacity: [0.6, 0.3, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeOut" }}
-                className="w-full h-full border border-[#38BDF8] rounded-full"
-              />
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+            <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <span style={{ color: '#E5AA3E', fontWeight: 700 }}>Campus WiFi</span>
+            </nav>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-white/70 text-[13px] font-bold uppercase tracking-[0.25em] mb-3"
+            >
+              Network Infrastructure
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="leading-[1.05] tracking-tight mb-6"
+              style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
+            >
+              Connected<br />
+              <span style={{ color: '#E5AA3E' }}>Anywhere.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="max-w-2xl leading-relaxed font-medium mb-10"
+              style={{ color: 'rgba(255,255,255,0.75)', fontSize: '17px' }}
+            >
+              Enterprise-grade high-speed WiFi across the entire campus — seamlessly connect to digital libraries, online compilers, and lecture portals with optimized latency.
+            </motion.p>
+            <div className="flex flex-wrap gap-4">
+              {[{ val: '10 Gbps', lbl: 'Backbone Speed' }, { val: '4', lbl: 'Coverage Zones' }, { val: '750 Mbps', lbl: 'Peak Speed' }, { val: '2500+', lbl: 'Active Devices' }].map((s, i) => (
+                <div key={i} className="px-5 py-3 rounded-lg text-center" style={{ backgroundColor: 'rgba(0,0,0,0.45)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                  <div className="text-[22px] font-black text-white">{s.val}</div>
+                  <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold mt-0.5">{s.lbl}</div>
+                </div>
+              ))}
             </div>
-          </div>
-
-          <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#38BDF8]/10 border border-[#38BDF8]/30 text-[#38BDF8] mb-6 text-xs font-bold uppercase tracking-widest">
-              <Radio className="w-4 h-4 animate-pulse" />
-              <span>Network Status: NORMAL (10 Gbps Backbone)</span>
-            </div>
-
-            <h1 className="font-serif text-5xl md:text-8xl font-bold tracking-tight mb-8 leading-none">
-              Connected <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#0EA5E9] to-indigo-500">
-                Anywhere.
-              </span>
-            </h1>
-
-            <p className="text-sm md:text-base max-w-2xl mb-12 text-slate-400 leading-relaxed font-light font-sans">
-              Enjoy high-speed enterprise-grade WiFi across the entire campus. Seamlessly connect to digital libraries, online compilers, and lecture portals with optimized latency.
-            </p>
-
-            <a href="#coverage" className="px-8 py-4 bg-[#38BDF8] hover:bg-[#0EA5E9] text-black font-bold text-xs uppercase tracking-widest transition-all rounded-xl shadow-[0_0_15px_rgba(56,189,248,0.3)]">
-              Open Hotspots Map
-            </a>
           </div>
         </section>
 

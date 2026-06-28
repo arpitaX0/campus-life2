@@ -30,64 +30,57 @@ export default function LibraryPage() {
 
   return (
     <div className="bg-white min-h-screen pb-24">
-      {/* Hero — Teal Split Layout with floating shapes */}
-      <div className="relative w-full min-h-[520px] overflow-hidden">
-        <div className="absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1507842217343-581384b0818b?q=80&w=2000&auto=format&fit=crop" alt="Hero Background" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-[#134E4A]/40 mix-blend-multiply" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#042F2E]/80 via-[#134E4A]/50 to-transparent" />
+      {/* ── HERO ── */}
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[520px] flex flex-col justify-end">
+        <div className="absolute inset-0 z-0">
+          <img src="https://images.unsplash.com/photo-1507842217343-581384b0818b?q=80&w=2000&auto=format&fit=crop" alt="Library" className="w-full h-full object-cover" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(4,47,46,0.93) 0%, rgba(19,78,74,0.80) 55%, rgba(4,47,46,0.40) 100%)' }} />
         </div>
-        {/* Decorative floating shapes */}
-        <div className="absolute top-12 right-[8%] w-48 h-48 border border-[#5EEAD4]/15 rounded-3xl rotate-12" />
-        <div className="absolute top-32 right-[15%] w-24 h-24 border border-[#5EEAD4]/10 rounded-2xl -rotate-6" />
-        <div className="absolute bottom-20 right-[5%] w-36 h-36 bg-[#5EEAD4]/5 rounded-full blur-sm" />
-        <div className="absolute top-20 left-[5%] w-20 h-20 bg-[#2DD4BF]/8 rounded-full" />
-        <div className="absolute bottom-16 left-[12%] w-32 h-32 border border-[#99F6E4]/10 rounded-full" />
-        {/* Gradient mesh overlay */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#0D9488]/20 to-transparent" />
-        {/* Bottom diagonal cut */}
-        <div className="absolute bottom-0 left-0 w-full h-24">
-          <svg viewBox="0 0 1440 96" fill="none" className="w-full h-full" preserveAspectRatio="none">
-            <path d="M0 96L1440 96L1440 0C1200 80 720 96 0 40L0 96Z" fill="#F0F4F8"/>
-          </svg>
-        </div>
-
-        <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 pt-40 pb-24">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }} className="flex-1">
-              <div className="inline-flex items-center gap-2 bg-[#5EEAD4]/10 border border-[#5EEAD4]/20 rounded-full px-4 py-1.5 mb-6">
-                <BookOpen size={14} className="text-[#5EEAD4]" />
-                <span className="text-[11px] font-bold text-[#5EEAD4] uppercase tracking-widest">Knowledge Hub</span>
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+          <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+            <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+            <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+            <Link to="/" className="hover:text-white transition-colors">Campus Life</Link>
+            <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+            <span style={{ color: '#E5AA3E', fontWeight: 700 }}>Library</span>
+          </nav>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-white/70 text-[13px] font-bold uppercase tracking-[0.25em] mb-3"
+          >
+            Knowledge Hub
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="leading-[1.05] tracking-tight mb-6"
+            style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
+          >
+            Central<br />
+            <span style={{ color: '#E5AA3E' }}>Library.</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="max-w-2xl leading-relaxed font-medium mb-10"
+            style={{ color: 'rgba(255,255,255,0.75)', fontSize: '17px' }}
+          >
+            A modern knowledge ecosystem empowering academic excellence with vast physical and digital collections — open to all students and faculty.
+          </motion.p>
+          <div className="flex flex-wrap gap-4">
+            {[{ val: '50K+', lbl: 'Books' }, { val: '10K+', lbl: 'E-Resources' }, { val: '300+', lbl: 'Seats' }, { val: 'DELNET', lbl: 'Member' }].map((s, i) => (
+              <div key={i} className="px-5 py-3 rounded-lg text-center" style={{ backgroundColor: 'rgba(0,0,0,0.45)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                <div className="text-[22px] font-black text-white">{s.val}</div>
+                <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold mt-0.5">{s.lbl}</div>
               </div>
-              <h1 className="font-serif text-[52px] md:text-[76px] font-black text-white leading-[1.05] mb-6 tracking-tight">
-                Central<br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5EEAD4] to-[#99F6E4]">Library</span>
-              </h1>
-              <p className="text-white/70 text-[17px] max-w-lg leading-relaxed font-light mb-8">
-                A modern knowledge ecosystem empowering academic excellence with vast physical and digital collections.
-              </p>
-              <div className="flex flex-wrap gap-6">
-                {[{ n: "50K+", l: "Books" }, { n: "10K+", l: "E-Resources" }, { n: "300+", l: "Seats" }].map((s, i) => (
-                  <div key={i} className="text-center">
-                    <div className="text-[28px] font-black text-[#5EEAD4]">{s.n}</div>
-                    <div className="text-[10px] text-white/40 uppercase tracking-widest font-bold">{s.l}</div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden lg:flex w-[300px] h-[300px] items-center justify-center">
-              <div className="relative">
-                <div className="w-52 h-52 rounded-3xl bg-gradient-to-br from-[#5EEAD4]/20 to-[#0D9488]/10 backdrop-blur-sm border border-[#5EEAD4]/20 flex items-center justify-center rotate-6">
-                  <BookOpen size={72} className="text-[#5EEAD4]/60" strokeWidth={1} />
-                </div>
-                <div className="absolute -top-4 -right-4 w-20 h-20 rounded-2xl bg-[#14B8A6] flex items-center justify-center shadow-lg shadow-[#14B8A6]/30 -rotate-12">
-                  <Search size={28} className="text-white" />
-                </div>
-              </div>
-            </motion.div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
       <div className="max-w-[1400px] mx-auto px-6 xl:px-12 mt-4">
         <nav className="flex items-center gap-2 flex-wrap text-[11px] font-medium text-[#78716C] uppercase tracking-[0.2em] mb-12">

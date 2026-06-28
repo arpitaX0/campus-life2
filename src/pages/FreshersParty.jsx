@@ -24,76 +24,60 @@ export default function FreshersParty() {
   return (
     <SmoothScrollProvider>
       <div className="bg-[#0A0612] text-slate-200 min-h-screen font-sans overflow-x-hidden selection:bg-[#06B6D4] selection:text-black">
-        
-        {/* ── Vibrant Floating Party Header ── */}
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-40 w-11/12 max-w-5xl">
-          <div className="backdrop-blur-md bg-[#0A0612]/80 text-[#FAF3EB] border border-[#06B6D4]/30 rounded-full px-6 py-3 flex items-center justify-between shadow-[0_0_20px_rgba(6,182,212,0.15)]">
-            <span className="font-bold tracking-wider text-[#06B6D4]">Freshers '26</span>
-            <div className="flex items-center gap-6 text-xs uppercase tracking-widest font-bold">
-              <a href="#gallery" className="hover:text-[#06B6D4] transition-colors">Polaroids</a>
-              <a href="#highlights" className="hover:text-[#06B6D4] transition-colors">Highlights</a>
-              <a href="#welcome" className="px-4 py-2 bg-gradient-to-r from-[#06B6D4] to-[#8B5CF6] hover:from-cyan-400 hover:to-purple-500 text-black font-bold rounded-full transition-all">Event Guide</a>
-            </div>
+
+        {/* ── HERO ── */}
+        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[520px] flex flex-col justify-end">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=2070&auto=format&fit=crop"
+              alt="Freshers Party"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,6,18,0.95) 0%, rgba(20,10,35,0.80) 55%, rgba(10,6,18,0.40) 100%)' }} />
           </div>
-        </div>
-
-        {/* ── HERO BANNER with Confetti Drop ── */}
-        <section id="welcome" className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-32">
-          {/* Neon light nodes */}
-          <div className="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] rounded-full bg-[#06B6D4]/10 blur-[120px] -z-10" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] rounded-full bg-[#8B5CF6]/15 blur-[120px] -z-10" />
-
-          {/* Confetti particles shower */}
-          <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden opacity-30">
-            <style>{`
-              @keyframes confetti-fall {
-                0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-                100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
-              }
-              .confetti-piece {
-                position: absolute;
-                width: 10px;
-                height: 10px;
-                border-radius: 20%;
-              }
-            `}</style>
-            {[...Array(20)].map((_, idx) => {
-              const bgColors = ["#06B6D4", "#F97316", "#8B5CF6", "#EC4899"];
-              return (
-                <div 
-                  key={idx}
-                  className="confetti-piece animate-pulse"
-                  style={{
-                    left: `${Math.random() * 95}%`,
-                    top: `-20px`,
-                    backgroundColor: bgColors[idx % bgColors.length],
-                    animation: `confetti-fall ${5 + Math.random() * 5}s linear ${Math.random() * 4}s infinite`
-                  }}
-                />
-              );
-            })}
-          </div>
-
-          <div className="relative z-20 max-w-4xl mx-auto text-center flex flex-col items-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#06B6D4]/10 border border-[#06B6D4]/30 text-[#06B6D4] mb-6 text-xs font-bold uppercase tracking-widest">
-              <Sparkles className="w-4 h-4 animate-bounce" />
-              <span>Theme: Welcoming Batches</span>
-            </div>
-
-            <h1 className="font-serif text-5xl md:text-8xl font-bold tracking-tight mb-8 leading-none">
-              Welcome to <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#06B6D4] via-[#F97316] to-[#8B5CF6]">
-                Trident Academy.
-              </span>
-            </h1>
-
-            <p className="text-sm md:text-base max-w-2xl mb-12 text-slate-400 leading-relaxed font-light font-sans">
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+            <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <span style={{ color: '#E5AA3E', fontWeight: 700 }}>Freshers Party</span>
+            </nav>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-white/70 text-[13px] font-bold uppercase tracking-[0.25em] mb-3"
+            >
+              Annual Induction Fest
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="leading-[1.05] tracking-tight mb-6"
+              style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
+            >
+              Welcome to<br />
+              <span style={{ color: '#E5AA3E' }}>Trident Academy.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="max-w-2xl leading-relaxed font-medium mb-10"
+              style={{ color: 'rgba(255,255,255,0.75)', fontSize: '17px' }}
+            >
               TAT welcomes the freshers batch of 2026. Join us for a colorful event welcoming new talent, featuring active games, dance showdowns, fashion pageants, and high-energy music.
-            </p>
-
-            <a href="#gallery" className="px-8 py-4 bg-gradient-to-r from-[#06B6D4] to-[#8B5CF6] text-black font-bold text-xs uppercase tracking-widest transition-all rounded-xl shadow-[0_0_15px_rgba(6,182,212,0.3)]">
-              View Memories Gallery
-            </a>
+            </motion.p>
+            <div className="flex flex-wrap gap-4">
+              {[{ val: '2026', lbl: 'Welcome Batch' }, { val: 'DJ EDM', lbl: 'Theme Night' }, { val: 'Mr/Ms', lbl: 'Freshers Pageant' }, { val: '100%', lbl: 'Student Fun' }].map((s, i) => (
+                <div key={i} className="px-5 py-3 rounded-lg text-center" style={{ backgroundColor: 'rgba(0,0,0,0.65)', border: '1px solid rgba(255,255,255,0.15)' }}>
+                  <div className="text-[22px] font-black text-white">{s.val}</div>
+                  <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold mt-0.5">{s.lbl}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

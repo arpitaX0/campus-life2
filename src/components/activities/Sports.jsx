@@ -12,11 +12,11 @@ import sport6 from '../../assets/cta_campus_reading.jpg';
 
 const sports = [
   { img: sport1, label: 'Gymnasium', accent: '#E8BD63', stat: 'Modern Equipments', path: '/gymnasium' },
-  { img: sport2, label: 'Basketball', accent: '#E56D24', stat: '3 Courts', path: '/basketball' },
-  { img: sport3, label: 'Football', accent: '#34785A', stat: 'FIFA Standard', path: '/football' },
-  { img: sport4, label: 'Volleyball', accent: '#D3494B', stat: '2 Courts', path: '/volleyball' },
-  { img: sport5, label: 'Badminton', accent: '#2C3A8C', stat: 'Indoor Arena', path: '/badminton' },
-  { img: sport6, label: 'Table Tennis', accent: '#A59381', stat: '4 Tables', path: '/table-tennis' },
+  { img: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80', label: 'Basketball', accent: '#E56D24', stat: '3 Courts', path: '/basketball' },
+  { img: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?auto=format&fit=crop&w=800&q=80', label: 'Football', accent: '#34785A', stat: 'FIFA Standard', path: '/football' },
+  { img: 'https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=800&q=80', label: 'Volleyball', accent: '#D3494B', stat: '2 Courts', path: '/volleyball' },
+  { img: 'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=800&q=80', label: 'Badminton', accent: '#2C3A8C', stat: 'Indoor Arena', path: '/badminton' },
+  { img: 'https://images.unsplash.com/photo-1611251135345-18c56206b863?auto=format&fit=crop&w=800&q=80', label: 'Table Tennis', accent: '#A59381', stat: '4 Tables', path: '/table-tennis' },
 ]
 
 /*

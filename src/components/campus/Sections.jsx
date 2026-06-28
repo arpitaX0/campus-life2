@@ -9,7 +9,7 @@ import facility2 from '../../assets/real_cafeteria.jpg'
 import facility3 from '../../assets/facilities_sports.jpg'
 import facility4 from '../../assets/real_lab.jpg'
 import facility5 from '../../assets/athletics_facility.png'
-import facility6 from '../../assets/news_campus_life.jpg'
+import facility6 from '../../assets/cta_campus_reading.jpg'
 
 // ==========================================
 // RESEARCH — Card Grid Design
@@ -70,10 +70,10 @@ export function Facilities() {
   const facilities = [
     { title: 'Premium Hostels', desc: 'In-campus safe residence with modern amenities, 24/7 security, and a home-like atmosphere.', img: facility1, icon: Home, path: '/hostels' },
     { title: 'Food Centers', desc: 'Multi-cuisine dining halls offering wholesome meals in spacious, naturally-lit settings.', img: facility2, icon: Utensils, path: '/cafeteria' },
-    { title: 'Healthcare', desc: 'Dedicated health center with qualified medical professionals and emergency care facilities.', img: facility3, icon: HeartPulse, path: '/healthcare' },
+    { title: 'Healthcare', desc: 'Dedicated health center with qualified medical professionals and emergency care facilities.', img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80', icon: HeartPulse, path: '/healthcare' },
     { title: 'Modern Labs', desc: 'AICTE-standard smart classrooms and advanced computing labs for immersive learning.', img: facility4, icon: Building, path: '/modern-labs' },
     { title: 'Campus WiFi', desc: 'High-speed internet connectivity across the entire campus, enabling seamless digital learning.', img: facility5, icon: Wifi, path: '/campus-wifi' },
-    { title: 'Safe Transport', desc: 'Extensive bus fleet covering all major routes across Bhubaneswar for safe daily commute.', img: facility6, icon: Bus, path: '/safe-transport' },
+    { title: 'Safe Transport', desc: 'Extensive bus fleet covering all major routes across Bhubaneswar for safe daily commute.', img: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80', icon: Bus, path: '/safe-transport' },
   ]
 
   return (

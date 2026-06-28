@@ -29,53 +29,60 @@ export default function StudentClubsPage() {
 
   return (
     <div className="bg-white min-h-screen pb-24">
-            {/* Premium Hero Design */}
-      <div className="relative w-full pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-white">
-        {/* Abstract Background Elements */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#3B82F6]/5 rounded-bl-[100px]" />
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#3B82F6]/10 rounded-full blur-3xl" />
-        
-        <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 flex flex-col lg:flex-row items-center gap-16">
-          {/* Left: Content */}
-          <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }} className="flex-1 text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 mb-6">
-              <Users className="w-4 h-4 text-[#3B82F6]" />
-              <span className="text-[12px] font-bold text-[#3B82F6] uppercase tracking-widest">Trident Academy</span>
+      {/* academics-tat style Hero */}
+      <section className="relative min-h-[80vh] flex flex-col justify-end overflow-hidden">
+        {/* Full-width photo background */}
+        <div className="absolute inset-0 z-0">
+          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=85" alt="Student Clubs" className="w-full h-full object-cover object-center" />
+        </div>
+        {/* Dark gradient overlay */}
+        <div className="absolute inset-0 z-[1]" style={{ background: 'linear-gradient(to right, rgba(10,8,25,0.90) 0%, rgba(10,8,25,0.68) 55%, rgba(10,8,25,0.30) 100%)' }} />
+        <div className="absolute inset-0 z-[1]" style={{ background: 'linear-gradient(to top, rgba(10,8,25,0.75) 0%, transparent 50%)' }} />
+
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 xl:px-12 w-full pb-0">
+          <div className="max-w-3xl pt-36 pb-12">
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/60 mb-6">
+              <Link to="/" className="hover:text-[#E5AA3E] transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
+              <ChevronRight size={10} className="text-white/40" />
+              <span className="text-[#E5AA3E]">Student Clubs</span>
+            </nav>
+
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 border border-[#E5AA3E]/60 text-[#E5AA3E] text-[10px] font-bold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full mb-6">
+              <Users size={11} /> Trident Academy
             </div>
-            <h1 className="font-serif text-[48px] lg:text-[64px] font-black text-[#1a2352] leading-[1.1] mb-6">
-              Student Clubs
+
+            {/* Title */}
+            <h1 className="font-serif text-5xl md:text-7xl font-black text-white leading-[1.05] mb-5">
+              Student
+              <span className="block" style={{ color: '#E5AA3E' }}>Clubs</span>
             </h1>
-            <p className="text-gray-500 text-[18px] leading-relaxed max-w-xl mb-8">
+
+            {/* Description */}
+            <p className="text-white/75 text-lg leading-relaxed max-w-2xl">
               Explore your passion beyond the classroom through our vibrant student clubs and organizations.
             </p>
-          </motion.div>
-          
-          {/* Right: Featured Image with Glassmorphism Float */}
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} className="flex-1 relative w-full max-w-lg lg:max-w-none mx-auto">
-            <div className="relative rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-[#3B82F6]/20">
-              <img src="https://images.unsplash.com/photo-1511632765486-a51c4c2ce181?q=80&w=1000&auto=format&fit=crop" alt="Hero" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1a2352]/50 to-transparent" />
-            </div>
-            {/* Floating Element */}
-            <div className="absolute -bottom-8 -left-8 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-white/50 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#3B82F6]/10 flex items-center justify-center">
-                <CheckCircle className="w-6 h-6 text-[#3B82F6]" />
-              </div>
-              <div>
-                <div className="text-[20px] font-black text-[#1a2352]">Verified</div>
-                <div className="text-[12px] font-bold text-gray-500 uppercase">Information</div>
-              </div>
-            </div>
-          </motion.div>
+          </div>
         </div>
-      </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 xl:px-12 mt-8">
-        <nav className="flex items-center gap-2 flex-wrap text-[11px] font-medium text-[#8B6E66] uppercase tracking-[0.2em] mb-12">
-          <Link to="/" className="hover:text-[#212529] transition-colors flex items-center gap-1"><Home size={12} /> Home</Link>
-          <ChevronRight size={10} />
-          <span className="text-[#212529] font-bold">Student Clubs</span>
-        </nav>
+        {/* Stats bar */}
+        <div className="relative z-10 w-full" style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)', borderTop: '1px solid rgba(229,170,62,0.2)' }}>
+          <div className="max-w-7xl mx-auto px-6 xl:px-12">
+            <div className="grid grid-cols-2 md:grid-cols-4">
+              {[{ val: '12+', label: 'Active Clubs' }, { val: '1500+', label: 'Total Members' }, { val: '50+', label: 'Events/Year' }, { val: '4', label: 'Categories' }].map((s, i) => (
+                <div key={i} className="py-5 px-6 flex flex-col" style={{ borderRight: i < 3 ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
+                  <span className="font-black text-2xl text-white">{s.val}</span>
+                  <span className="text-[11px] text-white/55 uppercase tracking-widest mt-0.5 font-semibold">{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-[1400px] mx-auto px-6 xl:px-12 mt-12">
 
         {/* Category Filter */}
         <FadeInUp>

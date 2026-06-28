@@ -31,31 +31,59 @@ export default function SportsGames() {
   return (
     <div className="bg-[#FAF9F5] min-h-screen text-[#3E3A36] font-sans overflow-x-hidden">
       
-      {/* ── HERO CHAMPIONS ARENA ── */}
-      <section className="relative pt-36 pb-28 bg-[#152e1f] text-white overflow-hidden">
-        {/* Dynamic diagonal stripe overlays */}
-        <div className="absolute inset-0 bg-[linear-gradient(115deg,transparent_60%,#f97316_60.1%,#f97316_62%,transparent_62.1%)] opacity-35 z-0" />
-        <div className="absolute inset-0 bg-[linear-gradient(115deg,transparent_64%,#3b82f6_64.1%,#3b82f6_66%,transparent_66.1%)] opacity-35 z-0" />
-
-        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 25 }}
+      {/* ── HERO ── */}
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[520px] flex flex-col justify-end">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&q=80&w=1600"
+            alt="Sports & Games"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(21,46,31,0.92) 0%, rgba(21,46,31,0.80) 55%, rgba(21,46,31,0.40) 100%)' }} />
+        </div>
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+          <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+            <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+            <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+            <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+            <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+            <span style={{ color: '#E5AA3E', fontWeight: 700 }}>Sports & Games</span>
+          </nav>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col items-center"
+            transition={{ duration: 0.6 }}
+            className="text-white/70 text-[13px] font-bold uppercase tracking-[0.25em] mb-3"
           >
-            
-            <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-6 leading-none uppercase font-display italic text-center">
-              Sports & <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">Games.</span>
-            </h1>
-            
-            <p className="text-emerald-100/70 text-lg md:text-xl max-w-2xl leading-relaxed font-light text-center">
-              Nurturing athletic excellence, teamwork, and health. We support our athletes with premier coaches, fully loaded arenas, and scholarship benefits.
-            </p>
-
-          </motion.div>
-
+            Athletics & Recreation
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="leading-[1.05] tracking-tight mb-6"
+            style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
+          >
+            Sports &<br />
+            <span style={{ color: '#E5AA3E' }}>Games.</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="max-w-2xl leading-relaxed font-medium mb-10"
+            style={{ color: 'rgba(255,255,255,0.75)', fontSize: '17px' }}
+          >
+            Nurturing athletic excellence, teamwork, and health with premier coaches, fully loaded arenas, and scholarship benefits for student-athletes.
+          </motion.p>
+          <div className="flex flex-wrap gap-4">
+            {[{ val: '15+', lbl: 'Sports Offered' }, { val: '3', lbl: 'Gold Medals 2025' }, { val: '100%', lbl: 'Scholarship for Nationals' }, { val: '5', lbl: 'Arenas' }].map((s, i) => (
+              <div key={i} className="px-5 py-3 rounded-lg text-center" style={{ backgroundColor: 'rgba(0,0,0,0.45)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                <div className="text-[22px] font-black text-white">{s.val}</div>
+                <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold mt-0.5">{s.lbl}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

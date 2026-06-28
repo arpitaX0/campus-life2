@@ -89,62 +89,64 @@ export default function ChoreographyClub() {
     <SmoothScrollProvider>
       <div className="bg-[#FDF6EF] min-h-screen text-[#3E3A36] font-sans overflow-x-hidden">
 
-        {/* ── HERO SECTION ── */}
-        <section className="relative min-h-[85vh] flex items-center justify-center pt-24 overflow-hidden bg-gradient-to-br from-amber-50/20 via-[#FDF6EF]/85 to-[#FDF6EF]">
-
-          {/* Warm ambient glows */}
-          <div className="absolute top-[15%] left-[8%] w-[500px] h-[500px] rounded-full bg-amber-200/20 blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-[20%] right-[8%] w-[400px] h-[400px] rounded-full bg-orange-200/15 blur-[100px] pointer-events-none" />
-
-          {/* Faded background image */}
-          <div className="absolute inset-0 z-0 opacity-10">
-            <img src={danceImg1} alt="Choreography" className="w-full h-full object-cover object-top" />
+        {/* ── HERO SECTION (academics-tat style) ── */}
+        <section className="relative min-h-[88vh] flex flex-col justify-end overflow-hidden">
+          {/* Full-width photo background */}
+          <div className="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=1400&q=85" alt="Indian Classical Dance Performance" className="w-full h-full object-cover object-center" />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FDF6EF]/60 via-[#FDF6EF]/40 to-[#FDF6EF] z-1" />
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0 z-[1]" style={{ background: 'linear-gradient(to right, rgba(10,8,5,0.88) 0%, rgba(10,8,5,0.65) 55%, rgba(10,8,5,0.30) 100%)' }} />
+          <div className="absolute inset-0 z-[1]" style={{ background: 'linear-gradient(to top, rgba(10,8,5,0.75) 0%, transparent 50%)' }} />
 
-          {/* Floating decorative accents */}
-          {[...Array(4)].map((_, i) => (
-            <FloatingElement key={i} className="absolute z-1 opacity-20 text-amber-500"
-              range={30 + i * 8} duration={8 + i * 2} delay={i}
-              style={{ top: `${20 + i * 14}%`, left: `${10 + i * 20}%`, fontSize: i % 2 === 0 ? '2.5rem' : '1.5rem' }}>
-              {i % 2 === 0 ? '✦' : '◆'}
-            </FloatingElement>
-          ))}
+          {/* Content */}
+          <div className="relative z-10 max-w-7xl mx-auto px-6 xl:px-12 w-full pb-0">
+            <div className="max-w-3xl pt-36 pb-12">
+              {/* Breadcrumb */}
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/60 mb-6">
+                <Link to="/" className="hover:text-[#E5AA3E] transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
+                <ChevronRight size={10} className="text-white/40" />
+                <Link to="/extra-curricular" className="hover:text-[#E5AA3E] transition-colors">Extra Curricular</Link>
+                <ChevronRight size={10} className="text-white/40" />
+                <span className="text-[#E5AA3E]">Choreography Club</span>
+              </div>
 
-          <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-            {/* Breadcrumb */}
-            <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#9C8060]/70 mb-6">
-              <Link to="/"  className="hover:text-[#C4882A] transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
-              <ChevronRight size={10} />
-              <Link to="/extra-curricular"  className="hover:text-[#C4882A] transition-colors">Extra Curricular</Link>
-              <ChevronRight size={10} />
-              <span className="text-[#C4882A]">Choreography Club</span>
-            </div>
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 border border-[#E5AA3E]/60 text-[#E5AA3E] text-[10px] font-bold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full mb-6">
+                <Music size={11} /> Creative Movement Studio
+              </div>
 
-            <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-700 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
-              <Music size={12} className="text-amber-600" /> Creative Movement Studio
-            </div>
+              {/* Title */}
+              <h1 className="font-serif text-5xl md:text-7xl font-black text-white leading-[1.05] mb-5">
+                Choreography
+                <span className="block" style={{ color: '#E5AA3E' }}>Club</span>
+              </h1>
 
-            <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl font-black text-[#2C2117] leading-none mb-6 tracking-tight">
-              Choreography
-              <span className="block text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(135deg, #C4882A, #E8BD63)' }}>Club</span>
-            </h1>
+              {/* Description */}
+              <p className="text-white/75 text-lg leading-relaxed max-w-2xl mb-8">
+                Where every step tells a story. Join Trident's most expressive community — performing classical, contemporary, and fusion dance across India's biggest college stages.
+              </p>
 
-            <p className="text-lg md:text-xl text-[#6B5B45] max-w-2xl mx-auto mb-10 font-medium leading-relaxed">
-              Where every step tells a story. Join Trident's most expressive community — performing classical, contemporary, and fusion dance across India's biggest college stages.
-            </p>
-
-            <div className="flex flex-wrap justify-center gap-4">
-              
-              <a href="#about" className="px-8 py-3.5 rounded-full font-bold text-sm uppercase tracking-widest text-amber-700 border border-amber-300 hover:bg-amber-50 transition-all">
-                Explore
+              <a href="#about" className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all" style={{ background: '#E5AA3E', color: '#0A0805' }}>
+                Explore Club <ArrowRight size={13} />
               </a>
             </div>
           </div>
 
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center opacity-60">
-            <span className="text-[10px] tracking-[0.25em] font-bold text-[#C4882A]/70 uppercase mb-2">Scroll</span>
-            <ChevronDown className="w-5 h-5 text-amber-600 animate-bounce" />
+          {/* Stats bar */}
+          <div className="relative z-10 w-full" style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)', borderTop: '1px solid rgba(229,170,62,0.2)' }}>
+            <div className="max-w-7xl mx-auto px-6 xl:px-12">
+              <div className="grid grid-cols-2 md:grid-cols-4">
+                {stats.map((s, i) => (
+                  <div key={i} className="py-5 px-6 flex flex-col" style={{ borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
+                    <span className="font-black text-2xl text-white">
+                      <GSAPCounter end={s.end} suffix={s.suffix} duration={2} />
+                    </span>
+                    <span className="text-[11px] text-white/55 uppercase tracking-widest mt-0.5 font-semibold">{s.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 

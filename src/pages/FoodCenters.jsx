@@ -71,82 +71,60 @@ export default function FoodCenters() {
   return (
     <SmoothScrollProvider>
       <div className="bg-[#FFF7ED] min-h-screen text-stone-900 font-sans overflow-x-hidden">
-        
-        {/* ── Food Street Floating Header ── */}
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-40 w-11/12 max-w-5xl">
-          <div className="backdrop-blur-md bg-stone-900/90 text-white border border-stone-800 rounded-full px-6 py-3 flex items-center justify-between shadow-lg">
-            <span className="font-serif text-lg font-bold tracking-wider text-orange-500">TAT Cafes</span>
-            <div className="flex items-center gap-6 text-xs uppercase tracking-widest font-bold">
-              <a href="#menu" className="hover:text-orange-400 transition-colors">Daily Menu</a>
-              <a href="#favorites" className="hover:text-orange-400 transition-colors">Favorites</a>
-              <button 
-                onClick={() => setIsCartOpen(true)}
-                className="relative flex items-center gap-2 px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-full transition-all"
-              >
-                <ShoppingBag size={14} />
-                <span>Cart ({cart.reduce((a, b) => a + b.qty, 0)})</span>
-              </button>
-            </div>
-          </div>
-        </div>
 
-        {/* ── HERO BANNER with Steam Animation ── */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-32 bg-stone-950 text-white">
+        {/* ── HERO ── */}
+        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[520px] flex flex-col justify-end">
           <div className="absolute inset-0 z-0">
-            <img 
-              src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070&auto=format&fit=crop" 
-              alt="Food preparation" 
-              className="w-full h-full object-cover opacity-20 scale-105"
+            <img
+              src="https://images.unsplash.com/photo-1567521464027-f127ff144326?auto=format&fit=crop&q=80&w=1600"
+              alt="Food Centers"
+              className="w-full h-full object-cover"
             />
-            {/* Dark overlay gradients */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-stone-950/80 to-[#FFF7ED]" />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(28,14,5,0.93) 0%, rgba(28,14,5,0.80) 55%, rgba(28,14,5,0.40) 100%)' }} />
           </div>
-
-          {/* Steam Effect Overlays (CSS Floating Particles) */}
-          <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden opacity-30">
-            <style>{`
-              @keyframes steam-rise {
-                0% { transform: translateY(100vh) translateX(0) scale(1); opacity: 0; }
-                50% { opacity: 0.5; }
-                100% { transform: translateY(-20vh) translateX(50px) scale(1.5); opacity: 0; }
-              }
-              .steam-particle {
-                position: absolute;
-                bottom: 0;
-                width: 60px;
-                height: 60px;
-                background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-                filter: blur(10px);
-                border-radius: 50%;
-              }
-            `}</style>
-            {[...Array(6)].map((_, idx) => (
-              <div 
-                key={idx}
-                className="steam-particle"
-                style={{
-                  left: `${15 + idx * 15}%`,
-                  animation: `steam-rise ${10 + idx * 2}s ease-in-out ${idx * 1.5}s infinite`
-                }}
-              />
-            ))}
-          </div>
-
-          <div className="relative z-20 max-w-4xl mx-auto text-center flex flex-col items-center">
-            <h1 className="font-serif text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-none">
-              Campus Food <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-red-500">
-                Street & Cafes.
-              </span>
-            </h1>
-
-            <p className="text-base md:text-lg max-w-2xl mb-12 opacity-80 leading-relaxed font-light text-stone-300">
-              Serving nutritional, fresh, and delicious choices daily. Browse multiple food kiosks, snack tables, and custom beverage desks right inside TAT campus grounds.
-            </p>
-
-            <a href="#menu" className="px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white rounded-full font-bold text-xs uppercase tracking-widest transition-all shadow-lg shadow-orange-500/20">
-              Order Lunch Specials
-            </a>
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+            <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <span style={{ color: '#E5AA3E', fontWeight: 700 }}>Cafeteria</span>
+            </nav>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-white/70 text-[13px] font-bold uppercase tracking-[0.25em] mb-3"
+            >
+              Campus Dining & Food Centers
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="leading-[1.05] tracking-tight mb-6"
+              style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
+            >
+              Campus Food<br />
+              <span style={{ color: '#E5AA3E' }}>Street & Cafes.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="max-w-2xl leading-relaxed font-medium mb-10"
+              style={{ color: 'rgba(255,255,255,0.75)', fontSize: '17px' }}
+            >
+              Serving nutritional, fresh, and delicious choices daily across multiple food kiosks, snack tables, and custom beverage desks inside TAT campus.
+            </motion.p>
+            <div className="flex flex-wrap gap-4">
+              {[{ val: '5+', lbl: 'Food Outlets' }, { val: '4', lbl: 'Meals Per Day' }, { val: '1500+', lbl: 'Students Served' }, { val: '100%', lbl: 'Hygienic Audit' }].map((s, i) => (
+                <div key={i} className="px-5 py-3 rounded-lg text-center" style={{ backgroundColor: 'rgba(0,0,0,0.45)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                  <div className="text-[22px] font-black text-white">{s.val}</div>
+                  <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold mt-0.5">{s.lbl}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

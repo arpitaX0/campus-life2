@@ -116,54 +116,59 @@ export default function CodingClub() {
     <SmoothScrollProvider>
       <div className="bg-[#040D1A] min-h-screen text-green-400 font-mono overflow-x-hidden">
 
-        <AmbientParticles count={12} color="rgba(0,255,65,0.04)" />
-
-        {/* ── HERO SECTION ── */}
-        <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-          <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-60 z-0 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#040D1A]/70 via-[#040D1A]/50 to-[#040D1A] z-1" />
-
-          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            <div className="flex items-center justify-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-green-600 mb-8">
-              <Link to="/"  className="hover:text-green-400 transition-colors flex items-center gap-1"><Home size={10} />Home</Link>
-              <ChevronRight size={8} />
-              <Link to="/extra-curricular"  className="hover:text-green-400 transition-colors">Extra Curricular</Link>
-              <ChevronRight size={8} />
-              <span className="text-green-400">Coding Club</span>
-            </div>
-
-            <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/20 text-green-400 text-xs px-4 py-1.5 rounded-full mb-8 backdrop-blur-sm">
-              <Terminal size={12} /> Code · Build · Innovate
-            </div>
-
-            <div className="bg-[#020811] border border-green-900/40 rounded-lg max-w-lg mx-auto p-3 text-left mb-8 shadow-xl shadow-green-900/10 relative">
-              <div className="absolute top-2.5 right-3 text-[10px] text-green-800">bash</div>
-              <div className="flex items-center gap-2 text-green-400">
-                <span>$</span>
-                <span>{typedText}</span>
-                <span className="w-1.5 h-4 bg-green-400 animate-pulse inline-block" />
-              </div>
-            </div>
-
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight mb-8">
-              Coding <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">Club</span>
-            </h1>
-
-            <p className="text-green-500/80 text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed">
-              We translate coffee into code, ideas into deployments, and logic into legacy. Master competitive programming, build scalable apps, and dominate regional hackathons.
-            </p>
-
-            <div className="flex flex-wrap justify-center gap-4">
-              
-              <a href="#about" className="px-8 py-3.5 rounded-lg font-bold text-xs uppercase tracking-wider text-green-400 border border-green-500/30 hover:bg-green-500/10 transition-all">
-                cat about.txt
-              </a>
-            </div>
+        {/* ── HERO ── */}
+        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[520px] flex flex-col justify-end">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&q=80&w=1600"
+              alt="Coding Club"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(4,13,26,0.95) 0%, rgba(4,13,26,0.80) 55%, rgba(4,13,26,0.40) 100%)' }} />
           </div>
-
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center opacity-60">
-            <span className="text-[9px] tracking-widest text-green-700 uppercase mb-2">scroll down</span>
-            <ChevronDown className="w-4 h-4 text-green-400 animate-bounce" />
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+            <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <span style={{ color: '#E5AA3E', fontWeight: 700 }}>Coding Club</span>
+            </nav>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-white/70 text-[13px] font-bold uppercase tracking-[0.25em] mb-3"
+            >
+              Developer Community
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="leading-[1.05] tracking-tight mb-6"
+              style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
+            >
+              Coding<br />
+              <span style={{ color: '#E5AA3E' }}>Club.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="max-w-2xl leading-relaxed font-medium mb-10"
+              style={{ color: 'rgba(255,255,255,0.75)', fontSize: '17px' }}
+            >
+              We translate coffee into code, ideas into deployments, and logic into legacy. Master competitive programming, build scalable apps, and dominate regional hackathons.
+            </motion.p>
+            <div className="flex flex-wrap gap-4">
+              {[{ val: '250+', lbl: 'Active Coders' }, { val: '15+', lbl: 'Hackathon Wins' }, { val: '40+', lbl: 'Open Source PRs' }, { val: '120K+', lbl: 'Lines Written' }].map((s, i) => (
+                <div key={i} className="px-5 py-3 rounded-lg text-center" style={{ backgroundColor: 'rgba(0,0,0,0.65)', border: '1px solid rgba(255,255,255,0.15)' }}>
+                  <div className="text-[22px] font-black text-white font-mono">{s.val}</div>
+                  <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold mt-0.5">{s.lbl}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

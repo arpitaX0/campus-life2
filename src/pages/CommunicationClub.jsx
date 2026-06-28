@@ -139,74 +139,62 @@ export default function CommunicationClub() {
 
         <AmbientParticles count={15} color="rgba(79,70,229,0.06)" />
 
-        {/* ── HERO SECTION: Split layout with Speech Bubble & Debate Cycle ── */}
-        <section className="relative min-h-screen grid lg:grid-cols-12 gap-12 items-center px-6 md:px-16 pt-24 pb-16 overflow-hidden">
-          {/* Left Panel */}
-          <div className="lg:col-span-7 flex flex-col justify-center relative z-10">
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-indigo-600/70 mb-8">
-              <Link to="/"  className="hover:text-indigo-600 flex items-center gap-1"><Home size={12} />Home</Link>
-              <ChevronRight size={10} />
-              <Link to="/extra-curricular"  className="hover:text-indigo-600">Extra Curricular</Link>
-              <ChevronRight size={10} />
-              <span className="text-indigo-600">Communication Club</span>
-            </div>
+        {/* ── HERO SECTION (academics-tat style) ── */}
+        <section className="relative min-h-[88vh] flex flex-col justify-end overflow-hidden">
+          {/* Full-width photo background */}
+          <div className="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1400&q=85" alt="Communication Club" className="w-full h-full object-cover object-center" />
+          </div>
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0 z-[1]" style={{ background: 'linear-gradient(to right, rgba(14,10,40,0.90) 0%, rgba(14,10,40,0.68) 55%, rgba(14,10,40,0.30) 100%)' }} />
+          <div className="absolute inset-0 z-[1]" style={{ background: 'linear-gradient(to top, rgba(14,10,40,0.75) 0%, transparent 50%)' }} />
 
-            <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 text-indigo-600 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 w-fit">
-              <Mic size={12} /> Speak with Confidence
-            </div>
-
-            <h1 className="font-serif text-5xl md:text-7xl font-black text-[#2C3A8C] leading-none mb-6">
-              Empowering <br /><span className="text-indigo-600">Voices</span>
-            </h1>
-
-            <p className="text-slate-600 text-lg leading-relaxed mb-8 max-w-xl">
-              Ideas are only as powerful as your ability to articulate them. Join a community of debaters, speakers, and leaders who shape discussions on campus and beyond.
-            </p>
-
-            {/* Simulated Animated Speech Bubble */}
-            <div className="bg-indigo-50 border border-indigo-100 rounded-3xl p-6 relative max-w-lg shadow-sm mb-10">
-              <div className="absolute top-4 left-6 text-[10px] text-indigo-500 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                <MessageSquare size={10} /> Discussion Topic
+          {/* Content */}
+          <div className="relative z-10 max-w-7xl mx-auto px-6 xl:px-12 w-full pb-0">
+            <div className="max-w-3xl pt-36 pb-12">
+              {/* Breadcrumb */}
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/60 mb-6">
+                <Link to="/" className="hover:text-[#E5AA3E] transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
+                <ChevronRight size={10} className="text-white/40" />
+                <Link to="/extra-curricular" className="hover:text-[#E5AA3E] transition-colors">Extra Curricular</Link>
+                <ChevronRight size={10} className="text-white/40" />
+                <span className="text-[#E5AA3E]">Communication Club</span>
               </div>
-              <p className="text-indigo-900 font-serif text-lg md:text-xl font-bold mt-4 min-h-[50px] leading-relaxed">
-                "{typedText}"
-                <span className="w-1.5 h-4 bg-indigo-500 animate-pulse inline-block ml-1" />
-              </p>
-              {/* Speech bubble arrow pointer */}
-              <div className="absolute left-10 -bottom-3 w-6 h-6 bg-indigo-50 border-r border-b border-indigo-100 rotate-45" />
-            </div>
 
-            <div className="flex flex-wrap gap-4">
-              
-              <a href="#about" className="px-8 py-3.5 rounded-full font-bold text-sm uppercase tracking-wider text-indigo-600 border border-indigo-200 hover:bg-indigo-50 transition-all">
-                Learn Modules
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 border border-[#E5AA3E]/60 text-[#E5AA3E] text-[10px] font-bold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full mb-6">
+                <Mic size={11} /> Speak with Confidence
+              </div>
+
+              {/* Title */}
+              <h1 className="font-serif text-5xl md:text-7xl font-black text-white leading-[1.05] mb-5">
+                Communication
+                <span className="block" style={{ color: '#E5AA3E' }}>Club</span>
+              </h1>
+
+              {/* Description */}
+              <p className="text-white/75 text-lg leading-relaxed max-w-2xl mb-8">
+                Ideas are only as powerful as your ability to articulate them. Join a community of debaters, public speakers, and leaders who shape campus discussions and beyond.
+              </p>
+
+              <a href="#about" className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all" style={{ background: '#E5AA3E', color: '#0E0A28' }}>
+                Learn More <ArrowRight size={13} />
               </a>
             </div>
           </div>
 
-          {/* Right Panel: Portrait collage */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl h-[420px] md:h-[480px]">
-              <img src={studentsImg} alt="Students debating" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/60 to-transparent" />
-            </div>
-            
-            {/* Ambient Speech wave graphic overlays */}
-            <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-indigo-50 flex items-center gap-3">
-              <div className="flex gap-1.5 items-end h-8">
-                {[4, 8, 3, 7, 5, 8, 2, 6, 8, 4, 7, 3, 6, 8, 2, 5].map((h, i) => (
-                  <motion.div
-                    key={i}
-                    className="w-1 bg-indigo-600 rounded-full"
-                    animate={{ height: [`${h*3}px`, `${h*4}px`, `${h*2}px`, `${h*3}px`] }}
-                    transition={{ repeat: Infinity, duration: 1 + (i % 3) * 0.2, ease: "easeInOut" }}
-                  />
+          {/* Stats bar */}
+          <div className="relative z-10 w-full" style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)', borderTop: '1px solid rgba(229,170,62,0.2)' }}>
+            <div className="max-w-7xl mx-auto px-6 xl:px-12">
+              <div className="grid grid-cols-2 md:grid-cols-4">
+                {stats.map((s, i) => (
+                  <div key={i} className="py-5 px-6 flex flex-col" style={{ borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
+                    <span className="font-black text-2xl text-white">
+                      <GSAPCounter end={s.end} suffix={s.suffix} duration={2} />
+                    </span>
+                    <span className="text-[11px] text-white/55 uppercase tracking-widest mt-0.5 font-semibold">{s.label}</span>
+                  </div>
                 ))}
-              </div>
-              <div>
-                <p className="font-bold text-xs text-indigo-950">Campus Debate Live</p>
-                <p className="text-[10px] text-slate-500">Weekly Open Microphone session</p>
               </div>
             </div>
           </div>

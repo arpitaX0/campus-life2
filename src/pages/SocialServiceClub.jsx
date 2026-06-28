@@ -126,77 +126,64 @@ export default function SocialServiceClub() {
     <SmoothScrollProvider>
       <div className="bg-[#F0FAF5] min-h-screen text-[#1A3A2A] font-sans overflow-x-hidden">
 
-        {/* ── HERO: Split-screen Light themed layout ── */}
-        <section className="relative min-h-screen grid lg:grid-cols-2 overflow-hidden bg-gradient-to-br from-green-50/30 via-white to-[#F0FAF5]">
-          {/* Left Panel */}
-          <div className="flex flex-col justify-center px-8 md:px-16 py-28 relative z-10">
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-500 mb-8">
-              <Link to="/"  className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
-              <ChevronRight size={10} /><Link to="/extra-curricular"  className="hover:text-slate-800 transition-colors">Extra Curricular</Link>
-              <ChevronRight size={10} /><span className="text-green-700">Social Service Club</span>
-            </div>
+        {/* ── HERO SECTION (academics-tat style) ── */}
+        <section className="relative min-h-[88vh] flex flex-col justify-end overflow-hidden">
+          {/* Full-width photo background */}
+          <div className="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1400&q=85" alt="Social Service Club" className="w-full h-full object-cover object-center" />
+          </div>
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0 z-[1]" style={{ background: 'linear-gradient(to right, rgba(5,20,10,0.90) 0%, rgba(5,20,10,0.68) 55%, rgba(5,20,10,0.30) 100%)' }} />
+          <div className="absolute inset-0 z-[1]" style={{ background: 'linear-gradient(to top, rgba(5,20,10,0.75) 0%, transparent 50%)' }} />
 
-            <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-8 w-fit">
-              <Heart size={12} className="text-green-600" /> Making a Difference
-            </div>
+          {/* Content */}
+          <div className="relative z-10 max-w-7xl mx-auto px-6 xl:px-12 w-full pb-0">
+            <div className="max-w-3xl pt-36 pb-12">
+              {/* Breadcrumb */}
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/60 mb-6">
+                <Link to="/" className="hover:text-[#E5AA3E] transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
+                <ChevronRight size={10} className="text-white/40" />
+                <Link to="/extra-curricular" className="hover:text-[#E5AA3E] transition-colors">Extra Curricular</Link>
+                <ChevronRight size={10} className="text-white/40" />
+                <span className="text-[#E5AA3E]">Social Service Club</span>
+              </div>
 
-            <h1 className="font-serif text-5xl md:text-7xl font-black text-slate-900 leading-none mb-6">
-              Social <br /><span className="text-green-600">Service</span><br />Club
-            </h1>
-            <p className="text-slate-600 text-lg leading-relaxed mb-12 max-w-md font-medium">
-              We believe that education finds its true purpose in service. Join us in creating meaningful change across communities.
-            </p>
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 border border-[#E5AA3E]/60 text-[#E5AA3E] text-[10px] font-bold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full mb-6">
+                <Heart size={11} /> Making a Difference
+              </div>
 
-            {/* Big Impact Numbers */}
-            <div className="grid grid-cols-2 gap-6">
-              {impactStats.map((s, i) => (
-                <div key={i} className="bg-white rounded-2xl p-5 border border-green-100 shadow-sm">
-                  <div className="font-serif text-4xl font-black text-green-600">
-                    <GSAPCounter end={s.end} suffix={s.suffix} duration={2.5} />
-                  </div>
-                  <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mt-1">{s.label}</p>
-                </div>
-              ))}
+              {/* Title */}
+              <h1 className="font-serif text-5xl md:text-7xl font-black text-white leading-[1.05] mb-5">
+                Social Service
+                <span className="block" style={{ color: '#E5AA3E' }}>Club</span>
+              </h1>
+
+              {/* Description */}
+              <p className="text-white/75 text-lg leading-relaxed max-w-2xl mb-8">
+                We believe education finds its true purpose in service. Join us in creating meaningful change across communities through blood donation, environmental drives, and outreach programs.
+              </p>
+
+              <a href="#about" className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all" style={{ background: '#E5AA3E', color: '#050E05' }}>
+                Our Impact <ArrowRight size={13} />
+              </a>
             </div>
           </div>
 
-          {/* Right Panel */}
-          <div className="relative overflow-hidden lg:h-auto h-96 border-l border-green-100">
-            <img src={facilitiesGreen} alt="Community Service" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#F0FAF5]/30 to-transparent" />
-            {/* Floating badges */}
-            <FloatingElement className="absolute top-[20%] right-[15%] z-20" range={15} duration={8}>
-              <div className="bg-white rounded-2xl p-4 shadow-xl border border-green-100">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-green-500 flex items-center justify-center">
-                    <TrendingUp className="w-5 h-5 text-white" />
+          {/* Stats bar */}
+          <div className="relative z-10 w-full" style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)', borderTop: '1px solid rgba(229,170,62,0.2)' }}>
+            <div className="max-w-7xl mx-auto px-6 xl:px-12">
+              <div className="grid grid-cols-2 md:grid-cols-4">
+                {impactStats.map((s, i) => (
+                  <div key={i} className="py-5 px-6 flex flex-col" style={{ borderRight: i < impactStats.length - 1 ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
+                    <span className="font-black text-2xl text-white">
+                      <GSAPCounter end={s.end} suffix={s.suffix} duration={2} />
+                    </span>
+                    <span className="text-[11px] text-white/55 uppercase tracking-widest mt-0.5 font-semibold">{s.label}</span>
                   </div>
-                  <div>
-                    <p className="font-black text-green-700 text-sm">15,000+</p>
-                    <p className="text-green-500 text-xs">Lives Impacted</p>
-                  </div>
-                </div>
+                ))}
               </div>
-            </FloatingElement>
-            <FloatingElement className="absolute bottom-[25%] right-[10%] z-20" range={12} duration={10} delay={2}>
-              <div className="bg-white rounded-2xl p-4 shadow-xl border border-green-100">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-red-550 flex items-center justify-center">
-                    <Droplets className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-black text-slate-800 text-sm">200+ Units</p>
-                    <p className="text-slate-500 text-xs font-semibold">Blood Donated</p>
-                  </div>
-                </div>
-              </div>
-            </FloatingElement>
-
-            <a href="#about" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center opacity-70">
-              <span className="text-[10px] text-white tracking-[0.2em] uppercase font-bold mb-2">Scroll Down</span>
-              <ChevronDown className="w-5 h-5 text-green-600 animate-bounce" />
-            </a>
+            </div>
           </div>
         </section>
 

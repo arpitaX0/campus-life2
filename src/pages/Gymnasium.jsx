@@ -63,49 +63,61 @@ export default function Gymnasium() {
 
   return (
     <SmoothScrollProvider>
-      <div className="bg-slate-50 min-h-screen text-slate-800 font-sans overflow-x-hidden">
+      <div className="bg-[#FAF9F7] text-slate-800 min-h-screen font-sans overflow-x-hidden">
 
-        {/* ── HERO SECTION: Clean light overlay ── */}
-        <section className="relative min-h-[85vh] flex items-center justify-center pt-24 overflow-hidden bg-gradient-to-br from-red-50/20 via-white to-slate-50">
-          <div className="absolute inset-0 z-0 opacity-15 filter grayscale">
-            <img src={gymImg} alt="Gymnasium facility" className="w-full h-full object-cover" />
+        {/* ── HERO ── */}
+        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[520px] flex flex-col justify-end">
+          <div className="absolute inset-0 z-0">
+            <img
+              src={gymImg}
+              alt="Gymnasium"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(20,20,30,0.93) 0%, rgba(20,20,30,0.80) 55%, rgba(20,20,30,0.40) 100%)' }} />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/80 to-slate-50 z-1" />
-
-          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            {/* Breadcrumb */}
-            <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-500 mb-8">
-              <Link to="/"  className="hover:text-slate-800 transition-colors flex items-center gap-1"><Home size={12} />Home</Link>
-              <ChevronRight size={10} />
-              <Link to="/extra-curricular"  className="hover:text-slate-800 transition-colors">Extra Curricular</Link>
-              <ChevronRight size={10} />
-              <span className="text-red-655">Gymnasium</span>
-            </div>
-
-            <div className="inline-flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded mb-8">
-              <Flame size={12} className="text-red-600 animate-pulse" /> PUSH YOUR LIMITS
-            </div>
-
-            <h1 className="font-serif text-5xl md:text-8xl font-black text-slate-900 leading-none mb-8 tracking-tight uppercase">
-              STRENGTH & <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-500">FITNESS</span>
-            </h1>
-
-            <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-12 w-full">
+            <nav className="flex items-center gap-2 text-xs font-medium mb-10 flex-wrap uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              <a href="https://trident.ac.in" className="hover:text-white transition-colors">Home</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <a href="/" className="hover:text-white transition-colors">Campus Life</a>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>›</span>
+              <span style={{ color: '#E5AA3E', fontWeight: 700 }}>Gymnasium</span>
+            </nav>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-white/70 text-[13px] font-bold uppercase tracking-[0.25em] mb-3"
+            >
+              Sports & Fitness Infrastructure
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="leading-[1.05] tracking-tight mb-6"
+              style={{ fontFamily: '"Source Serif 4", Georgia, serif', fontSize: 'clamp(42px, 7vw, 76px)', fontWeight: 900, color: '#ffffff' }}
+            >
+              Strength &<br />
+              <span style={{ color: '#E5AA3E' }}>Fitness Center.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="max-w-2xl leading-relaxed font-medium mb-10"
+              style={{ color: 'rgba(255,255,255,0.75)', fontSize: '17px' }}
+            >
               Transform your physical potential. Train with heavy-duty commercial equipment, customized schedules for boys and girls, and expert supervision inside our 3,000 sq ft fitness arena.
-            </p>
-
-            <div className="flex flex-wrap justify-center gap-4">
-              
-              <a href="#about" className="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-red-700 border border-red-300 hover:bg-red-50 transition-all">
-                View Equipment
-              </a>
+            </motion.p>
+            <div className="flex flex-wrap gap-4">
+              {[{ val: '350+', lbl: 'Daily Members' }, { val: '3000', lbl: 'Sq Ft Space' }, { val: '40+', lbl: 'Workstations' }, { val: '5', lbl: 'Certified Coaches' }].map((s, i) => (
+                <div key={i} className="px-5 py-3 rounded-lg text-center" style={{ backgroundColor: 'rgba(0,0,0,0.65)', border: '1px solid rgba(255,255,255,0.15)' }}>
+                  <div className="text-[22px] font-black text-white">{s.val}</div>
+                  <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold mt-0.5">{s.lbl}</div>
+                </div>
+              ))}
             </div>
-          </div>
-
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center opacity-60">
-            <span className="text-[9px] tracking-widest text-slate-500 uppercase mb-2">scroll down</span>
-            <ChevronDown className="w-4 h-4 text-red-600 animate-bounce" />
           </div>
         </section>
 
